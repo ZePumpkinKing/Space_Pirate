@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3780714993014151132}
   m_Layer: 0
   m_Name: NewRoomNode
-  m_TagString: Untagged
+  m_TagString: SpawnNode
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc39ca72ced5e0b438fe5f9da8adae87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openingDir: 0
 --- !u!1 &1799378563575782043
 GameObject:
   m_ObjectHideFlags: 0

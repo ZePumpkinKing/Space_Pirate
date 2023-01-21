@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4811170480949435868}
   m_Layer: 0
   m_Name: NewRoomNode (1)
-  m_TagString: Untagged
+  m_TagString: SpawnNode
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,6 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc39ca72ced5e0b438fe5f9da8adae87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openingDir: 2
+  spawned: 0
 --- !u!1 &2163012110809949501
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +91,7 @@ GameObject:
   - component: {fileID: 7524173154663026769}
   m_Layer: 0
   m_Name: NewRoomNode
-  m_TagString: Untagged
+  m_TagString: SpawnNode
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,6 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc39ca72ced5e0b438fe5f9da8adae87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openingDir: 1
+  spawned: 0
 --- !u!1 &7939030554544787493
 GameObject:
   m_ObjectHideFlags: 0
