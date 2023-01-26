@@ -9,20 +9,27 @@ public class Jumper : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] Transform gun;
 
+
     bool moving = true;
+
+    Rigidbody rb;
 
     Transform player;
 
     void Start() {
+        rb = GetComponent<Rigidbody>();
         player = GameObject.FindObjectOfType<Player>().transform;
+
+        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
     }
 
     void Update() {
+        gun.LookAt(player);
+
         if (moving) {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
-            gun.rotation = new Quaternion(-0.707106829f, 0, 0, 0.707106829f);
+            gun.rotation = transform.rotation;
         } else {
-            gun.LookAt(player);
+            
         }
     }
 
@@ -31,17 +38,24 @@ public class Jumper : MonoBehaviour
 
         transform.parent = null;
 
-        float xRot = Random.Range(0,180);
-        float yRot = Random.Range(0,180);
+        float xRot = Random.Range(-45,45);
+        float yRot = Random.Range(-45,45);
 
         transform.Rotate(Vector3.up, xRot);
         transform.Rotate(Vector3.up, yRot);
 
+        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+
         moving = true;
     }
 
-    void Land() {
+    void Land(Vector3 position, Vector3 normal) {
+        rb.velocity = Vector3.zero;
 
+        Debug.Log(position + " " + normal);
+        transform.rotation = Quaternion.LookRotation(normal);
+
+        transform.Translate(0,0.5f,0);
 
         moving = false;
 
@@ -49,15 +63,12 @@ public class Jumper : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("ground")) {
-            Physics.Raycast(transform.position, collision.transform.position);
+        if (collision.gameObject.CompareTag("Ground")) {
+            RaycastHit hit;
 
+            Physics.Raycast(transform.position, collision.transform.position - transform.position, out hit);
 
-            //RaycastHit hit = ;
-
-            //Vector3 normal = ;
-
-            Land();
+            Land(hit.point, hit.normal);
         }
     }
 }
