@@ -43,17 +43,22 @@ public class Player : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void FixedUpdate()
+    private void Update()
     {
         move = input.Gameplay.Move.ReadValue<Vector3>();
         look = input.Gameplay.Look.ReadValue<Vector2>();
         rotate = input.Gameplay.Rotate.ReadValue<float>();
 
-        rb.AddForce(cam.transform.rotation * move * speed, ForceMode.Impulse);
+        rb.AddForce(cam.transform.rotation * move * speed * Time.deltaTime, ForceMode.Impulse);
+
+        cam.transform.Rotate(transform.up, look.x * sensitivity * Time.deltaTime);
+        cam.transform.Rotate(transform.right, -look.y * sensitivity * Time.deltaTime);
+        cam.transform.Rotate(transform.forward, -rotate * turnSpeed * Time.deltaTime);
+    }
+
+    void FixedUpdate()
+    {
         
-        cam.transform.Rotate(transform.up, look.x * sensitivity);
-        cam.transform.Rotate(transform.right, -look.y * sensitivity);
-        cam.transform.Rotate(transform.forward, -rotate * turnSpeed);
     }
 
 
