@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Debug",
+                    "type": "PassThrough",
+                    "id": "486c7cc9-ba58-43b6-a52e-f8f705df7d86",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -441,6 +450,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a9daa90-188a-401e-aa32-d248778db505",
+                    "path": "<Keyboard>/g",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Debug",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

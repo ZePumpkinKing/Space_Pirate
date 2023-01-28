@@ -89,6 +89,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Debug"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""486c7cc9-ba58-43b6-a52e-f8f705df7d86"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -465,6 +474,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""action"": ""Weapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a9daa90-188a-401e-aa32-d248778db505"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -480,6 +500,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_Gameplay_Grapple = m_Gameplay.FindAction("Grapple", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_Weapon = m_Gameplay.FindAction("Weapon", throwIfNotFound: true);
+        m_Gameplay_Debug = m_Gameplay.FindAction("Debug", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -546,6 +567,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Grapple;
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_Weapon;
+    private readonly InputAction m_Gameplay_Debug;
     public struct GameplayActions
     {
         private @Input m_Wrapper;
@@ -557,6 +579,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         public InputAction @Grapple => m_Wrapper.m_Gameplay_Grapple;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @Weapon => m_Wrapper.m_Gameplay_Weapon;
+        public InputAction @Debug => m_Wrapper.m_Gameplay_Debug;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -587,6 +610,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Weapon.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWeapon;
                 @Weapon.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWeapon;
                 @Weapon.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWeapon;
+                @Debug.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDebug;
+                @Debug.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDebug;
+                @Debug.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDebug;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -612,6 +638,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Weapon.started += instance.OnWeapon;
                 @Weapon.performed += instance.OnWeapon;
                 @Weapon.canceled += instance.OnWeapon;
+                @Debug.started += instance.OnDebug;
+                @Debug.performed += instance.OnDebug;
+                @Debug.canceled += instance.OnDebug;
             }
         }
     }
@@ -625,5 +654,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
         void OnGrapple(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnWeapon(InputAction.CallbackContext context);
+        void OnDebug(InputAction.CallbackContext context);
     }
 }
