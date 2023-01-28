@@ -7,8 +7,6 @@ TagManager:
   - Enemy
   - Projectile
   - Ground
-  - Rooms
-  - SpawnNode
   layers:
   - Default
   - TransparentFX
