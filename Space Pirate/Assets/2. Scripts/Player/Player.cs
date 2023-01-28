@@ -11,7 +11,8 @@ public class Player : MonoBehaviour
 
     Input input;
 
-    [SerializeField] float speed;
+    [SerializeField] float normalSpeed;
+    [SerializeField] float zeroGspeed;
     [SerializeField] float maxSpeed;
     [SerializeField] float turnSpeed;
     [SerializeField] float sensitivity;
@@ -19,6 +20,11 @@ public class Player : MonoBehaviour
     Vector3 move;
     Vector2 look;
     float rotate;
+
+    private float threshold = 0.01f;
+    public float counterMovement = 0.175f;
+
+
 
     public bool gravityEnabled;
     bool temp;
@@ -48,18 +54,17 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        normalSpeed *= 100;
     }
 
     private void Update()
     {
-        //Debug.Log(buttonGrav);
         move = input.Gameplay.Move.ReadValue<Vector3>();
         rotate = input.Gameplay.Rotate.ReadValue<float>();
         buttonGrav = input.Gameplay.Debug.ReadValue<float>();
-        rb.AddForce(cam.transform.rotation * move * speed * Time.deltaTime, ForceMode.Impulse);
 
         Look();
-        
+
         if (gravityEnabled)
         {
             rb.useGravity = true;
@@ -73,12 +78,12 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+        if (gravityEnabled) RegularGravMovement();
+        else ZeroGravMovement();
     }
     void EnableGravity()
     {
-
-        if (gravityEnabled)
+        if (gravityEnabled) // if gravity is enabled, just call disable gravity instead lol
         {
             DisableGravity();
         }
@@ -88,11 +93,70 @@ public class Player : MonoBehaviour
             Debug.Log("Gravity enabled");
         }
     }
+
     void DisableGravity()
     {
         gravityEnabled = false;
         Debug.Log("Gravity disabled");
     }
+
+    void RegularGravMovement()
+    {
+        //Extra gravity
+        rb.AddForce(Vector3.down * Time.deltaTime * 10);
+        Vector2 mag = FindVelRelativeToLook();
+
+        float xMag = mag.x, yMag = mag.y;
+
+        CounterMovement(move.x, move.z, mag);
+
+        //Only do movement calcs if the speed is under max speed, making sure we never go over max speed, while also letting us retain momentum from grappling
+        if (Mathf.Abs(move.x) > 0 && xMag < maxSpeed) rb.AddForce(orientation.transform.right * move.x * normalSpeed * Time.deltaTime);
+        if (Mathf.Abs(move.z) > 0 && yMag < maxSpeed) rb.AddForce(orientation.transform.forward * move.z * normalSpeed * Time.deltaTime); 
+
+    }
+
+    public Vector2 FindVelRelativeToLook()
+    {
+        float lookAngle = orientation.transform.eulerAngles.y;
+        float moveAngle = Mathf.Atan2(rb.velocity.x, rb.velocity.z) * Mathf.Rad2Deg;
+
+        float u = Mathf.DeltaAngle(lookAngle, moveAngle);
+        float v = 90 - u;
+
+        float magnitude = rb.velocity.magnitude;
+        float yMag = magnitude * Mathf.Cos(u * Mathf.Deg2Rad);
+        float xMag = magnitude * Mathf.Cos(v * Mathf.Deg2Rad);
+
+        return new Vector2(xMag, yMag);
+    }
+
+    private void CounterMovement(float x, float y, Vector2 mag)
+    {
+        //Counter movement
+        if (Mathf.Abs(mag.x) > threshold && Mathf.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
+        {
+            rb.AddForce(normalSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement);
+        }
+        if (Mathf.Abs(mag.y) > threshold && Mathf.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0))
+        {
+            rb.AddForce(normalSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
+        }
+
+        //Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
+        if (Mathf.Sqrt((Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2))) > maxSpeed)
+        {
+            float fallspeed = rb.velocity.y;
+            Vector3 n = rb.velocity.normalized * maxSpeed;
+            rb.velocity = new Vector3(n.x, fallspeed, n.z);
+        }
+    }
+
+    void ZeroGravMovement()
+    {
+        rb.AddForce(cam.transform.rotation * move * zeroGspeed * Time.deltaTime, ForceMode.Impulse);
+    }
+
     private float desiredX;
     private float xRotation;
     void Look()
@@ -134,4 +198,8 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.red;
     }
+
+
+    
+
 }
