@@ -17,6 +17,6 @@ public class Spin : MonoBehaviour
     void Update()
     {
         transform.LookAt(target);
-        transform.Translate(Vector3.right * speed);
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 }
