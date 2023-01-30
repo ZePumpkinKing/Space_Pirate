@@ -12,11 +12,16 @@ public class Gun : MonoBehaviour
     float timeSinceLastShot;
     float currentAmmo;
     bool reloading;
+    float autoShooting;
     private void Awake()
     {
         input = new Input();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
-        input.Gameplay.Fire.performed += context => Shoot();
+        if (!gun.automatic)
+        {
+            input.Gameplay.Fire.performed += context => Shoot();
+        }
+
         input.Gameplay.Reload.performed += context => StartReload();
     }
     private void Start()
@@ -27,15 +32,24 @@ public class Gun : MonoBehaviour
     {
         timeSinceLastShot += Time.deltaTime;
         Debug.DrawRay(cam.position, cam.forward);
+        if (gun.automatic)
+        {
+            autoShooting = input.Gameplay.Fire.ReadValue<float>();
+        }
+        if (autoShooting > 0)
+        {
+            Shoot();
+        }
     }
     private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (gun.fireRateRPM / 60f);
     public void Shoot()
     {
-        Debug.Log(currentAmmo);
+        
         if (currentAmmo > 0)
         {
             if (CanShoot())
             {
+                Debug.Log(currentAmmo);
                 if (Physics.Raycast(new Vector3(cam.position.x, cam.position.y, cam.position.z + 1), cam.forward, out RaycastHit hit, gun.maxDistance))
                 {
                     IDamageable damageable = hit.transform.GetComponent<IDamageable>();
