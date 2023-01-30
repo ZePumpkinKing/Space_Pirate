@@ -7,26 +7,32 @@ public class Player : MonoBehaviour
 {
     Camera cam;
     Rigidbody rb;
+    [Header("Transforms")]
     public Transform orientation;
-
+    public Transform groundCheck;
     Input input;
 
+    [Header("Gravity Movement Vars")]
     [SerializeField] float normalSpeed;
-    [SerializeField] float zeroGspeed;
     [SerializeField] float maxSpeed;
+    public float counterMovement = 0.175f;
+    [Header("0g Movement Vars")]
+    [SerializeField] float zeroGspeed;
     [SerializeField] float turnSpeed;
     [SerializeField] float sensitivity;
+    
 
     Vector3 move;
     Vector2 look;
     float rotate;
 
     private float threshold = 0.01f;
-    public float counterMovement = 0.175f;
-
+    
     public bool gravityEnabled;
-    bool temp;
     float buttonGrav;
+    [Header("Ground Detection")]
+    public LayerMask whatIsGround;
+    [SerializeField] bool isGrounded;
 
     private void Awake()
     {
@@ -63,15 +69,14 @@ public class Player : MonoBehaviour
 
         Look();
 
+        if (gravityEnabled) rb.useGravity = true;
+        else rb.useGravity = false;
         if (gravityEnabled)
         {
-            rb.useGravity = true;
+            CheckGround();
         }
-        else
-        {
-            rb.useGravity = false;
-        }
-
+        else isGrounded = false;
+        
     }
 
     void FixedUpdate()
@@ -83,6 +88,7 @@ public class Player : MonoBehaviour
     {
         if (gravityEnabled) // if gravity is enabled, just call disable gravity instead lol
         {
+            transform.rotation = new Quaternion(0, transform.rotation.y, 0, 0);
             DisableGravity();
         }
         else
@@ -152,7 +158,15 @@ public class Player : MonoBehaviour
 
     void ZeroGravMovement()
     {
-        rb.AddForce(cam.transform.rotation * move * zeroGspeed * Time.deltaTime, ForceMode.Impulse);
+        rb.AddForce(cam.transform.rotation * new Vector3(move.x, 0, move.z) * zeroGspeed * Time.deltaTime, ForceMode.Impulse);
+        rb.AddForce(orientation.transform.rotation * new Vector3(0, move.y, 0) * zeroGspeed * Time.deltaTime, ForceMode.Impulse);
+ /*     quick explanation for the new line of code here ^. i reworked the player model so that the player model rotates with the camera
+        (only when in 0g), because no rotation was causing issues with the shooting.
+        I assume the reason you had the player cylinder not rotating was so that the spacebar would only ever send the player up (in world space),
+        so i made the y control only go with the rotation of the new "orientation" transform
+        (orientation keeps track of the player's Y rotation, and ignores X and Z.) This restores your original mechanic of spacebar sending the player up, while
+        also rotating the player model
+        to hunter, from keegan xoxo*/
     }
 
     private float desiredX;
@@ -184,7 +198,7 @@ public class Player : MonoBehaviour
         {
             cam.transform.Rotate(transform.forward, -rotate * turnSpeed * Time.deltaTime);
             cam.transform.Rotate(transform.up, look.x * sensitivity * Time.deltaTime);
-            cam.transform.Rotate(-transform.right, look.y * sensitivity * Time.deltaTime);
+            cam.transform.Rotate(transform.right, look.y * sensitivity * Time.deltaTime);
         }
 
         orientation.transform.rotation = Quaternion.Euler(0, desiredX, 0);
@@ -192,9 +206,15 @@ public class Player : MonoBehaviour
 
     }
 
+    void CheckGround()
+    {
+        isGrounded = Physics.CheckBox(groundCheck.position, new Vector3(.5f, .125f, .5f), orientation.rotation, whatIsGround);
+    }
+
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(groundCheck.position, new Vector3(.5f, .125f, .5f) * 2);
     }
 
 

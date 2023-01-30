@@ -6,7 +6,7 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] GunData gun;
     Input input;
-    Transform cam;
+    Transform castPoint;
     [SerializeField] private Transform gunTip;
 
     float timeSinceLastShot;
@@ -16,7 +16,7 @@ public class Gun : MonoBehaviour
     private void Awake()
     {
         input = new Input();
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
+        castPoint = GameObject.FindGameObjectWithTag("CastPoint").GetComponent<Transform>();
         if (!gun.automatic)
         {
             input.Gameplay.Fire.performed += context => Shoot();
@@ -31,7 +31,7 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        Debug.DrawRay(cam.position, cam.forward);
+        Debug.DrawRay(castPoint.position, castPoint.forward);
         if (gun.automatic)
         {
             autoShooting = input.Gameplay.Fire.ReadValue<float>();
@@ -50,7 +50,7 @@ public class Gun : MonoBehaviour
             if (CanShoot())
             {
                 Debug.Log(currentAmmo);
-                if (Physics.Raycast(new Vector3(cam.position.x, cam.position.y, cam.position.z + 1), cam.forward, out RaycastHit hit, gun.maxDistance))
+                if (Physics.Raycast(new Vector3(castPoint.position.x, castPoint.position.y, castPoint.position.z), castPoint.forward, out RaycastHit hit, gun.maxDistance))
                 {
                     IDamageable damageable = hit.transform.GetComponent<IDamageable>();
                     damageable?.TakeDamage(gun.damage);
