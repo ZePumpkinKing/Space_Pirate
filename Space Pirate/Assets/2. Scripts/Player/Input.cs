@@ -98,6 +98,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""05ce6b8d-55fa-4557-ab70-a23c6898b6fb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -389,17 +398,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5d4312e8-f7b1-4c38-866c-d59ac37cb4d5"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""55e5fdce-e18e-4bb3-8125-ae0e00d0c036"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
@@ -485,6 +483,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""action"": ""Debug"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""22e6ddba-1501-4576-ab4b-ad51d9e51a24"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -501,6 +510,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_Weapon = m_Gameplay.FindAction("Weapon", throwIfNotFound: true);
         m_Gameplay_Debug = m_Gameplay.FindAction("Debug", throwIfNotFound: true);
+        m_Gameplay_Reload = m_Gameplay.FindAction("Reload", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -568,6 +578,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_Weapon;
     private readonly InputAction m_Gameplay_Debug;
+    private readonly InputAction m_Gameplay_Reload;
     public struct GameplayActions
     {
         private @Input m_Wrapper;
@@ -580,6 +591,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @Weapon => m_Wrapper.m_Gameplay_Weapon;
         public InputAction @Debug => m_Wrapper.m_Gameplay_Debug;
+        public InputAction @Reload => m_Wrapper.m_Gameplay_Reload;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -613,6 +625,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Debug.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDebug;
                 @Debug.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDebug;
                 @Debug.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDebug;
+                @Reload.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -641,6 +656,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Debug.started += instance.OnDebug;
                 @Debug.performed += instance.OnDebug;
                 @Debug.canceled += instance.OnDebug;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
             }
         }
     }
@@ -655,5 +673,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnWeapon(InputAction.CallbackContext context);
         void OnDebug(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
 }

@@ -24,8 +24,6 @@ public class Player : MonoBehaviour
     private float threshold = 0.01f;
     public float counterMovement = 0.175f;
 
-
-
     public bool gravityEnabled;
     bool temp;
     float buttonGrav;

@@ -17,6 +17,5 @@ MonoBehaviour:
   maxDistance: Infinity
   automatic: 0
   magCapacity: 10
-  fireRateRPM: 100
+  fireRateRPM: 500
   reloadTime: 1
-  reloading: 0
