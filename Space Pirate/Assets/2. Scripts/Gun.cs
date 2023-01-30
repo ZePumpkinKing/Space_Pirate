@@ -50,7 +50,7 @@ public class Gun : MonoBehaviour
             if (CanShoot())
             {
                 Debug.Log(currentAmmo);
-                if (Physics.Raycast(new Vector3(castPoint.position.x, castPoint.position.y, castPoint.position.z), castPoint.forward, out RaycastHit hit, gun.maxDistance))
+                if (Physics.Raycast(castPoint.position, castPoint.forward, out RaycastHit hit, gun.maxDistance))
                 {
                     IDamageable damageable = hit.transform.GetComponent<IDamageable>();
                     damageable?.TakeDamage(gun.damage);

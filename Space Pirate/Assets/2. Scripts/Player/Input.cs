@@ -107,6 +107,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""ebac31ff-ead2-47a5-89b3-1eb797625eb9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -494,6 +503,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e1a1ebe8-75b0-44f6-9955-ccf4e9afd512"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -511,6 +531,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_Gameplay_Weapon = m_Gameplay.FindAction("Weapon", throwIfNotFound: true);
         m_Gameplay_Debug = m_Gameplay.FindAction("Debug", throwIfNotFound: true);
         m_Gameplay_Reload = m_Gameplay.FindAction("Reload", throwIfNotFound: true);
+        m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -579,6 +600,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Weapon;
     private readonly InputAction m_Gameplay_Debug;
     private readonly InputAction m_Gameplay_Reload;
+    private readonly InputAction m_Gameplay_Jump;
     public struct GameplayActions
     {
         private @Input m_Wrapper;
@@ -592,6 +614,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         public InputAction @Weapon => m_Wrapper.m_Gameplay_Weapon;
         public InputAction @Debug => m_Wrapper.m_Gameplay_Debug;
         public InputAction @Reload => m_Wrapper.m_Gameplay_Reload;
+        public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -628,6 +651,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Reload.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
                 @Reload.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
                 @Reload.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
+                @Jump.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -659,6 +685,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
         }
     }
@@ -674,5 +703,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
         void OnWeapon(InputAction.CallbackContext context);
         void OnDebug(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }

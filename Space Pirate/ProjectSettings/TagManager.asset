@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - Ground
   - CastPoint
+  - Orientation
   layers:
   - Default
   - TransparentFX

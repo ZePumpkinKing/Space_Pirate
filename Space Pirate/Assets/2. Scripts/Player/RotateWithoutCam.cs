@@ -18,8 +18,8 @@ public class RotateWithoutCam : MonoBehaviour
     {
         if (player.gravityEnabled)
         {
-            transform.rotation = orientation.rotation;
-            transform.position = orientation.position;
+            transform.rotation = orientation.rotation;  // player model is now a child of camera to rotate with it, so this changes the rotation and orientation to only
+            transform.position = orientation.position; //  follow the parent's transform instructions when zero gravity is enabled
         } 
 
     }

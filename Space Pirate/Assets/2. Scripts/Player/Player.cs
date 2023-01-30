@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [Header("Gravity Movement Vars")]
     [SerializeField] float normalSpeed;
     [SerializeField] float maxSpeed;
+    [SerializeField] float playerJumpForce;
     public float counterMovement = 0.175f;
     [Header("0g Movement Vars")]
     [SerializeField] float zeroGspeed;
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
 
         input.Gameplay.Debug.performed += context => EnableGravity();
+        input.Gameplay.Jump.performed += context => Jump();
     }
 
     private void OnEnable()
@@ -76,6 +78,7 @@ public class Player : MonoBehaviour
             CheckGround();
         }
         else isGrounded = false;
+
         
     }
 
@@ -147,7 +150,7 @@ public class Player : MonoBehaviour
             rb.AddForce(normalSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
         }
 
-        //Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
+        //Limit diagonal running
         if (Mathf.Sqrt((Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2))) > maxSpeed)
         {
             float fallspeed = rb.velocity.y;
@@ -209,6 +212,15 @@ public class Player : MonoBehaviour
     void CheckGround()
     {
         isGrounded = Physics.CheckBox(groundCheck.position, new Vector3(.5f, .125f, .5f), orientation.rotation, whatIsGround);
+    }
+
+    void Jump()
+    {
+        if (isGrounded)
+        {
+            rb.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse); // jump bitch
+            isGrounded = false;
+        }
     }
 
     private void OnDrawGizmos()
