@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - CastPoint
   - Orientation
+  - Grapple
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - 
+  - GrapplePoint
   - 
   - 
   - 

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    Grappling grappleScript;
     Camera cam;
     Rigidbody rb;
     [Header("Transforms")]
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         input = new Input();
+        grappleScript = FindObjectOfType<Grappling>();
 
         cam = gameObject.GetComponentInChildren<Camera>();
         rb = gameObject.GetComponent<Rigidbody>();
@@ -84,7 +86,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (gravityEnabled) RegularGravMovement();
+        if (gravityEnabled && !grappleScript.isGrappling) RegularGravMovement();
         else ZeroGravMovement();
     }
     void EnableGravity()
