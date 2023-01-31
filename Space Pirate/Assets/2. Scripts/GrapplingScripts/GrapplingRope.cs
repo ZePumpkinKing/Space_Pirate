@@ -18,7 +18,7 @@ public class GrapplingRope : MonoBehaviour
 
     private void Awake()
     {
-        lr = gameObject.GetComponent<LineRenderer>();
+        lr = GameObject.FindGameObjectWithTag("Grapple").GetComponent<LineRenderer>();
         spring = new Spring();
         spring.SetTarget(0);
         //rb = GetComponent<Rigidbody>();

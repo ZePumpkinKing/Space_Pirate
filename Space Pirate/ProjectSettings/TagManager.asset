@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - CastPoint
   - Orientation
+  - Grapple
   layers:
   - Default
   - TransparentFX

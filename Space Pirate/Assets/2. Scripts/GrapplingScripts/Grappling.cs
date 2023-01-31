@@ -24,9 +24,10 @@ public class Grappling : MonoBehaviour
     [Header("Grappling Movement Values\n")]
     public float horizontalThrustForce;
     public float forwardThrustForce;
-    public float extendCableSpeed;
     public bool isGrappling;
     public bool enemyGrappled;
+
+    Vector3 move;
 
     private void Awake()
     {
@@ -40,6 +41,7 @@ public class Grappling : MonoBehaviour
 
     private void Update()
     {
+        move = input.Gameplay.Move.ReadValue<Vector3>();
         if (isGrappling)
         {
             CalculateGrappleMovement();
@@ -107,6 +109,24 @@ public class Grappling : MonoBehaviour
     }
     private void CalculateGrappleMovement()
     {
+
+        if (move.x > 0) // right
+        {
+            rb.AddForce(orientation.right * horizontalThrustForce * Time.deltaTime);
+        }
+        if (move.x < 0) // left
+        {
+            rb.AddForce(-orientation.right * horizontalThrustForce * Time.deltaTime);
+        }
+        if (move.z > 0) // forward
+        {
+            rb.AddForce(orientation.forward * forwardThrustForce * Time.deltaTime);
+        }
+        if (move.z < 0) // backward
+        {
+            rb.AddForce(-orientation.forward * forwardThrustForce * Time.deltaTime);
+        } // air movement
+
         Vector3 directionToPoint = grapplePoint - transform.position;
         rb.AddForce(directionToPoint.normalized * forwardThrustForce * Time.deltaTime);
         if (enemyGrappled && currentEnemyGrapped != null)
