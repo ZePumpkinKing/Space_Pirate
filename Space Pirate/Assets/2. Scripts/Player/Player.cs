@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     Grappling grappleScript;
+    Recoil recoilScript;
     Camera cam;
     Rigidbody rb;
     [Header("Transforms")]
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         input = new Input();
+        recoilScript = FindObjectOfType<Recoil>();
         grappleScript = FindObjectOfType<Grappling>();
 
         cam = gameObject.GetComponentInChildren<Camera>();
@@ -174,8 +176,8 @@ public class Player : MonoBehaviour
         to hunter, from keegan xoxo*/
     }
 
-    private float desiredX;
-    private float xRotation;
+    private float desiredX, desiredY, desiredZ;
+    public float xRotation;
     void Look()
     {
         look = input.Gameplay.Look.ReadValue<Vector2>();
@@ -184,7 +186,7 @@ public class Player : MonoBehaviour
 
         // find current look rot
         Vector3 rot = cam.transform.rotation.eulerAngles;
-        desiredX = rot.y + mouseX;
+        desiredY = rot.y + mouseX;
 
         //rotate, & make sure we don't over or under-rotate (overrot & underrot is fine in the case of 0g, in fact it is preferred)
         xRotation -= mouseY;
@@ -193,11 +195,12 @@ public class Player : MonoBehaviour
             xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         }
 
-
+        desiredX = xRotation + recoilScript.currentRotation.x;
+        desiredZ = 0 + recoilScript.currentRotation.z;
         //perform rotations XD
         if (gravityEnabled) // if we in normal gravity, use normal gravity look system
         {
-            cam.transform.rotation = Quaternion.Euler(xRotation, desiredX, 0);
+            cam.transform.rotation = Quaternion.Euler(desiredX, desiredY, desiredZ);
         }
         else // if we in zero gravity, use zero grav look system
         {
@@ -206,9 +209,7 @@ public class Player : MonoBehaviour
             cam.transform.Rotate(transform.right, look.y * sensitivity * Time.deltaTime);
         }
 
-        orientation.transform.rotation = Quaternion.Euler(0, desiredX, 0);
-        //
-
+        orientation.transform.rotation = Quaternion.Euler(0, desiredY, 0);
     }
 
     void CheckGround()
