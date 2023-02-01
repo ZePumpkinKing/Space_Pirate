@@ -9,13 +9,17 @@ public class Gun : MonoBehaviour
     Transform castPoint;
     [SerializeField] private Transform gunTip;
 
+
     float timeSinceLastShot;
     float currentAmmo;
     bool reloading;
     float autoShooting;
+
+    private Recoil recoilScript;
     private void Awake()
     {
         input = new Input();
+        recoilScript = FindObjectOfType<Recoil>();
         castPoint = GameObject.FindGameObjectWithTag("CastPoint").GetComponent<Transform>();
         if (!gun.automatic)
         {
@@ -49,6 +53,7 @@ public class Gun : MonoBehaviour
         {
             if (CanShoot())
             {
+                recoilScript.FireRecoil();
                 Debug.Log(currentAmmo);
                 if (Physics.Raycast(castPoint.position, castPoint.forward, out RaycastHit hit, gun.maxDistance))
                 {
