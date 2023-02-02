@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 735053886230023860}
   - component: {fileID: 3303276890576534142}
   - component: {fileID: 4185547701111269092}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Solarius-4
-  m_TagString: Untagged
+  m_TagString: Grapple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

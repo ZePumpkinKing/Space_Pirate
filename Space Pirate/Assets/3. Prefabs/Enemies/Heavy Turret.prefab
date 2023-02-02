@@ -241,6 +241,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d954fa601da86734faf4381f2a4e84ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mount: {fileID: 1539526356450449932}
+  cannon: {fileID: 292570991494490932}
+  sensor: {fileID: 2803237642265607590}
+  projectile: {fileID: 0}
+  laserSight: 1
 --- !u!1 &6421648227415055712
 GameObject:
   m_ObjectHideFlags: 0
