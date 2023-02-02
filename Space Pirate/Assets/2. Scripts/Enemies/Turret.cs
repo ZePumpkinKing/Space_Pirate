@@ -11,6 +11,9 @@ public class Turret : MonoBehaviour {
 
     [SerializeField] bool laserSight;
 
+    [SerializeField] float fireDelay;
+    [SerializeField] Vector3 offset;
+
     Transform player;
 
     void Start() {
@@ -18,6 +21,11 @@ public class Turret : MonoBehaviour {
     }
 
     void Update() {
+        if (Time.frameCount % fireDelay == 0) {
+            GameObject instance = Instantiate(projectile, cannon);
+            instance.transform.localPosition = offset;
+        }
+
         cannon.transform.LookAt(player, transform.up);
 
         mount.Rotate(transform.up, cannon.transform.rotation.eulerAngles.y - transform.rotation.eulerAngles.y);

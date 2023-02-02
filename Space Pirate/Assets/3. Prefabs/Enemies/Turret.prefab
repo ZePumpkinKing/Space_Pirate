@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2223707470871756461}
   - component: {fileID: 7439891792394523571}
   - component: {fileID: 4771338684291447229}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 1676659531560899314}
   - component: {fileID: 6247409634946353099}
   - component: {fileID: 5414825440370125528}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3659576282720474246}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CannonMount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2565778455878165950}
   - component: {fileID: 5424447755427363742}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,4 +275,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mount: {fileID: 2565778455878165950}
   cannon: {fileID: 3659576282720474246}
-  projectile: {fileID: 0}
+  sensor: {fileID: 0}
+  projectile: {fileID: 5171619300252181318, guid: e64a5cc46a503ff4da278472f8d2b609,
+    type: 3}
+  laserSight: 0
+  fireDelay: 240
+  offset: {x: 0, y: 0, z: 1}

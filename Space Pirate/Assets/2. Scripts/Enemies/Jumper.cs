@@ -9,6 +9,7 @@ public class Jumper : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] Transform gun;
 
+    Transform[] initialScale;
 
     bool moving = true;
 
@@ -21,6 +22,8 @@ public class Jumper : MonoBehaviour
         player = GameObject.FindObjectOfType<Player>().transform;
 
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+
+        initialScale = gameObject.GetComponentsInChildren<Transform>();
     }
 
     void Update() {
