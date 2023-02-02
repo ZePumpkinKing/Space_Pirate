@@ -165,15 +165,7 @@ public class Player : MonoBehaviour
 
     void ZeroGravMovement()
     {
-        rb.AddForce(cam.transform.rotation * new Vector3(move.x, 0, move.z) * zeroGspeed * Time.deltaTime, ForceMode.Impulse);
-        rb.AddForce(orientation.transform.rotation * new Vector3(0, move.y, 0) * zeroGspeed * Time.deltaTime, ForceMode.Impulse);
- /*     quick explanation for the new line of code here ^. i reworked the player model so that the player model rotates with the camera
-        (only when in 0g), because no rotation was causing issues with the shooting.
-        I assume the reason you had the player cylinder not rotating was so that the spacebar would only ever send the player up (in world space),
-        so i made the y control only go with the rotation of the new "orientation" transform
-        (orientation keeps track of the player's Y rotation, and ignores X and Z.) This restores your original mechanic of spacebar sending the player up, while
-        also rotating the player model
-        to hunter, from keegan xoxo*/
+        rb.AddForce(cam.transform.rotation * move * zeroGspeed * Time.deltaTime, ForceMode.Impulse);
     }
 
     private float desiredX, desiredY, desiredZ;
@@ -204,7 +196,7 @@ public class Player : MonoBehaviour
         }
         else // if we in zero gravity, use zero grav look system
         {
-            cam.transform.Rotate(transform.forward, -rotate * turnSpeed * Time.deltaTime);
+            cam.transform.Rotate(transform.forward, rotate * turnSpeed * Time.deltaTime);
             cam.transform.Rotate(transform.up, look.x * sensitivity * Time.deltaTime);
             cam.transform.Rotate(transform.right, look.y * sensitivity * Time.deltaTime);
         }

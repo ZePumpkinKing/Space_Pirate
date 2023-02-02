@@ -1306,7 +1306,7 @@ MonoBehaviour:
   grapplePoint: {x: 0, y: 0, z: 0}
   whatIsGrappleable:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 264
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 128

@@ -9,7 +9,8 @@ public class Jumper : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] Transform gun;
 
-    Transform[] initialScale;
+    Vector3[] initialScale;
+    Transform[] currentScale;
 
     bool moving = true;
 
@@ -23,7 +24,13 @@ public class Jumper : MonoBehaviour
 
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
 
-        initialScale = gameObject.GetComponentsInChildren<Transform>();
+        currentScale = gameObject.GetComponentsInChildren<Transform>();
+
+        int i = 0;
+        foreach (Transform value in currentScale) {
+            initialScale[i] = value.localScale;
+            i += 1;
+        }
     }
 
     void Update() {
@@ -71,6 +78,10 @@ public class Jumper : MonoBehaviour
             RaycastHit hit;
 
             Physics.Raycast(transform.position, collision.transform.position - transform.position, out hit);
+
+            foreach (Transform value in currentScale) {
+
+            }
 
             transform.SetParent(collision.transform, true);
             Land(hit.point, hit.normal);

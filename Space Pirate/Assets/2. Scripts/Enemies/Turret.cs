@@ -36,4 +36,10 @@ public class Turret : MonoBehaviour {
             Debug.DrawLine(sensor.position, player.position, Color.red);
         }
     }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawRay(transform.position, transform.up);
+    }
 }
