@@ -8,20 +8,30 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SolariusShelf_Wide
-  m_Shader: {fileID: 4800000, guid: 0e9d5a909a1f7e84882a534d0d11e49f, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 2b9c58a533186324f86f7669a7435c9f,
+    type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Base_Map:
+        m_Texture: {fileID: 2800000, guid: d7753f90ccf80964284b37707b97f4de, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Normal_Map:
+        m_Texture: {fileID: 2800000, guid: 600fa355c20891742829aba007af2afc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: d7753f90ccf80964284b37707b97f4de, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -40,12 +50,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Emission:
+        m_Texture: {fileID: 2800000, guid: c3a69e250ab33c14798dae64fabcdaef, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 2800000, guid: c3a69e250ab33c14798dae64fabcdaef, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: d7753f90ccf80964284b37707b97f4de, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Metallic:
+        m_Texture: {fileID: 2800000, guid: 148aba82eb3514941a6f3ee118ce8ebb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -58,6 +76,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Roughness:
+        m_Texture: {fileID: 2800000, guid: cdc5fffc206c3084e905b5b82d94f397, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -78,9 +100,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - Normal_Blend: 0.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
+    - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -98,6 +122,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Rough_Intensity: 0.521
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -110,11 +135,14 @@ Material:
     - _UseNormalMap: 1
     - _UseRoughnessMap: 1
     - _WorkflowMode: 1
+    - _ZTest: 4
     - _ZWrite: 1
+    - _ZWriteControl: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 4, g: 4, b: 4, a: 1}
+    - _EmissionColor: {r: 63.999992, g: 63.999992, b: 63.999992, a: 1}
+    - _Emit_Color: {r: 8.9811325, g: 13.203566, b: 16, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}
