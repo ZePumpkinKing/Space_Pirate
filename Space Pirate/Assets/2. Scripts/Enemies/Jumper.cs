@@ -9,6 +9,7 @@ public class Jumper : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] Transform gun;
 
+    Transform[] initialScale;
 
     bool moving = true;
 
@@ -21,6 +22,8 @@ public class Jumper : MonoBehaviour
         player = GameObject.FindObjectOfType<Player>().transform;
 
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+
+        initialScale = gameObject.GetComponentsInChildren<Transform>();
     }
 
     void Update() {
@@ -37,6 +40,7 @@ public class Jumper : MonoBehaviour
         yield return new WaitForSeconds(jumpInterval);
 
         transform.parent = null;
+        transform.localScale = Vector3.one;
 
         float xRot = Random.Range(-45,45);
         float yRot = Random.Range(-45,45);
@@ -53,7 +57,7 @@ public class Jumper : MonoBehaviour
         rb.velocity = Vector3.zero;
 
         Debug.Log(position + " " + normal);
-        transform.rotation = Quaternion.LookRotation(normal);
+        transform.localRotation = Quaternion.LookRotation(normal);
 
         transform.Translate(0,0.5f,0);
 
@@ -68,6 +72,7 @@ public class Jumper : MonoBehaviour
 
             Physics.Raycast(transform.position, collision.transform.position - transform.position, out hit);
 
+            transform.SetParent(collision.transform, true);
             Land(hit.point, hit.normal);
         }
     }
