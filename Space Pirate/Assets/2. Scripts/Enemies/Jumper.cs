@@ -66,7 +66,7 @@ public class Jumper : MonoBehaviour
         rb.velocity = Vector3.zero;
 
         Debug.Log(position + " " + normal);
-        transform.localRotation = Quaternion.LookRotation(normal);
+        transform.LookAt(normal);
 
         transform.Translate(0,0.5f,0);
 
@@ -89,7 +89,7 @@ public class Jumper : MonoBehaviour
             }
             */
 
-            transform.SetParent(collision.transform, true);
+            //transform.SetParent(collision.transform, true);
             Land(hit.point, hit.normal);
         }
     }
