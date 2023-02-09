@@ -858,10 +858,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 506527660, guid: 7501ed492c539da4987f6dcdbc147d75, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.531
+      objectReference: {fileID: 0}
+    - target: {fileID: 506527660, guid: 7501ed492c539da4987f6dcdbc147d75, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.675
+      objectReference: {fileID: 0}
+    - target: {fileID: 506527660, guid: 7501ed492c539da4987f6dcdbc147d75, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.478
+      objectReference: {fileID: 0}
     - target: {fileID: 1123480747, guid: 7501ed492c539da4987f6dcdbc147d75, type: 3}
       propertyPath: guns.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1123480747, guid: 7501ed492c539da4987f6dcdbc147d75, type: 3}
+      propertyPath: guns.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6c8af4230089e554c9540c98a14c6d1d,
+        type: 2}
+    - target: {fileID: 1123480747, guid: 7501ed492c539da4987f6dcdbc147d75, type: 3}
+      propertyPath: guns.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: bf17fe592ed69cb479cba82f17305a99,
+        type: 2}
+    - target: {fileID: 1123480747, guid: 7501ed492c539da4987f6dcdbc147d75, type: 3}
+      propertyPath: guns.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: bf17fe592ed69cb479cba82f17305a99,
+        type: 2}
     - target: {fileID: 610763125971457760, guid: 7501ed492c539da4987f6dcdbc147d75,
         type: 3}
       propertyPath: m_RootOrder

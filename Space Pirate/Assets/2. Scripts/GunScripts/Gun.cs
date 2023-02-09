@@ -6,7 +6,7 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
 
-    [SerializeField] GunData currentGun;
+    [HideInInspector] public GunData currentGun;
     [SerializeField] GunData[] guns;
 
     Input input;
@@ -18,11 +18,12 @@ public class Gun : MonoBehaviour
     float currentAmmo;
     bool reloading;
     float autoShooting;
-    int activeGun;
+    Vector2 activeWeapon;
 
     private Recoil recoilScript;
     private void Awake()
     {
+        currentGun = guns[0];
         input = new Input();
         recoilScript = FindObjectOfType<Recoil>();
         castPoint = GameObject.FindGameObjectWithTag("CastPoint").GetComponent<Transform>();
@@ -50,6 +51,8 @@ public class Gun : MonoBehaviour
         {
             Shoot();
         }
+        activeWeapon = input.Gameplay.Weapon.ReadValue<Vector2>();
+        Debug.Log(currentGun);
     }
     private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f);
     public void Shoot()
@@ -91,14 +94,30 @@ public class Gun : MonoBehaviour
 
     private void SwitchWeapon()
     {
-        switch(input.Gameplay.Weapon.ReadValue<int>())
+        switch(activeWeapon.x)
         {
             case 1:
+                currentGun = guns[0];
+                Debug.Log("Switched to gun 0");
+                break;
+            case -1:
+                currentGun = guns[1];
+                Debug.Log("Switched to gun 1");
                 break;
 
         }
-
-        currentGun = guns[1];
+        switch(activeWeapon.y)
+        {
+            case 1:
+                currentGun = guns[2];
+                Debug.Log("Switched to gun 2");
+                break;
+            case -1:
+                currentGun = guns[3];
+                Debug.Log("Switched to gun 3");
+                break;
+        }
+        
         if (!currentGun.automatic)
         {
             input.Gameplay.Fire.performed += context => Shoot();
