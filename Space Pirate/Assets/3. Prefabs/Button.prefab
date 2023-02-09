@@ -147,9 +147,10 @@ MonoBehaviour:
   onMaterial: {fileID: 2100000, guid: 4d1f82cf960774e44917b059590bb492, type: 2}
   pressLink: {fileID: 0}
   holdLink: {fileID: 0}
-  animationSpeed: 0.05
+  animationSpeed: 0.2
   offHeight: 0.1
-  onHeight: 0.05
+  onHeight: 0.025
   model: {fileID: 2576414699712805241}
   selected: 0
   held: 0
+  continuing: 0

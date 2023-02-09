@@ -91,13 +91,13 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(cam.gameObject.transform.position, cam.gameObject.transform.forward, out hit, interactDistance, interactables)) {
             target = hit.transform.parent;
             target.GetComponent<Button>().selected = true;
-            if (input.Gameplay.Interact.ReadValue<bool>()) {
+            if (input.Gameplay.Interact.WasPressedThisFrame()) {
                 target.GetComponent<Button>().held = true;
+                target.GetComponent<Button>().continuing = true;
             } else {
                 target.GetComponent<Button>().held = false;
             }
-        } else {
-            target.GetComponent<Button>().held = false;
+        } else if (target != null) {
             target = null;
         }
     }
