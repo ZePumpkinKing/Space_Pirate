@@ -1222,6 +1222,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   isGrounded: 0
+  interactDistance: 5
+  interactables:
+    serializedVersion: 2
+    m_Bits: 512
   xRotation: 0
 --- !u!54 &610763125971457762
 Rigidbody:

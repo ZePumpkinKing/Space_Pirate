@@ -33,9 +33,12 @@ public class Player : MonoBehaviour
     
     public bool gravityEnabled;
     float buttonGrav;
-    [Header("Ground Detection")]
+    [Header("Detection")]
     public LayerMask whatIsGround;
     [SerializeField] bool isGrounded;
+    [SerializeField] float interactDistance;
+    [SerializeField] LayerMask interactables;
+    Transform target;
 
     private void Awake()
     {
@@ -83,7 +86,20 @@ public class Player : MonoBehaviour
         }
         else isGrounded = false;
 
-        
+        // Button Checking
+        RaycastHit hit;
+        if (Physics.Raycast(cam.gameObject.transform.position, cam.gameObject.transform.forward, out hit, interactDistance, interactables)) {
+            target = hit.transform.parent;
+            target.GetComponent<Button>().selected = true;
+            if (input.Gameplay.Interact.ReadValue<bool>()) {
+                target.GetComponent<Button>().held = true;
+            } else {
+                target.GetComponent<Button>().held = false;
+            }
+        } else {
+            target.GetComponent<Button>().held = false;
+            target = null;
+        }
     }
 
     void FixedUpdate()
