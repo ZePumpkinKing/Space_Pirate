@@ -6,34 +6,43 @@ public class Jumper : MonoBehaviour
 {
     [SerializeField] float jumpInterval;
     [SerializeField] float speed;
-    [SerializeField] GameObject projectile;
-    [SerializeField] Transform gun;
+    //[SerializeField] GameObject projectile;
+    //[SerializeField] Transform gun;
 
-    Transform[] initialScale;
+    //Vector3[] initialScale;
+    //Transform[] currentScale;
 
-    bool moving = true;
+    //bool moving = true;
 
     Rigidbody rb;
 
-    Transform player;
+    //Transform player;
 
     void Start() {
         rb = GetComponent<Rigidbody>();
-        player = GameObject.FindObjectOfType<Player>().transform;
+        //player = GameObject.FindObjectOfType<Player>().transform;
 
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
 
-        initialScale = gameObject.GetComponentsInChildren<Transform>();
+        /*
+        currentScale = gameObject.GetComponentsInChildren<Transform>();
+        
+        int i = 0;
+        foreach (Transform value in currentScale) {
+            initialScale[i] = value.localScale;
+            i += 1;
+        }
+        */
     }
 
     void Update() {
+        /*
         gun.LookAt(player);
 
         if (moving) {
             gun.rotation = transform.rotation;
-        } else {
-            
         }
+        */
     }
 
     IEnumerator Jump() {
@@ -50,7 +59,7 @@ public class Jumper : MonoBehaviour
 
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
 
-        moving = true;
+        //moving = true;
     }
 
     void Land(Vector3 position, Vector3 normal) {
@@ -61,7 +70,7 @@ public class Jumper : MonoBehaviour
 
         transform.Translate(0,0.5f,0);
 
-        moving = false;
+        //moving = false;
 
         StartCoroutine(Jump());
     }
@@ -71,6 +80,14 @@ public class Jumper : MonoBehaviour
             RaycastHit hit;
 
             Physics.Raycast(transform.position, collision.transform.position - transform.position, out hit);
+
+            /*
+            int i = 0;
+            foreach (Transform value in currentScale) {
+                value.localScale = initialScale[i];
+                i += 1;
+            }
+            */
 
             transform.SetParent(collision.transform, true);
             Land(hit.point, hit.normal);

@@ -633,7 +633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8290c283ec83f584aa6b899fd206fa20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 11400000, guid: 6c8af4230089e554c9540c98a14c6d1d, type: 2}
+  currentGun: {fileID: 11400000, guid: 6c8af4230089e554c9540c98a14c6d1d, type: 2}
   gunTip: {fileID: 506527660}
 --- !u!1 &1237310497
 GameObject:
@@ -1222,6 +1222,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   isGrounded: 0
+  interactDistance: 5
+  interactables:
+    serializedVersion: 2
+    m_Bits: 512
   xRotation: 0
 --- !u!54 &610763125971457762
 Rigidbody:
@@ -1306,7 +1310,7 @@ MonoBehaviour:
   grapplePoint: {x: 0, y: 0, z: 0}
   whatIsGrappleable:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 264
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 128
