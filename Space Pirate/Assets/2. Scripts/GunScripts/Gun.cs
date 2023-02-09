@@ -7,13 +7,7 @@ public class Gun : MonoBehaviour
 {
 
     [SerializeField] GunData currentGun;
-    //[SerializeField] GunData[] guns;
-    public enum guns
-    {
-        pistol,
-        blunderbus,
-        shotgun
-    }
+    [SerializeField] GunData[] guns;
 
     Input input;
     Transform castPoint;
@@ -24,6 +18,7 @@ public class Gun : MonoBehaviour
     float currentAmmo;
     bool reloading;
     float autoShooting;
+    int activeGun;
 
     private Recoil recoilScript;
     private void Awake()
@@ -37,6 +32,7 @@ public class Gun : MonoBehaviour
         }
 
         input.Gameplay.Interact.performed += context => StartReload();
+        input.Gameplay.Weapon.performed += context => SwitchWeapon();
     }
     private void Start()
     {
@@ -93,6 +89,21 @@ public class Gun : MonoBehaviour
         reloading = false;
     }
 
+    private void SwitchWeapon()
+    {
+        switch(input.Gameplay.Weapon.ReadValue<int>())
+        {
+            case 1:
+                break;
+
+        }
+
+        currentGun = guns[1];
+        if (!currentGun.automatic)
+        {
+            input.Gameplay.Fire.performed += context => Shoot();
+        }
+    }
 
     private void OnEnable()
     {
