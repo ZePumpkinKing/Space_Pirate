@@ -60,7 +60,6 @@ public class Gun : MonoBehaviour
         {
             Shoot();
         }
-        Debug.Log(currentGun.currentAmmo);
     }
     private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f);
     public void Shoot()
@@ -71,7 +70,6 @@ public class Gun : MonoBehaviour
             if (CanShoot())
             {
                 recoilScript.FireRecoil();
-                Debug.Log(currentGun.currentAmmo);
                 if (Physics.Raycast(castPoint.position, castPoint.forward, out RaycastHit hit, currentGun.maxDistance))
                 {
                     IDamageable damageable = hit.transform.GetComponent<IDamageable>();
@@ -100,7 +98,6 @@ public class Gun : MonoBehaviour
     }
     private void FindWeapon(InputAction.CallbackContext context)
     {
-        Debug.Log(activeWeapon.ReadValue<Vector2>());
         switch(activeWeapon.ReadValue<Vector2>().x)
         {
             case 1:
@@ -133,7 +130,6 @@ public class Gun : MonoBehaviour
             SwitchGunModel(currentGunObj, gunObjs[gunId]);
             currentGunObj = gunObjs[gunId];
             currentGun = guns[gunId];
-            Debug.Log(currentGun, currentGunObj);
         }
 
     }
