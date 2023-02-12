@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738bf054385506c44b308f61879ff0d7, type: 3}
   m_Name: AutoGun
   m_EditorClassIdentifier: 
-  name: 
-  damage: 0
-  maxDistance: 0
-  automatic: 0
-  magCapacity: 0
-  fireRateRPM: 0
-  reloadTime: 0
-  recoilX: 0
-  recoilY: 0
-  recoilZ: 0
-  snappiness: 0
-  returnSpeed: 0
+  name: AK
+  damage: 3
+  maxDistance: 200
+  automatic: 1
+  magCapacity: 30
+  fireRateRPM: 600
+  reloadTime: 3
+  recoilX: -2
+  recoilY: 1
+  recoilZ: 0.15
+  snappiness: 6
+  returnSpeed: 11
+  currentAmmo: 5

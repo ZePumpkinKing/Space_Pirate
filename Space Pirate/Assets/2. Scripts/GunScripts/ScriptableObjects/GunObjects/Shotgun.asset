@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738bf054385506c44b308f61879ff0d7, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  name: 
-  damage: 0
-  maxDistance: 0
+  name: Shotgun
+  damage: 30
+  maxDistance: 50
   automatic: 0
-  magCapacity: 0
-  fireRateRPM: 0
-  reloadTime: 0
-  recoilX: 0
-  recoilY: 0
-  recoilZ: 0
-  snappiness: 0
-  returnSpeed: 0
+  magCapacity: 5
+  fireRateRPM: 100
+  reloadTime: 3
+  recoilX: -10
+  recoilY: 2
+  recoilZ: 0.45
+  snappiness: 8
+  returnSpeed: 10
+  currentAmmo: 2
