@@ -160,7 +160,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1001 &5879033350491610052
 PrefabInstance:
@@ -192,12 +192,12 @@ PrefabInstance:
     - target: {fileID: 2565778455878165950, guid: 629f266ba45866d418c6734548b9f124,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 2565778455878165950, guid: 629f266ba45866d418c6734548b9f124,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 2565778455878165950, guid: 629f266ba45866d418c6734548b9f124,
         type: 3}
@@ -212,7 +212,7 @@ PrefabInstance:
     - target: {fileID: 2565778455878165950, guid: 629f266ba45866d418c6734548b9f124,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2565778455878165950, guid: 629f266ba45866d418c6734548b9f124,
         type: 3}

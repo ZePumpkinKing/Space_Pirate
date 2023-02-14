@@ -567,8 +567,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d954fa601da86734faf4381f2a4e84ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mount: {fileID: 2565778455878165950}
+  gunBase: {fileID: 2565778455878165950}
   cannon: {fileID: 3659576282720474246}
   sensor: {fileID: 7884020905178614806}
-  projectile: {fileID: 0}
+  projectile: {fileID: 5171619300252181318, guid: e64a5cc46a503ff4da278472f8d2b609,
+    type: 3}
   laserSight: 1
+  fireDelay: 600
+  maxSpeed: 1
+  offset: {x: 0, y: 0, z: 0.75}
