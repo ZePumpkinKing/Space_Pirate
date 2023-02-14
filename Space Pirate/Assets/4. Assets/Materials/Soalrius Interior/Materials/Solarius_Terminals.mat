@@ -31,7 +31,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
@@ -44,6 +44,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - Normal_Map:
         m_Texture: {fileID: 2800000, guid: 0a0b564d03cfbd24f9f10400ceca6590, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Alpha:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -123,6 +127,8 @@ Material:
     - Boolean_8A2B8817: 0
     - Normal_Blend: 0
     - _AlphaClip: 0
+    - _Alpha_Clip: 0
+    - _Alpha_Intensity: 0
     - _Blend: 0
     - _BlendOp: 0
     - _BumpScale: 1
