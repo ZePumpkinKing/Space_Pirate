@@ -65,7 +65,6 @@ public class Jumper : MonoBehaviour
     void Land(Vector3 position, Vector3 normal) {
         rb.velocity = Vector3.zero;
 
-        Debug.Log(position + " " + normal);
         transform.localRotation = Quaternion.LookRotation(normal);
 
         transform.Translate(0,0.5f,0);
