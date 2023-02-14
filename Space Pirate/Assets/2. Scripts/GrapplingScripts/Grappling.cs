@@ -50,7 +50,6 @@ public class Grappling : MonoBehaviour
 
     private void CheckGrapple()
     {
-        Debug.Log("Checkgrapple");
         RaycastHit hit;
         if (Physics.Raycast(castPoint.position, castPoint.forward, out hit, maxGrappleDistance, whatIsGrappleable)) // check if the object is grappleable
         {
