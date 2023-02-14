@@ -45,6 +45,12 @@ public class EnergyBall : MonoBehaviour {
         }
     }
 
+    IEnumerator KillMe() {
+        yield return new WaitForSeconds(5);
+
+        Destroy(gameObject);
+    }
+
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
 

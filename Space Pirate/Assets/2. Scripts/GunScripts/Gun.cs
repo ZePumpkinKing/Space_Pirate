@@ -1,10 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    [SerializeField] GunData gun;
+
+    [SerializeField] GunData currentGun;
+    //[SerializeField] GunData[] guns;
+    public enum guns
+    {
+        pistol,
+        blunderbus,
+        shotgun
+    }
+
     Input input;
     Transform castPoint;
     [SerializeField] private Transform gunTip;
@@ -21,22 +31,22 @@ public class Gun : MonoBehaviour
         input = new Input();
         recoilScript = FindObjectOfType<Recoil>();
         castPoint = GameObject.FindGameObjectWithTag("CastPoint").GetComponent<Transform>();
-        if (!gun.automatic)
+        if (!currentGun.automatic)
         {
             input.Gameplay.Fire.performed += context => Shoot();
         }
 
-        input.Gameplay.Reload.performed += context => StartReload();
+        input.Gameplay.Interact.performed += context => StartReload();
     }
     private void Start()
     {
-        currentAmmo = gun.magCapacity;
+        currentAmmo = currentGun.magCapacity;
     }
     private void Update()
     {
         timeSinceLastShot += Time.deltaTime;
         Debug.DrawRay(castPoint.position, castPoint.forward);
-        if (gun.automatic)
+        if (currentGun.automatic)
         {
             autoShooting = input.Gameplay.Fire.ReadValue<float>();
         }
@@ -45,7 +55,7 @@ public class Gun : MonoBehaviour
             Shoot();
         }
     }
-    private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (gun.fireRateRPM / 60f);
+    private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f);
     public void Shoot()
     {
         
@@ -55,10 +65,10 @@ public class Gun : MonoBehaviour
             {
                 recoilScript.FireRecoil();
                 Debug.Log(currentAmmo);
-                if (Physics.Raycast(castPoint.position, castPoint.forward, out RaycastHit hit, gun.maxDistance))
+                if (Physics.Raycast(castPoint.position, castPoint.forward, out RaycastHit hit, currentGun.maxDistance))
                 {
                     IDamageable damageable = hit.transform.GetComponent<IDamageable>();
-                    damageable?.TakeDamage(gun.damage);
+                    damageable?.TakeDamage(currentGun.damage);
                 }
                 currentAmmo--;
                 timeSinceLastShot = 0;
@@ -77,8 +87,8 @@ public class Gun : MonoBehaviour
     private IEnumerator Reload()
     {
         reloading = true;
-        yield return new WaitForSeconds(gun.reloadTime);
-        currentAmmo = gun.magCapacity;
+        yield return new WaitForSeconds(currentGun.reloadTime);
+        currentAmmo = currentGun.magCapacity;
         
         reloading = false;
     }
