@@ -1,36 +1,36 @@
 using UnityEngine;
 public class Recoil : MonoBehaviour
 {
+    [SerializeField] GunData gun;
     //rotations
     public Vector3 currentRotation, targetRotation;
     Player playerScript;
-    Gun gunScript;
     //recoil values
 
     private void Awake()
     {
         playerScript = FindObjectOfType<Player>();
-        gunScript = FindObjectOfType<Gun>();
     }
     private void Update()
     {
         if (playerScript.gravityEnabled)
         {
-            gunScript.currentGun.recoilX = -Mathf.Abs(gunScript.currentGun.recoilX);
+            gun.recoilX = -Mathf.Abs(gun.recoilX);
         }
         else if (!playerScript.gravityEnabled)
         {
-            gunScript.currentGun.recoilX = Mathf.Abs(gunScript.currentGun.recoilX);
+            gun.recoilX = Mathf.Abs(gun.recoilX);
         }
-        targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, gunScript.currentGun.returnSpeed * Time.deltaTime);
-        currentRotation = Vector3.Slerp(currentRotation, targetRotation, gunScript.currentGun.snappiness * Time.fixedDeltaTime);
+        targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, gun.returnSpeed * Time.deltaTime);
+        currentRotation = Vector3.Slerp(currentRotation, targetRotation, gun.snappiness * Time.fixedDeltaTime);
 
         transform.localRotation = Quaternion.Euler(currentRotation);
+
+        
     }
 
     public void FireRecoil()
     {
-        targetRotation += new Vector3(gunScript.currentGun.recoilX,
-            Random.Range(gunScript.currentGun.recoilY, -gunScript.currentGun.recoilY), Random.Range(gunScript.currentGun.recoilZ, -gunScript.currentGun.recoilZ));
+        targetRotation += new Vector3(gun.recoilX, Random.Range(gun.recoilY, -gun.recoilY), Random.Range(gun.recoilZ, -gun.recoilZ));
     }
 }
