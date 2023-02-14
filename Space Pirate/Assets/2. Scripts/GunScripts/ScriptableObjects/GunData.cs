@@ -26,4 +26,6 @@ public class GunData : ScriptableObject
     public float recoilZ;
     public float snappiness;
     public float returnSpeed;
+
+    [HideInInspector] public float currentAmmo;
 }

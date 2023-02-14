@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 738bf054385506c44b308f61879ff0d7, type: 3}
-  m_Name: Pistol
+  m_Name: AutoGun
   m_EditorClassIdentifier: 
-  name: Pistol
-  damage: 10
-  maxDistance: Infinity
-  automatic: 0
-  magCapacity: 10
-  fireRateRPM: 500
-  reloadTime: 1
-  recoilX: -6
-  recoilY: 2
-  recoilZ: 0.35
+  name: AK
+  damage: 3
+  maxDistance: 200
+  automatic: 1
+  magCapacity: 30
+  fireRateRPM: 600
+  reloadTime: 3
+  recoilX: -2
+  recoilY: 1
+  recoilZ: 0.15
   snappiness: 6
-  returnSpeed: 10
+  returnSpeed: 11
+  currentAmmo: 5
