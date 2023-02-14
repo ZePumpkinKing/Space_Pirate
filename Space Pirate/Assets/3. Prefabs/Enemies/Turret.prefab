@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7439891792394523571}
   - component: {fileID: 4771338684291447229}
   m_Layer: 7
-  m_Name: Base
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 6247409634946353099}
   - component: {fileID: 5414825440370125528}
   m_Layer: 7
-  m_Name: Cannon
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3835596566058970450}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -205,7 +205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3659576282720474246}
   m_Layer: 7
-  m_Name: CannonMount
+  m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,11 +273,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d954fa601da86734faf4381f2a4e84ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mount: {fileID: 2565778455878165950}
+  gunBase: {fileID: 957828295425673551}
   cannon: {fileID: 3659576282720474246}
   sensor: {fileID: 0}
   projectile: {fileID: 5171619300252181318, guid: e64a5cc46a503ff4da278472f8d2b609,
     type: 3}
   laserSight: 0
   fireDelay: 240
+  maxSpeed: 2
   offset: {x: 0, y: 0, z: 1}
