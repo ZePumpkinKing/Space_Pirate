@@ -19,9 +19,9 @@ MonoBehaviour:
   magCapacity: 10
   fireRateRPM: 200
   reloadTime: 1.542
-  recoilX: -6
+  recoilX: -10
   recoilY: 2
   recoilZ: 0.35
-  snappiness: 6
-  returnSpeed: 10
-  currentAmmo: 0
+  snappiness: 12
+  returnSpeed: 12
+  currentAmmo: 5
