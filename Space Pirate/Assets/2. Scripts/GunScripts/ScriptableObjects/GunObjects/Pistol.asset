@@ -18,10 +18,10 @@ MonoBehaviour:
   automatic: 0
   magCapacity: 10
   fireRateRPM: 400
-  reloadTime: 1
+  reloadTime: 1.542
   recoilX: -6
   recoilY: 2
   recoilZ: 0.35
   snappiness: 6
   returnSpeed: 10
-  currentAmmo: 9
+  currentAmmo: 6
