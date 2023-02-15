@@ -79,6 +79,7 @@ public class Gun : MonoBehaviour
                 recoilScript.FireRecoil();
                 
                 anim.SetTrigger("Firing");
+
                 
                 if (Physics.Raycast(castPoint.position, castPoint.forward, out RaycastHit hit, currentGun.maxDistance))
                 {
