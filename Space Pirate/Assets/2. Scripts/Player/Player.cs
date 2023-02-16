@@ -70,6 +70,18 @@ public class Player : MonoBehaviour
         normalSpeed *= 100;
     }
 
+    bool EnableGravRot()
+    {
+        if (0.02 >= cam.transform.rotation.eulerAngles.x && cam.transform.rotation.eulerAngles.x >= -0.02 && 0.02 >= cam.transform.rotation.eulerAngles.z && cam.transform.rotation.eulerAngles.z >= -0.02)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     private void Update()
     {
         move = input.Gameplay.Move.ReadValue<Vector3>();
@@ -111,7 +123,7 @@ public class Player : MonoBehaviour
     {
         if (gravityEnabled) // if gravity is enabled, just call disable gravity instead lol
         {
-            transform.rotation = new Quaternion(0, transform.rotation.y, 0, 0);
+            //transform.rotation = new Quaternion(0, transform.rotation.y, 0, 0);
             DisableGravity();
         }
         else
@@ -208,16 +220,21 @@ public class Player : MonoBehaviour
         //perform rotations XD
         if (gravityEnabled) // if we in normal gravity, use normal gravity look system
         {
-            cam.transform.rotation = Quaternion.Euler(desiredX, desiredY, desiredZ);
+            cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.Euler(desiredX, desiredY, desiredZ), 0.1f) ;
         }
         else // if we in zero gravity, use zero grav look system
         {
-            cam.transform.Rotate(transform.forward, rotate * turnSpeed * Time.deltaTime);
+            cam.transform.Rotate(transform.forward, rotate * -turnSpeed * Time.deltaTime);
             cam.transform.Rotate(transform.up, look.x * sensitivity * Time.deltaTime);
-            cam.transform.Rotate(transform.right, look.y * sensitivity * Time.deltaTime);
+            cam.transform.Rotate(transform.right, look.y * -sensitivity * Time.deltaTime);
         }
 
         orientation.transform.rotation = Quaternion.Euler(0, desiredY, 0);
+    }
+
+    IEnumerator EnableGravLook()
+    {
+        yield return new WaitUntil(EnableGravRot);
     }
 
     void CheckGround()
