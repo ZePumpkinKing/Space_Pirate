@@ -13,6 +13,7 @@ public class Gun : MonoBehaviour
     Input input;
     Transform castPoint;
     [SerializeField] private Transform gunTip;
+    private Animator anim;
 
     float timeSinceLastShot;
     bool reloading;
@@ -20,12 +21,15 @@ public class Gun : MonoBehaviour
     InputAction activeWeapon;
 
     private Recoil recoilScript;
+    private GunFireRecoil gunObjRecoil;
     private void Awake()
     {
         gunObjs = GameObject.FindGameObjectsWithTag("Gun");
-
+        gunObjRecoil = FindObjectOfType<GunFireRecoil>();
+        
         currentGun = guns[0];
         currentGunObj = gunObjs[0];
+        anim = currentGunObj.GetComponent<Animator>();
         input = new Input();
         recoilScript = FindObjectOfType<Recoil>();
         castPoint = GameObject.FindGameObjectWithTag("CastPoint").GetComponent<Transform>();
@@ -45,9 +49,10 @@ public class Gun : MonoBehaviour
             if (i > 0)
             {
                 SetInactive(gunObjs[i]);//set only one gun to active
-            }
-            
+            }    
         }
+
+
     }
     private void Update()
     {
@@ -60,6 +65,10 @@ public class Gun : MonoBehaviour
         {
             Shoot();
         }
+        if (reloading)
+        {
+            anim.SetBool("Reload", true);
+        } else anim.SetBool("Reload", false);
     }
     private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f);
     public void Shoot()
@@ -70,6 +79,11 @@ public class Gun : MonoBehaviour
             if (CanShoot())
             {
                 recoilScript.FireRecoil();
+                gunObjRecoil.FireGunRecoil();
+                
+                anim.SetTrigger("Firing");
+
+                
                 if (Physics.Raycast(castPoint.position, castPoint.forward, out RaycastHit hit, currentGun.maxDistance))
                 {
                     IDamageable damageable = hit.transform.GetComponent<IDamageable>();

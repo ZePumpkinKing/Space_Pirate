@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 8d1a77f221b24bc439b8c703f1540e85
+guid: a3154342d182ed4488b0f95bd956f882
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: PistolReadyUp!
+    second: PistolFiring
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: PistolReadyUp!
+      name: PistolFiring
       takeName: Take 001
       internalID: 0
       firstFrame: 1
-      lastFrame: 24
+      lastFrame: 12
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

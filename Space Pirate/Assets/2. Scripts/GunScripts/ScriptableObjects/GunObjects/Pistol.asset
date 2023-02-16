@@ -17,11 +17,11 @@ MonoBehaviour:
   maxDistance: Infinity
   automatic: 0
   magCapacity: 10
-  fireRateRPM: 400
-  reloadTime: 1
-  recoilX: -6
+  fireRateRPM: 200
+  reloadTime: 1.542
+  recoilX: -10
   recoilY: 2
   recoilZ: 0.35
-  snappiness: 6
-  returnSpeed: 10
-  currentAmmo: 9
+  snappiness: 12
+  returnSpeed: 12
+  currentAmmo: 5
