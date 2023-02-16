@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 public class Gun : MonoBehaviour
 {
     [HideInInspector] public GunData currentGun;
+
+    [Header("References")]
     [SerializeField] GunData[] guns;
     [SerializeField] private GameObject[] gunObjs;
     private GameObject currentGunObj;
@@ -14,14 +16,16 @@ public class Gun : MonoBehaviour
     Transform castPoint;
     [SerializeField] private Transform gunTip;
     private Animator anim;
-
-    float timeSinceLastShot;
-    bool reloading;
-    float autoShooting;
     InputAction activeWeapon;
 
+    //private internals
     private Recoil recoilScript;
     private GunFireRecoil gunObjRecoil;
+    float timeSinceLastShot;
+    bool reloading;
+    public bool switching;
+    float autoShooting;
+
     private void Awake()
     {
         gunObjs = GameObject.FindGameObjectsWithTag("Gun");
@@ -48,7 +52,7 @@ public class Gun : MonoBehaviour
             guns[i].currentAmmo = guns[i].magCapacity;
             if (i > 0)
             {
-                SetInactive(gunObjs[i]);//set only one gun to active
+                gunObjs[i].SetActive(false); //set only one gun to active
             }    
         }
 
@@ -70,7 +74,7 @@ public class Gun : MonoBehaviour
             anim.SetBool("Reload", true);
         } else anim.SetBool("Reload", false);
     }
-    private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f);
+    private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f) && !switching;
     public void Shoot()
     {
         
@@ -110,25 +114,36 @@ public class Gun : MonoBehaviour
         
         reloading = false;
     }
+    enum gunIDs
+    {
+        Pistol,//0
+
+        Shotgun,//1
+
+        Autogun,//2
+
+        Blunderbus//3
+    }
     private void FindWeapon(InputAction.CallbackContext context)
     {
+
         switch(activeWeapon.ReadValue<Vector2>().x)
         {
-            case 1:
-                SwitchWeapon(0);
+            case 1:// if we press 1
+                StartCoroutine(SwitchWeapon(gunIDs.Pistol)); 
                 break;
-            case -1:
-                SwitchWeapon(1);
+            case -1://if we press 3
+                StartCoroutine(SwitchWeapon(gunIDs.Autogun));
                 break;
 
         }
         switch(activeWeapon.ReadValue<Vector2>().y)
         {
-            case 1:
-                SwitchWeapon(2);
+            case 1://if we press 4
+                StartCoroutine(SwitchWeapon(gunIDs.Blunderbus));
                 break;
-            case -1:
-                SwitchWeapon(3);
+            case -1://if we press 2
+                StartCoroutine(SwitchWeapon(gunIDs.Shotgun));
                 break;
         }
         
@@ -137,25 +152,26 @@ public class Gun : MonoBehaviour
             input.Gameplay.Fire.performed += context => Shoot();
         }
     }
-    private void SwitchWeapon(int gunId)
+    private IEnumerator SwitchWeapon(gunIDs gunId)
     {
-        if (!reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f)) //only switch guns if we arent currently reloading, or on shot cooldown, prevents weird edge cases
+        if (!reloading && !switching) //only switch guns if we arent currently reloading, or switching
         {
-            SwitchGunModel(currentGunObj, gunObjs[gunId]);
-            currentGunObj = gunObjs[gunId];
-            currentGun = guns[gunId];
+            switching = true;
+            anim.SetTrigger("Stowed");
+            yield return new WaitForSeconds(1);
+            SwitchGunModel(currentGunObj, gunObjs[((int)gunId)]);
+            currentGunObj = gunObjs[((int)gunId)];
+            currentGun = guns[((int)gunId)];
+            yield return new WaitForSeconds(1);
+            switching = false;
         }
+        else yield return null;
 
     }
     private void SwitchGunModel(GameObject prevModel,GameObject newModel)
     {
         prevModel.SetActive(false);
         newModel.SetActive(true);
-    }
-
-    private void SetInactive(GameObject obj)
-    {
-        obj.SetActive(false);
     }
 
     private void OnEnable()
