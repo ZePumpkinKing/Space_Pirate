@@ -659,11 +659,12 @@ MonoBehaviour:
   currentGun: {fileID: 11400000, guid: 6c8af4230089e554c9540c98a14c6d1d, type: 2}
   guns:
   - {fileID: 11400000, guid: 6c8af4230089e554c9540c98a14c6d1d, type: 2}
-  - {fileID: 11400000, guid: b9f511df8f857cb408ca39626ac5408e, type: 2}
   - {fileID: 11400000, guid: 1bde0fcb1880553408108dcf7c4e2eca, type: 2}
+  - {fileID: 11400000, guid: b9f511df8f857cb408ca39626ac5408e, type: 2}
   - {fileID: 11400000, guid: bf17fe592ed69cb479cba82f17305a99, type: 2}
   gunObjs: []
   gunTip: {fileID: 506527660}
+  switching: 0
 --- !u!1 &1237310497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,8 +1557,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 926941331800651369}
-  - {fileID: 5248504054144380053}
   - {fileID: 2373902548140784620}
+  - {fileID: 5248504054144380053}
   - {fileID: 4615674487656883368}
   m_Father: {fileID: 193292900}
   m_RootOrder: 0
@@ -2174,7 +2175,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9794e01d43098b54b870a82c212807a1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9794e01d43098b54b870a82c212807a1,
         type: 3}
@@ -2294,7 +2295,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: bbda2d26fab86c649a8cf566969602db,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbda2d26fab86c649a8cf566969602db,
         type: 3}
