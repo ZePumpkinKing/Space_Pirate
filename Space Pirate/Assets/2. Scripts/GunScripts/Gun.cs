@@ -21,9 +21,11 @@ public class Gun : MonoBehaviour
     InputAction activeWeapon;
 
     private Recoil recoilScript;
+    private GunFireRecoil gunObjRecoil;
     private void Awake()
     {
         gunObjs = GameObject.FindGameObjectsWithTag("Gun");
+        gunObjRecoil = FindObjectOfType<GunFireRecoil>();
         
         currentGun = guns[0];
         currentGunObj = gunObjs[0];
@@ -77,6 +79,7 @@ public class Gun : MonoBehaviour
             if (CanShoot())
             {
                 recoilScript.FireRecoil();
+                gunObjRecoil.FireGunRecoil();
                 
                 anim.SetTrigger("Firing");
 
