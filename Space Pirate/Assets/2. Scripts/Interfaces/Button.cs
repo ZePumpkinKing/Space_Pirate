@@ -42,7 +42,6 @@ public class Button : MonoBehaviour
             mesh.material = offMaterial;
         }
 
-        Debug.Log(onHeight + " " + model.localPosition + " " + offHeight);
         if (held || continuing) {
             if (model.localPosition.y > onHeight) {
                 model.Translate(0, -animationSpeed * Time.deltaTime, 0);
