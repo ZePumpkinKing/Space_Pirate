@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 public class Gun : MonoBehaviour
 {
     [HideInInspector] public GunData currentGun;
+
+    [Header("References")]
     [SerializeField] GunData[] guns;
     [SerializeField] private GameObject[] gunObjs;
     private GameObject currentGunObj;
@@ -14,14 +16,15 @@ public class Gun : MonoBehaviour
     Transform castPoint;
     [SerializeField] private Transform gunTip;
     private Animator anim;
+    InputAction activeWeapon;
 
+    //private internals
+    private Recoil recoilScript;
+    private GunFireRecoil gunObjRecoil;
     float timeSinceLastShot;
     bool reloading;
     float autoShooting;
-    InputAction activeWeapon;
 
-    private Recoil recoilScript;
-    private GunFireRecoil gunObjRecoil;
     private void Awake()
     {
         gunObjs = GameObject.FindGameObjectsWithTag("Gun");
@@ -48,7 +51,7 @@ public class Gun : MonoBehaviour
             guns[i].currentAmmo = guns[i].magCapacity;
             if (i > 0)
             {
-                SetInactive(gunObjs[i]);//set only one gun to active
+                gunObjs[i].SetActive(false); //set only one gun to active
             }    
         }
 
@@ -151,11 +154,6 @@ public class Gun : MonoBehaviour
     {
         prevModel.SetActive(false);
         newModel.SetActive(true);
-    }
-
-    private void SetInactive(GameObject obj)
-    {
-        obj.SetActive(false);
     }
 
     private void OnEnable()

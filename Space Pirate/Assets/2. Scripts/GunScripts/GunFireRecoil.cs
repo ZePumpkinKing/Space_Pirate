@@ -22,7 +22,7 @@ public class GunFireRecoil : MonoBehaviour
         targetRotation = Vector3.Lerp(targetRotation, initRot, gunScript.currentGun.returnSpeed * Time.deltaTime); ;
         currentRotation = Vector3.Slerp(currentRotation, targetRotation, gunScript.currentGun.snappiness * Time.fixedDeltaTime);
 
-        transform.localRotation = Quaternion.Euler(currentRotation);
+        transform.localRotation = Quaternion.Euler(-currentRotation);
     }
 
     public void FireGunRecoil()
