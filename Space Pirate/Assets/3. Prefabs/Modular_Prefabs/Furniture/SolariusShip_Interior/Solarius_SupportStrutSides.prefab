@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7341631328732638076}
   - component: {fileID: 5930516539021452505}
   - component: {fileID: 8478477197359910931}
+  - component: {fileID: 3695640144038989853}
   m_Layer: 0
   m_Name: Solarius_SupportStrutSides
   m_TagString: Untagged
@@ -84,6 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3695640144038989853
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7974017208446398918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1005219479008000560, guid: 4a53c0dbda86c094da1acca8af120208, type: 3}
 --- !u!1001 &1558055867172324291
 PrefabInstance:
   m_ObjectHideFlags: 0

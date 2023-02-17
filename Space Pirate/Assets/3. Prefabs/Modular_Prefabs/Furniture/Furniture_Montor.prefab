@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6278303483704081185}
   - component: {fileID: 6957736331439535236}
   - component: {fileID: 5145977328078717006}
+  - component: {fileID: 5505286714308406383}
   m_Layer: 0
   m_Name: Furniture_Montor
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5505286714308406383
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659367467094581659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8643435997691009252, guid: a1da2dfd530b9ea46930000d611cdd91, type: 3}

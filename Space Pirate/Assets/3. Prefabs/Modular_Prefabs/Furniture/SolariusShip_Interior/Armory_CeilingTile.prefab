@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1975252095880780729}
   - component: {fileID: 3226365987810890780}
   - component: {fileID: 802394502324953302}
+  - component: {fileID: 4803730944400383458}
   m_Layer: 0
   m_Name: Armory_CeilingTile
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4803730944400383458
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162581797769412867}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7074007238773475336, guid: 295def03cf8f3a04f89111985b99a486, type: 3}

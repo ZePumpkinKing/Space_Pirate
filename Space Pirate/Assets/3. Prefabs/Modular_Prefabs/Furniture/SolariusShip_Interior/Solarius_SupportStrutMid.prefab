@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7517894054623549957}
   - component: {fileID: 6916182516451022240}
   - component: {fileID: 8655848196746273130}
+  - component: {fileID: 2110108885408891325}
   m_Layer: 0
   m_Name: Solarius_SupportStrutMid
   m_TagString: Untagged
@@ -84,6 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2110108885408891325
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7142493930778247359}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1322549994957037896, guid: 437f0e4de60987d4d9aa6cf4df6f50f1, type: 3}
 --- !u!1001 &1521978338902780342
 PrefabInstance:
   m_ObjectHideFlags: 0

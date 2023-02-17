@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5551273971395815313}
   - component: {fileID: 8837696165440153652}
   - component: {fileID: 6719716575600221438}
+  - component: {fileID: -1460256570764883366}
   m_Layer: 0
   m_Name: Solarius_BowBannister
   m_TagString: Untagged
@@ -84,6 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-1460256570764883366
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5062546187037130027}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4787406871675065886, guid: a95ab3e73b317e3469447ece67bbdef2, type: 3}
 --- !u!1001 &7033317126739610283
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8578478048411616589}
   - component: {fileID: 4657632138991012584}
   - component: {fileID: 7442141798993002018}
+  - component: {fileID: -4367775253475624048}
   m_Layer: 0
   m_Name: Airlock_Ceiling
   m_TagString: Untagged
@@ -84,6 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-4367775253475624048
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955180230318743543}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7087271138916236341, guid: 45011dc30f685274597efa64c7543a47, type: 3}
 --- !u!1001 &4757809916753370113
 PrefabInstance:
   m_ObjectHideFlags: 0
