@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2063040801101881435}
   - component: {fileID: 4270982430984262801}
   - component: {fileID: 1402791867711900703}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gangway_PlatformStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

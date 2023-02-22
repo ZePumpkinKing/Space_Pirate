@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4728878819109054421}
   - component: {fileID: 7369205599127327519}
   - component: {fileID: 5372951433077316383}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gangway_WallStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
