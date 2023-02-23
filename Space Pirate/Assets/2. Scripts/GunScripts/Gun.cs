@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,21 +9,36 @@ public class Gun : MonoBehaviour
 
     [Header("References")]
     [SerializeField] GunData[] guns;
+
     [SerializeField] private GameObject[] gunObjs;
-    private GameObject currentGunObj;
-    Input input;
-    Transform castPoint;
+
+    [SerializeField] private TrailRenderer bulletTrail;
+
+    [SerializeField] private LayerMask canHit;
+    
     [SerializeField] private Transform gunTip;
+
     private Animator anim;
+    
+    Input input;
     InputAction activeWeapon;
 
     //private internals
+    Transform castPoint;
+
     private Recoil recoilScript;
     private GunFireRecoil gunObjRecoil;
+    private GameObject currentGunObj;
+    //floats
     float timeSinceLastShot;
+    float autoShooting;
+    //bools
     bool reloading;
     public bool switching;
-    float autoShooting;
+    //vectors
+    private Vector3 bulletSpreadVariance = new Vector3(.05f, .05f, .05f);
+    
+
 
     private void Awake()
     {
@@ -77,27 +91,63 @@ public class Gun : MonoBehaviour
     private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f) && !switching;
     public void Shoot()
     {
-        
         if (currentGun.currentAmmo > 0)
         {
             if (CanShoot())
             {
+                RaycastHit hit;
+                TrailRenderer trail;
                 recoilScript.FireRecoil();
                 gunObjRecoil.FireGunRecoil();
                 
                 anim.SetTrigger("Firing");
-
-                
-                if (Physics.Raycast(castPoint.position, castPoint.forward, out RaycastHit hit, currentGun.maxDistance))
+                Vector3 direction = GetDirection();
+                if (Physics.Raycast(castPoint.position, currentGun.hasBulletSpread ? direction : castPoint.forward, out hit, currentGun.maxDistance))
                 {
-                    IDamageable damageable = hit.transform.GetComponent<IDamageable>();
-                    damageable?.TakeDamage(currentGun.damage);
+                    Debug.Log(hit.point);
+                    trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity);
+                    StartCoroutine(SpawnTrail(trail, hit.point, hit));
+                } else
+                {
+                    Debug.Log(castPoint.position + castPoint.transform.forward);
+                    trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity);
+                    StartCoroutine(SpawnTrail(trail, castPoint.position + direction * (currentGun.maxDistance / 2), hit));
                 }
+                //Debug.Log(hit.point);
+
                 currentGun.currentAmmo--;
                 timeSinceLastShot = 0;
             }
         }
 
+    }
+
+    private Vector3 GetDirection()
+    {
+        Vector3 direction = castPoint.forward;
+
+        direction += new Vector3(Random.Range(-bulletSpreadVariance.x, bulletSpreadVariance.x),
+                                 Random.Range(-bulletSpreadVariance.y, bulletSpreadVariance.y),
+                                 Random.Range(-bulletSpreadVariance.z, bulletSpreadVariance.z));
+        direction.Normalize();
+        return direction;
+    }
+
+    private IEnumerator SpawnTrail(TrailRenderer trail, Vector3 hitPos, RaycastHit hit)
+    {
+        float time = 0;
+        Vector3 startPosition = trail.transform.position;
+
+        while (time < 1)
+        {
+            trail.transform.position = Vector3.Lerp(startPosition, hitPos, time);
+            time += Time.deltaTime / trail.time;
+            yield return null;
+        }
+        trail.transform.position = hitPos;
+        IDamageable damageable = hit.transform.GetComponent<IDamageable>();
+        damageable?.TakeDamage(currentGun.damage);
+        Destroy(trail.gameObject, trail.time);
     }
     private void StartReload()
     {
@@ -154,7 +204,7 @@ public class Gun : MonoBehaviour
     }
     private IEnumerator SwitchWeapon(gunIDs gunId)
     {
-        if (!reloading && !switching) //only switch guns if we arent currently reloading, or switching
+        if (!reloading && !switching && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f)) //only switch guns if we arent currently reloading, or switching
         {
             switching = true;
             anim.SetTrigger("Stowed");
