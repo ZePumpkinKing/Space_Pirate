@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask interactables;
     Transform target;
 
+    float gravAdjusting;
+
     private void Awake()
     {
         input = new Input();
@@ -128,6 +130,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            
             gravityEnabled = true;
             Debug.Log("Gravity enabled");
         }
@@ -220,16 +223,18 @@ public class Player : MonoBehaviour
         //perform rotations XD
         if (gravityEnabled) // if we in normal gravity, use normal gravity look system
         {
-            cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.Euler(desiredX, desiredY, desiredZ), 0.1f) ;
+            cam.transform.rotation = Quaternion.Euler(desiredX, desiredY, desiredZ);
         }
         else // if we in zero gravity, use zero grav look system
         {
             cam.transform.Rotate(transform.forward, rotate * -turnSpeed * Time.deltaTime);
             cam.transform.Rotate(transform.up, look.x * sensitivity * Time.deltaTime);
             cam.transform.Rotate(transform.right, look.y * -sensitivity * Time.deltaTime);
+
+            cam.transform.Rotate(cam.transform.right, recoilScript.gunScript.currentGun.snappiness);
         }
 
-        orientation.transform.rotation = Quaternion.Euler(0, desiredY, 0);
+        orientation.transform.rotation = Quaternion.Euler(desiredX, desiredY, desiredZ);
     }
 
     IEnumerator EnableGravLook()
