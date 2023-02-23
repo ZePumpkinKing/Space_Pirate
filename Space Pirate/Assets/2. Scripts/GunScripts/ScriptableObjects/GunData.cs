@@ -13,10 +13,12 @@ public class GunData : ScriptableObject
     public float damage;
     public float maxDistance;
     public bool automatic;
+    public bool hasBulletSpread;
 
 
     [Header("Reloading")]
     public int magCapacity;
+    [Tooltip ("1 / (Fire Rate RPM / 60f) = Time Between Shots")]
     public float fireRateRPM;
     public float reloadTime;
 
