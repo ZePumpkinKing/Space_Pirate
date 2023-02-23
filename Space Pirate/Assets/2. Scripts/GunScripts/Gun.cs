@@ -35,8 +35,6 @@ public class Gun : MonoBehaviour
     //bools
     bool reloading;
     public bool switching;
-    //vectors
-    private Vector3 bulletSpreadVariance = new Vector3(.05f, .05f, .05f);
     
 
 
@@ -101,18 +99,24 @@ public class Gun : MonoBehaviour
                 gunObjRecoil.FireGunRecoil();
                 
                 anim.SetTrigger("Firing");
-                Vector3 direction = GetDirection();
-                if (Physics.Raycast(castPoint.position, currentGun.hasBulletSpread ? direction : castPoint.forward, out hit, currentGun.maxDistance))
+                
+                for (int i = 0; i < currentGun.bulletsInOneShot; i++)
                 {
-                    Debug.Log(hit.point);
-                    trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity);
-                    StartCoroutine(SpawnTrail(trail, hit.point, hit));
-                } else
-                {
-                    Debug.Log(castPoint.position + castPoint.transform.forward);
-                    trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity);
-                    StartCoroutine(SpawnTrail(trail, castPoint.position + direction * (currentGun.maxDistance / 2), hit));
+                    Vector3 direction = GetDirection();
+                    if (Physics.Raycast(castPoint.position, direction, out hit, currentGun.maxDistance))
+                    {
+                        Debug.Log(hit.point);
+                        trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity);
+                        StartCoroutine(SpawnTrail(trail, hit.point, hit));
+                    }
+                    else
+                    {
+                        Debug.Log(castPoint.position + castPoint.transform.forward);
+                        trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity);
+                        StartCoroutine(SpawnTrail(trail, castPoint.position + direction * (currentGun.maxDistance / 2), hit));
+                    }
                 }
+
                 //Debug.Log(hit.point);
 
                 currentGun.currentAmmo--;
@@ -126,9 +130,9 @@ public class Gun : MonoBehaviour
     {
         Vector3 direction = castPoint.forward;
 
-        direction += new Vector3(Random.Range(-bulletSpreadVariance.x, bulletSpreadVariance.x),
-                                 Random.Range(-bulletSpreadVariance.y, bulletSpreadVariance.y),
-                                 Random.Range(-bulletSpreadVariance.z, bulletSpreadVariance.z));
+        direction += new Vector3(Random.Range(-currentGun.spreadX, currentGun.spreadX),
+                                 Random.Range(-currentGun.spreadY, currentGun.spreadY),
+                                 Random.Range(-currentGun.spreadZ, currentGun.spreadZ));
         direction.Normalize();
         return direction;
     }

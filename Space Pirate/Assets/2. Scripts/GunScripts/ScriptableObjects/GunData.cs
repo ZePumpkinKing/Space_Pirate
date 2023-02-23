@@ -13,7 +13,8 @@ public class GunData : ScriptableObject
     public float damage;
     public float maxDistance;
     public bool automatic;
-    public bool hasBulletSpread;
+    [Tooltip("Amount of bullets that will be fired per mouse click")]
+    public int bulletsInOneShot;
 
 
     [Header("Reloading")]
@@ -28,6 +29,11 @@ public class GunData : ScriptableObject
     public float recoilZ;
     public float snappiness;
     public float returnSpeed;
+
+    [Header("Spread")]
+    public float spreadX;
+    public float spreadY;
+    public float spreadZ;
 
     [HideInInspector] public float currentAmmo;
 }
