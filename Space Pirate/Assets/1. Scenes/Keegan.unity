@@ -932,6 +932,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 359737559, guid: 7501ed492c539da4987f6dcdbc147d75, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.071468756
+      objectReference: {fileID: 0}
+    - target: {fileID: 958519739, guid: 7501ed492c539da4987f6dcdbc147d75, type: 3}
+      propertyPath: lerpTime
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 610763124980160725, guid: 7501ed492c539da4987f6dcdbc147d75,
+        type: 3}
+      propertyPath: waveHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 610763125971457760, guid: 7501ed492c539da4987f6dcdbc147d75,
         type: 3}
       propertyPath: m_RootOrder
