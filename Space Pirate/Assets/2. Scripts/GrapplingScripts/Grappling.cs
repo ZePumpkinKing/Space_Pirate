@@ -9,6 +9,7 @@ public class Grappling : MonoBehaviour
     private Rigidbody rb;
     private Transform orientation;
     public Vector3 grapplePoint;
+    ShootHook hook;
     public LayerMask whatIsGrappleable;
     public LayerMask whatIsEnemy;
     public Transform gunTip;
@@ -31,6 +32,7 @@ public class Grappling : MonoBehaviour
 
     private void Awake()
     {
+        hook = FindObjectOfType<ShootHook>();
         rb = GetComponent<Rigidbody>();
         orientation = GetComponent<Transform>();
         input = new Input();
@@ -45,6 +47,7 @@ public class Grappling : MonoBehaviour
         if (isGrappling)
         {
             CalculateGrappleMovement();
+            hook.MoveHook();
         }
     }
 
@@ -55,6 +58,7 @@ public class Grappling : MonoBehaviour
         if (Physics.Raycast(castPoint.position, castPoint.forward, out hit, maxGrappleDistance, whatIsGrappleable)) // check if the object is grappleable
         {
             StartGrapple();
+            hook.Hookshot(hit);
             isGrappling = true;
         }
         if (Physics.Raycast(castPoint.position, castPoint.forward, out hit, maxGrappleDistance, whatIsEnemy)) // check if the object is grappleable
@@ -68,6 +72,7 @@ public class Grappling : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(castPoint.position, castPoint.forward, out hit, maxGrappleDistance, whatIsGrappleable)) // check if the object is grappleable
         {
+            hook.Hookshot(hit);
             grapplePoint = hit.point;
             joint = gameObject.AddComponent<SpringJoint>(); // create a spring joint which will act as the grapple
             joint.autoConfigureConnectedAnchor = false; // we don't want unity to auto configure a joint to attach to
@@ -84,6 +89,7 @@ public class Grappling : MonoBehaviour
         }
         else if (Physics.Raycast(castPoint.position, castPoint.forward, out hit, maxGrappleDistance, whatIsEnemy)) // check if the object is an enemy
         {
+            hook.Hookshot(hit);
             enemyGrappled = true;
             currentEnemyGrapped = hit.transform.gameObject;
             grapplePoint = currentEnemyGrapped.transform.position;
@@ -105,6 +111,7 @@ public class Grappling : MonoBehaviour
     {
         enemyGrappled = false;
         isGrappling = false;
+        hook.ReturnHook();
         Destroy(joint);
     }
     private void CalculateGrappleMovement()
