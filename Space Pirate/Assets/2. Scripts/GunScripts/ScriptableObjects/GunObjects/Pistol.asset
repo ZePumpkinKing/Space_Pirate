@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Pistol
   damage: 10
-  maxDistance: Infinity
+  maxDistance: 100
   automatic: 0
+  bulletsInOneShot: 1
   magCapacity: 10
   fireRateRPM: 200
   reloadTime: 1.542
@@ -24,4 +25,7 @@ MonoBehaviour:
   recoilZ: 0.35
   snappiness: 12
   returnSpeed: 12
-  currentAmmo: 5
+  spreadX: 0.02
+  spreadY: 0.02
+  spreadZ: 0.02
+  currentAmmo: 6
