@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2824576827497382924}
   - component: {fileID: 60269597300420806}
   - component: {fileID: 1978774736852072163}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Gangway_PlatformEnd
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 1756cdf3cffc8264fb93bad2c01be89a, type: 3}
+  - {fileID: 2100000, guid: 4bba761384217dd46907316c9fc0cd12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

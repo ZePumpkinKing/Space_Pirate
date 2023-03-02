@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4116309177697614625}
   - component: {fileID: 2217149987727888363}
   - component: {fileID: -4988883058109685430}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Gangway_WallSplit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
