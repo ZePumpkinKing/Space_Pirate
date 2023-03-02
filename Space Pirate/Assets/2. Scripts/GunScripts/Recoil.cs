@@ -4,7 +4,7 @@ public class Recoil : MonoBehaviour
     //rotations
     public Vector3 currentRotation, targetRotation;
     Player playerScript;
-    Gun gunScript;
+    public Gun gunScript;
     //recoil values
 
     private void Awake()

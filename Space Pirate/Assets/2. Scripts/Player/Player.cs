@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask interactables;
     Transform target;
 
+    float gravAdjusting;
+
     private void Awake()
     {
         input = new Input();
@@ -70,6 +72,18 @@ public class Player : MonoBehaviour
         normalSpeed *= 100;
     }
 
+    bool EnableGravRot()
+    {
+        if (0.02 >= cam.transform.rotation.eulerAngles.x && cam.transform.rotation.eulerAngles.x >= -0.02 && 0.02 >= cam.transform.rotation.eulerAngles.z && cam.transform.rotation.eulerAngles.z >= -0.02)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     private void Update()
     {
         move = input.Gameplay.Move.ReadValue<Vector3>();
@@ -91,13 +105,13 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(cam.gameObject.transform.position, cam.gameObject.transform.forward, out hit, interactDistance, interactables)) {
             target = hit.transform.parent;
             target.GetComponent<Button>().selected = true;
-            if (input.Gameplay.Interact.ReadValue<bool>()) {
+            if (input.Gameplay.Interact.WasPressedThisFrame()) {
                 target.GetComponent<Button>().held = true;
+                target.GetComponent<Button>().continuing = true;
             } else {
                 target.GetComponent<Button>().held = false;
             }
-        } else {
-            target.GetComponent<Button>().held = false;
+        } else if (target != null) {
             target = null;
         }
     }
@@ -111,11 +125,12 @@ public class Player : MonoBehaviour
     {
         if (gravityEnabled) // if gravity is enabled, just call disable gravity instead lol
         {
-            transform.rotation = new Quaternion(0, transform.rotation.y, 0, 0);
+            //transform.rotation = new Quaternion(0, transform.rotation.y, 0, 0);
             DisableGravity();
         }
         else
         {
+            
             gravityEnabled = true;
             Debug.Log("Gravity enabled");
         }
@@ -212,12 +227,19 @@ public class Player : MonoBehaviour
         }
         else // if we in zero gravity, use zero grav look system
         {
-            cam.transform.Rotate(transform.forward, rotate * turnSpeed * Time.deltaTime);
+            cam.transform.Rotate(transform.forward, rotate * -turnSpeed * Time.deltaTime);
             cam.transform.Rotate(transform.up, look.x * sensitivity * Time.deltaTime);
-            cam.transform.Rotate(transform.right, look.y * sensitivity * Time.deltaTime);
+            cam.transform.Rotate(transform.right, look.y * -sensitivity * Time.deltaTime);
+
+            cam.transform.Rotate(cam.transform.right, recoilScript.gunScript.currentGun.snappiness);
         }
 
-        orientation.transform.rotation = Quaternion.Euler(0, desiredY, 0);
+        orientation.transform.rotation = Quaternion.Euler(desiredX, desiredY, desiredZ);
+    }
+
+    IEnumerator EnableGravLook()
+    {
+        yield return new WaitUntil(EnableGravRot);
     }
 
     void CheckGround()

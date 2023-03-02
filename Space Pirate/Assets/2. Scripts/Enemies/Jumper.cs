@@ -54,8 +54,10 @@ public class Jumper : MonoBehaviour
         float xRot = Random.Range(-45,45);
         float yRot = Random.Range(-45,45);
 
+        //transform.position += transform.forward * 0.01f;
+
         transform.Rotate(Vector3.up, xRot);
-        transform.Rotate(Vector3.up, yRot);
+        transform.Rotate(Vector3.right, yRot);
 
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
 
@@ -65,10 +67,10 @@ public class Jumper : MonoBehaviour
     void Land(Vector3 position, Vector3 normal) {
         rb.velocity = Vector3.zero;
 
-        Debug.Log(position + " " + normal);
-        transform.localRotation = Quaternion.LookRotation(normal);
+        //transform.LookAt(transform.position + normal);
+        transform.rotation = Quaternion.LookRotation(normal);
+        //transform.position = position;
 
-        transform.Translate(0,0.5f,0);
 
         //moving = false;
 
@@ -81,6 +83,7 @@ public class Jumper : MonoBehaviour
 
             Physics.Raycast(transform.position, collision.transform.position - transform.position, out hit);
 
+            Vector3 lookPoint = hit.normal * 10;
             /*
             int i = 0;
             foreach (Transform value in currentScale) {
@@ -89,8 +92,14 @@ public class Jumper : MonoBehaviour
             }
             */
 
-            transform.SetParent(collision.transform, true);
-            Land(hit.point, hit.normal);
+            //transform.SetParent(collision.transform, true);
+            Land(hit.point, lookPoint);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, transform.forward * 2);
     }
 }
