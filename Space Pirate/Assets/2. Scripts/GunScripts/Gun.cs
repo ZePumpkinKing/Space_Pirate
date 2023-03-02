@@ -182,6 +182,7 @@ public class Gun : MonoBehaviour
         switch(activeWeapon.ReadValue<Vector2>().x)
         {
             case 1:// if we press 1
+
                 StartCoroutine(SwitchWeapon(gunIDs.Pistol)); 
                 break;
             case -1://if we press 3
@@ -208,14 +209,19 @@ public class Gun : MonoBehaviour
     {
         if (!reloading && !switching && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f)) //only switch guns if we arent currently reloading, or switching
         {
-            switching = true;
-            anim.SetTrigger("Stowed");
-            yield return new WaitForSeconds(1);
-            SwitchGunModel(currentGunObj, gunObjs[((int)gunId)]);
-            currentGunObj = gunObjs[((int)gunId)];
-            currentGun = guns[((int)gunId)];
-            yield return new WaitForSeconds(1);
-            switching = false;
+            if (currentGun != guns[((int)gunId)])
+            {
+                switching = true;
+                anim.SetTrigger("Stowed");
+                yield return new WaitForSeconds(1);
+                SwitchGunModel(currentGunObj, gunObjs[((int)gunId)]);
+                currentGunObj = gunObjs[((int)gunId)];
+                currentGun = guns[((int)gunId)];
+                yield return new WaitForSeconds(1);
+                switching = false;
+            }
+            else yield return null;
+
         }
         else yield return null;
 
