@@ -9,12 +9,15 @@ public class Jumper : MonoBehaviour
     //[SerializeField] GameObject projectile;
     //[SerializeField] Transform gun;
 
+    [SerializeField] Transform jumpChecker;
+
     //Vector3[] initialScale;
     //Transform[] currentScale;
 
     //bool moving = true;
 
     Rigidbody rb;
+    SphereCollider hitbox;
 
     //Transform player;
 
@@ -23,6 +26,8 @@ public class Jumper : MonoBehaviour
         //player = GameObject.FindObjectOfType<Player>().transform;
 
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+
+        hitbox = GetComponent<SphereCollider>();
 
         /*
         currentScale = gameObject.GetComponentsInChildren<Transform>();
@@ -48,27 +53,39 @@ public class Jumper : MonoBehaviour
     IEnumerator Jump() {
         yield return new WaitForSeconds(jumpInterval);
 
-        transform.parent = null;
-        transform.localScale = Vector3.one;
+        //transform.parent = null;
+        //transform.localScale = Vector3.one;
 
         float xRot = Random.Range(-45,45);
         float yRot = Random.Range(-45,45);
 
         //transform.position += transform.forward * 0.01f;
 
-        transform.Rotate(Vector3.up, xRot);
-        transform.Rotate(Vector3.right, yRot);
+        jumpChecker.transform.Rotate(Vector3.up, xRot);
+        jumpChecker.transform.Rotate(Vector3.right, yRot);
 
+        RaycastHit hit;
+        Physics.SphereCast(new Ray(jumpChecker.position, jumpChecker.forward), 0.5f, out hit, LayerMask.GetMask("3"));
+        Debug.DrawRay(jumpChecker.position, jumpChecker.forward);
+
+        transform.LookAt(hit.point);
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+
+        hitbox.enabled = true;
 
         //moving = true;
     }
 
     void Land(Vector3 position, Vector3 normal) {
+
+        jumpChecker.localRotation = Quaternion.identity;
+
         rb.velocity = Vector3.zero;
 
         //transform.LookAt(transform.position + normal);
         transform.rotation = Quaternion.LookRotation(normal);
+
+        hitbox.enabled = false;
         //transform.position = position;
 
 
