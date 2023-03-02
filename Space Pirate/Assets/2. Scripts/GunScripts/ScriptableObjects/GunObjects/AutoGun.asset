@@ -16,6 +16,7 @@ MonoBehaviour:
   damage: 3
   maxDistance: 200
   automatic: 1
+  bulletsInOneShot: 1
   magCapacity: 30
   fireRateRPM: 600
   reloadTime: 3
@@ -24,4 +25,7 @@ MonoBehaviour:
   recoilZ: 0.15
   snappiness: 6
   returnSpeed: 11
-  currentAmmo: 5
+  spreadX: 0
+  spreadY: 0
+  spreadZ: 0
+  currentAmmo: 8

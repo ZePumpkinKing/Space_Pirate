@@ -26,7 +26,6 @@ public class ShootHook : MonoBehaviour
     }
     public void MoveHook()
     {
-        Debug.Log(transform.position);
         //transform.position = Vector3.Lerp(initPos, hookPoint, Time.deltaTime * 10f);
         transform.position = Lerp(initPos, hookPoint, timeStartedLerping, lerpTime);
         transform.rotation = initRot;

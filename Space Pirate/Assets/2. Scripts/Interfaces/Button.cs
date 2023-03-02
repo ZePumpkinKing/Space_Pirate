@@ -23,6 +23,7 @@ public class Button : MonoBehaviour
 
     public bool selected;
     public bool held;
+    public bool continuing;
 
     void Start()
     {
@@ -41,10 +42,11 @@ public class Button : MonoBehaviour
             mesh.material = offMaterial;
         }
 
-        Debug.Log(onHeight + " " + model.localPosition + " " + offHeight);
-        if (held) {
+        if (held || continuing) {
             if (model.localPosition.y > onHeight) {
                 model.Translate(0, -animationSpeed * Time.deltaTime, 0);
+            } else {
+                continuing = false;
             }
         } else {
             if (model.localPosition.y < offHeight) {
