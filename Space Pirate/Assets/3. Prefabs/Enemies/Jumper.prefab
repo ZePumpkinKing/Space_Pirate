@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5018143222924248218}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Jump Checker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,6 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpInterval: 5
   speed: 5
+  turnSpeed: 2
   jumpChecker: {fileID: 5018143222924248218}
 --- !u!135 &1383756226234505261
 SphereCollider:
@@ -311,7 +312,7 @@ GameObject:
   - component: {fileID: 7211031763238412576}
   - component: {fileID: 7616346387834777464}
   - component: {fileID: 4466274354554376154}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: pSphere11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6680875511645030174}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Single Barrel Torb Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +593,7 @@ GameObject:
   - component: {fileID: 7352419186664664364}
   - component: {fileID: 4032515697777839200}
   - component: {fileID: 9053887121915456345}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: polySurface5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +676,7 @@ GameObject:
   - component: {fileID: 2869784414625197214}
   - component: {fileID: 6164998329137266530}
   - component: {fileID: 1897253640472820037}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: polySurface4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
