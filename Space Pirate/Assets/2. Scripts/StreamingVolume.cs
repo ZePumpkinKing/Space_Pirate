@@ -12,13 +12,7 @@ public class StreamingVolume : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            EnableObjects();
-        }
-
         ProcessCollision(other.gameObject);
-
     }
     private void OnTriggerStay(Collider other)
     {
@@ -78,7 +72,7 @@ public class StreamingVolume : MonoBehaviour
 
     private IEnumerator BufferLoad()
     {
-        yield return new WaitForSeconds(.05f);
+        yield return new WaitForSeconds(.001f);
         
         DisableObjects();
     }
