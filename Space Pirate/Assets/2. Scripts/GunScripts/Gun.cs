@@ -109,7 +109,6 @@ public class Gun : MonoBehaviour
                     }
                     else // if we shoot, but we don't hit anything (if we shoot into the air at no objects, we still want to show our bullet trail)
                     {
-                        Debug.Log(castPoint.position + castPoint.transform.forward);
                         trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity);
                         StartCoroutine(SpawnBullet(trail, castPoint.position + direction * (currentGun.maxDistance / 2), hit)); // sets the point of where our raycast would have ended up if it hit anything (point in the air)
                     }

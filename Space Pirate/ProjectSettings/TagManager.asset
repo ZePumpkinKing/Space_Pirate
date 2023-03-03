@@ -12,6 +12,7 @@ TagManager:
   - Grapple
   - Interactable
   - Gun
+  - Streaming
   layers:
   - Default
   - TransparentFX

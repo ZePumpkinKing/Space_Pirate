@@ -75,19 +75,6 @@ public class Player : MonoBehaviour
         normalSpeed *= 100;
     }
 
-    bool EnableGravRot()
-    {
-        if (0.02 >= cam.transform.rotation.eulerAngles.x && cam.transform.rotation.eulerAngles.x >= -0.02 && 0.02 >= cam.transform.rotation.eulerAngles.z 
-            && cam.transform.rotation.eulerAngles.z >= -0.02)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
-
     private void Update()
     {
         move = input.Gameplay.Move.ReadValue<Vector3>();
@@ -281,7 +268,7 @@ public class Player : MonoBehaviour
             //cam.transform.Rotate(cam.transform.right, recoilScript.gunScript.currentGun.snappiness);
         }
 
-        orientation.transform.rotation = Quaternion.Euler(desiredX, desiredY, desiredZ);
+        orientation.transform.rotation = Quaternion.Euler(0, desiredY, 0);
     }
 
     IEnumerator EnableGravity()
