@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 971586616550526194}
   m_Layer: 0
   m_Name: Atrium_EngineRoomFloor
-  m_TagString: Untagged
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &788549520786418642
 Transform:

@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 1140211030483806219}
   m_Layer: 0
   m_Name: Solarius_Table_Short
-  m_TagString: Ground
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &666149624480119691
 Transform:

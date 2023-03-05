@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 7570810563034606862}
   m_Layer: 0
   m_Name: Furniture_Chest
-  m_TagString: Untagged
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8744795053600020065
 Transform:

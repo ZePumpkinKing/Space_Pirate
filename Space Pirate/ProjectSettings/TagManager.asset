@@ -12,6 +12,7 @@ TagManager:
   - Grapple
   - Interactable
   - Gun
+  - Emissive_to_baked
   layers:
   - Default
   - TransparentFX

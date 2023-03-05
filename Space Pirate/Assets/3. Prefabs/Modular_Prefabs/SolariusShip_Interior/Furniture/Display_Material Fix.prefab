@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 7483402163840968637}
   m_Layer: 0
   m_Name: Display_Material Fix
-  m_TagString: Untagged
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1655231237045956712
 Transform:
