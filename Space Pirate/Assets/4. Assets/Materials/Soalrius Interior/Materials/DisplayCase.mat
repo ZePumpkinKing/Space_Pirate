@@ -12,7 +12,7 @@ Material:
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 1
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
@@ -158,7 +158,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 0.5882353}
     - _Color: {r: 1, g: 1, b: 1, a: 0.5882353}
     - _EmissionColor: {r: 5.145098, g: 9.976471, b: 10.603922, a: 0}
-    - _Emit_Color: {r: 6.462745, g: 8.156863, b: 16, a: 0}
+    - _Emit_Color: {r: 46.560955, g: 58.49966, b: 114.01465, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}

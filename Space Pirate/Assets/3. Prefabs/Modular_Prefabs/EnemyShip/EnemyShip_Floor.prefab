@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 646962154131495506}
   - component: {fileID: 4563733239032583671}
   - component: {fileID: 1779296212499751229}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: EnemyShip_Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &646962154131495506
 Transform:

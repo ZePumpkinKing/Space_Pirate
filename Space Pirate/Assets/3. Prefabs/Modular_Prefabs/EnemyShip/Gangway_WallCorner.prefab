@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 7666956293895113737}
   - component: {fileID: 5585157781486352579}
   - component: {fileID: 1237173415294962578}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Gangway_WallCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6758033550942880684
 Transform:
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: ed4c60746b5a17d42b24cfd606ece892, type: 3}
+  - {fileID: 2100000, guid: 3118a550a6e48fb4cbe36b5d40e5f9ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
