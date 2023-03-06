@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6356234635826017697}
   m_Layer: 0
   m_Name: Furniture_Couch
-  m_TagString: Emissive_to_baked
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

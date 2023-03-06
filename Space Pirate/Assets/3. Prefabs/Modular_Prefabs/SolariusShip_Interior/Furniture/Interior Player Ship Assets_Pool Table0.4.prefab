@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1192489532412984802}
   m_Layer: 0
   m_Name: Interior Player Ship Assets_Pool Table0.4
-  m_TagString: Emissive_to_baked
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

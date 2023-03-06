@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2890683668086837477}
   m_Layer: 0
   m_Name: Solarius_CasualChair2 1
-  m_TagString: Emissive_to_baked
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
