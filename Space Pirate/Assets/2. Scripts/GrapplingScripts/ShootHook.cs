@@ -22,10 +22,18 @@ public class ShootHook : MonoBehaviour
         initRot = transform.rotation;
         initPos = transform.position;
         timeStartedLerping = Time.time;
-        //float distanceFromPoint = Vector3.Distance(transform.position, hookPoint); //gets the initial distance
     }
-    public void MoveHook()
+    public void MoveHook(Vector3 pos)
     {
+        if (grapp.isObjGrappling)
+        {
+            hookPoint = pos;
+            gameObject.layer = 0;
+        }
+        if (grapp.isPlayerGrappling)
+        {
+            gameObject.layer = 0;
+        }
         //transform.position = Vector3.Lerp(initPos, hookPoint, Time.deltaTime * 10f);
         transform.position = Lerp(initPos, hookPoint, timeStartedLerping, lerpTime);
         transform.rotation = initRot;
@@ -45,5 +53,6 @@ public class ShootHook : MonoBehaviour
     {
         transform.position = returnPoint.position;
         transform.rotation = returnPoint.rotation;
+        gameObject.layer = 14;
     }
 }
