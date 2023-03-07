@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (gravityEnabled && !grappleScript.isGrappling && isGrounded) RegularGravMovement();
+        if (gravityEnabled && !grappleScript.isPlayerGrappling && isGrounded) RegularGravMovement();
 
         if (!isGrounded) CalculateAirMovement();
 
