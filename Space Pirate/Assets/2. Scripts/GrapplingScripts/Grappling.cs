@@ -81,7 +81,6 @@ public class Grappling : MonoBehaviour
     }
     private void StartObstaclePull(RaycastHit hit)
     {
-        //hook.PullHookshot(hit);
         grapplePoint = transform.position;
         currentObstacle = hit.transform.gameObject;
         joint = currentObstacle.AddComponent<SpringJoint>(); // create a spring joint which will act as the grapple
@@ -139,7 +138,8 @@ public class Grappling : MonoBehaviour
     {
         Vector3 directionToPoint = transform.position - grapplePoint;
         obstacle.GetComponent<Rigidbody>().AddForce(directionToPoint.normalized * forwardThrustForce * Time.deltaTime);
-        
+        joint.connectedAnchor = transform.position;
+        grapplePoint = transform.position;
 
         float distanceFromPoint = Vector3.Distance(transform.position, grapplePoint); // constantly update the distance from point to pull us further into the point
         if (joint != null)
