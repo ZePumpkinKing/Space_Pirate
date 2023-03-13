@@ -1214,6 +1214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRotation: {x: 0, y: 0, z: 0}
   targetRotation: {x: 0, y: 0, z: 0}
+  gunScript: {fileID: 0}
 --- !u!1 &7887894456769383146
 GameObject:
   m_ObjectHideFlags: 0
