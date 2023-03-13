@@ -59,61 +59,59 @@ public class Gun : MonoBehaviour
     }
     private void Start()
     {
-        for (int i = 0; i < gunObjs.Length; i++) //
+        for (int i = 0; i < gunObjs.Length; i++) //loop through all of our current weapons in our inventory
         {
-            guns[i].currentAmmo = guns[i].magCapacity;
+            guns[i].currentAmmo = guns[i].magCapacity; //set all gun data scriptable objects to be at their starting maximum ammo
             if (i > 0)
             {
                 gunObjs[i].SetActive(false); //set only one gun to active
             }    
         }
-
-
     }
     private void Update()
     {
         timeSinceLastShot += Time.deltaTime;
         if (currentGun.automatic)
         {
-            autoShooting = input.Gameplay.Fire.ReadValue<float>();
+            autoShooting = input.Gameplay.Fire.ReadValue<float>(); // if the gun is automatic, when we hold down click, this will be equal to 1
         }
-        if (autoShooting > 0)
+        if (autoShooting > 0) // if the gun is auto, autoshooting can be 1, and if it is 1, then shoot repetitively
         {
             Shoot();
         }
         if (reloading)
         {
-            anim.SetBool("Reload", true);
+            anim.SetBool("Reload", true); // sets our animation state
         } else anim.SetBool("Reload", false);
     }
-    private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f) && !switching;
+    private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f) && !switching; // returns true if we are able to shoot(not reloading, switching weapons, or still shooting)
     public void Shoot()
     {
-        if (currentGun.currentAmmo > 0)
+        if (currentGun.currentAmmo > 0) // if we have ammo
         {
-            if (CanShoot())
+            if (CanShoot()) // if we are able to shoot, run the code to shoot
             {
-                RaycastHit hit;
-                TrailRenderer trail;
-                recoilScript.FireRecoil();
-                gunObjRecoil.FireGunRecoil();
+                RaycastHit hit; //instantiate our raycast ref
+                TrailRenderer trail; // instantiate our gun trail
+                recoilScript.FireRecoil(); // camera recoil
+                gunObjRecoil.FireGunRecoil(); // gun recoil
                 
-                anim.SetTrigger("Firing");
+                anim.SetTrigger("Firing"); //sets our animation
                 
-                for (int i = 0; i < currentGun.bulletsInOneShot; i++)
+                for (int i = 0; i < currentGun.bulletsInOneShot; i++) //run the code to shoot for as many bullets as are supposed to shoot out of the gun (if we have a shotgun, we'll shoot 10 bullets thanks to this for loop)
                 {
-                    Vector3 direction = GetDirection();
-                    if (Physics.Raycast(castPoint.position, direction, out hit, currentGun.maxDistance))
+                    Vector3 direction = GetDirection(); //get the direction of our shot, adhering to our spread amount
+                    if (Physics.Raycast(castPoint.position, direction, out hit, currentGun.maxDistance)) //if we hit an object with our bullet
                     {
                         Debug.Log(hit.point);
-                        trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity);
-                        StartCoroutine(SpawnTrail(trail, hit.point, hit));
+                        trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity); //start a bullet trail effect
+                        StartCoroutine(SpawnBullet(trail, hit.point, hit)); //spawn our bullet
                     }
-                    else
+                    else // if we shoot, but we don't hit anything (if we shoot into the air at no objects, we still want to show our bullet trail)
                     {
                         Debug.Log(castPoint.position + castPoint.transform.forward);
                         trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity);
-                        StartCoroutine(SpawnTrail(trail, castPoint.position + direction * (currentGun.maxDistance / 2), hit));
+                        StartCoroutine(SpawnBullet(trail, castPoint.position + direction * (currentGun.maxDistance / 2), hit)); // sets the point of where our raycast would have ended up if it hit anything (point in the air)
                     }
                 }
 
@@ -137,7 +135,7 @@ public class Gun : MonoBehaviour
         return direction;
     }
 
-    private IEnumerator SpawnTrail(TrailRenderer trail, Vector3 hitPos, RaycastHit hit)
+    private IEnumerator SpawnBullet(TrailRenderer trail, Vector3 hitPos, RaycastHit hit)
     {
         float time = 0;
         Vector3 startPosition = trail.transform.position;
@@ -184,6 +182,7 @@ public class Gun : MonoBehaviour
         switch(activeWeapon.ReadValue<Vector2>().x)
         {
             case 1:// if we press 1
+
                 StartCoroutine(SwitchWeapon(gunIDs.Pistol)); 
                 break;
             case -1://if we press 3
@@ -210,14 +209,19 @@ public class Gun : MonoBehaviour
     {
         if (!reloading && !switching && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f)) //only switch guns if we arent currently reloading, or switching
         {
-            switching = true;
-            anim.SetTrigger("Stowed");
-            yield return new WaitForSeconds(1);
-            SwitchGunModel(currentGunObj, gunObjs[((int)gunId)]);
-            currentGunObj = gunObjs[((int)gunId)];
-            currentGun = guns[((int)gunId)];
-            yield return new WaitForSeconds(1);
-            switching = false;
+            if (currentGun != guns[((int)gunId)])
+            {
+                switching = true;
+                anim.SetTrigger("Stowed");
+                yield return new WaitForSeconds(1);
+                SwitchGunModel(currentGunObj, gunObjs[((int)gunId)]);
+                currentGunObj = gunObjs[((int)gunId)];
+                currentGun = guns[((int)gunId)];
+                yield return new WaitForSeconds(1);
+                switching = false;
+            }
+            else yield return null;
+
         }
         else yield return null;
 

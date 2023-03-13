@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2576414699712805241}
   - component: {fileID: 2150757717007152402}
   - component: {fileID: 3589537066628091267}
-  - component: {fileID: 8200504393758096578}
+  - component: {fileID: 958408173270533561}
   m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8200504393758096578
-MeshCollider:
+--- !u!135 &958408173270533561
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,10 +94,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 2
+  m_Radius: 1.2
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5701378431932766379
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,9 +146,10 @@ MonoBehaviour:
   onMaterial: {fileID: 2100000, guid: 4d1f82cf960774e44917b059590bb492, type: 2}
   pressLink: {fileID: 0}
   holdLink: {fileID: 0}
-  animationSpeed: 0.05
+  animationSpeed: 0.2
   offHeight: 0.1
-  onHeight: 0.05
+  onHeight: 0.025
   model: {fileID: 2576414699712805241}
   selected: 0
   held: 0
+  continuing: 0
