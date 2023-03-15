@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Vending_Scrolling_Text
-  m_Shader: {fileID: -6465566751694194690, guid: 085a089cac318b54487e56d4541faf7d,
+  m_Shader: {fileID: -6465566751694194690, guid: 703a5d7ccd9b9f148a9d4e4becc215fb,
     type: 3}
   m_ValidKeywords:
   - _RECEIVE_SHADOWS_OFF
@@ -147,7 +147,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Emit_Color: {r: 0.70246196, g: 1.3075529, b: 1.3284181, a: 0}
+    - _Emit_Color: {r: 6.337255, g: 11.796079, b: 11.984314, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

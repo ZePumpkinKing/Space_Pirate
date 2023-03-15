@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8251776595594131022
 Transform:
@@ -185,6 +185,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ObservationDeck_Upper_FixedUVs
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 07c84ad87dd439a4c8509dacf14cb0cd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07c84ad87dd439a4c8509dacf14cb0cd, type: 3}
