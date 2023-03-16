@@ -505,7 +505,7 @@ MonoBehaviour:
   projectile: {fileID: 5171619300252181318, guid: e64a5cc46a503ff4da278472f8d2b609,
     type: 3}
   laserSight: 0
-  fireDelay: 240
+  fireDelay: 1
   maxSpeed: 2
   offset: {x: 0, y: 0, z: 0.9}
 --- !u!114 &2641635048914794942
