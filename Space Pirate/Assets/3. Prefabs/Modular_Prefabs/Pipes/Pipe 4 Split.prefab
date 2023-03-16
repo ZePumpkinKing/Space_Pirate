@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8572338551211988515}
   - component: {fileID: 5842267367546053353}
   - component: {fileID: 3794960698876851643}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pipe 4 Split
   m_TagString: Untagged
   m_Icon: {fileID: 0}
