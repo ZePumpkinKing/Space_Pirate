@@ -85,7 +85,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""name"": ""Weapon"",
                     ""type"": ""Value"",
                     ""id"": ""010576b1-0d92-4175-80ac-0ee1036cc51c"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -103,6 +103,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""ebac31ff-ead2-47a5-89b3-1eb797625eb9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shift"",
+                    ""type"": ""Button"",
+                    ""id"": ""b9bae995-a78a-42dc-8a16-7fa1d06c184e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -486,6 +495,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""4140f649-d70f-4147-8d16-9b1c1f3c7088"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Weapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""3a9daa90-188a-401e-aa32-d248778db505"",
                     ""path"": ""<Keyboard>/g"",
                     ""interactions"": ""Press"",
@@ -505,6 +525,28 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2acd1e2c-b2e2-46a1-a0ab-c0bd22b26def"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shift"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""346a0562-a6dc-4fb8-96dc-6f091d036626"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shift"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -522,6 +564,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_Gameplay_Weapon = m_Gameplay.FindAction("Weapon", throwIfNotFound: true);
         m_Gameplay_Debug = m_Gameplay.FindAction("Debug", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
+        m_Gameplay_Shift = m_Gameplay.FindAction("Shift", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -590,6 +633,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Weapon;
     private readonly InputAction m_Gameplay_Debug;
     private readonly InputAction m_Gameplay_Jump;
+    private readonly InputAction m_Gameplay_Shift;
     public struct GameplayActions
     {
         private @Input m_Wrapper;
@@ -603,6 +647,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         public InputAction @Weapon => m_Wrapper.m_Gameplay_Weapon;
         public InputAction @Debug => m_Wrapper.m_Gameplay_Debug;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
+        public InputAction @Shift => m_Wrapper.m_Gameplay_Shift;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -639,6 +684,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
+                @Shift.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShift;
+                @Shift.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShift;
+                @Shift.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShift;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -670,6 +718,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Shift.started += instance.OnShift;
+                @Shift.performed += instance.OnShift;
+                @Shift.canceled += instance.OnShift;
             }
         }
     }
@@ -685,5 +736,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
         void OnWeapon(InputAction.CallbackContext context);
         void OnDebug(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnShift(InputAction.CallbackContext context);
     }
 }
