@@ -85,7 +85,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""name"": ""Weapon"",
                     ""type"": ""Value"",
                     ""id"": ""010576b1-0d92-4175-80ac-0ee1036cc51c"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -486,6 +486,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""b141c203-889d-4954-92f0-1875eb7c602b"",
                     ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Weapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4140f649-d70f-4147-8d16-9b1c1f3c7088"",
+                    ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

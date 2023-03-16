@@ -29,6 +29,7 @@ public class Gun : MonoBehaviour
     private Recoil recoilScript;
     private GunFireRecoil gunObjRecoil;
     private GameObject currentGunObj;
+    private int currentGunId;
     //floats
     float timeSinceLastShot;
     float autoShooting;
@@ -70,6 +71,7 @@ public class Gun : MonoBehaviour
     }
     private void Update()
     {
+        
         timeSinceLastShot += Time.deltaTime;
         if (currentGun.automatic)
         {
@@ -109,7 +111,6 @@ public class Gun : MonoBehaviour
                     }
                     else // if we shoot, but we don't hit anything (if we shoot into the air at no objects, we still want to show our bullet trail)
                     {
-                        Debug.Log(castPoint.position + castPoint.transform.forward);
                         trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity);
                         StartCoroutine(SpawnBullet(trail, castPoint.position + direction * (currentGun.maxDistance / 2), hit)); // sets the point of where our raycast would have ended up if it hit anything (point in the air)
                     }
@@ -178,25 +179,40 @@ public class Gun : MonoBehaviour
     }
     private void FindWeapon(InputAction.CallbackContext context)
     {
-
-        switch(activeWeapon.ReadValue<Vector2>().x)
+        
+        switch (activeWeapon.ReadValue<Vector2>().x)
         {
             case 1:// if we press 1
 
-                StartCoroutine(SwitchWeapon(gunIDs.Pistol)); 
+                StartCoroutine(SwitchWeapon((int)gunIDs.Pistol)); 
                 break;
             case -1://if we press 3
-                StartCoroutine(SwitchWeapon(gunIDs.Autogun));
+                StartCoroutine(SwitchWeapon((int)gunIDs.Autogun));
                 break;
 
         }
-        switch(activeWeapon.ReadValue<Vector2>().y)
+        switch (activeWeapon.ReadValue<Vector2>().y)
         {
             case 1://if we press 4
-                StartCoroutine(SwitchWeapon(gunIDs.Blunderbus));
+                StartCoroutine(SwitchWeapon((int)gunIDs.Blunderbus));
                 break;
             case -1://if we press 2
-                StartCoroutine(SwitchWeapon(gunIDs.Shotgun));
+                StartCoroutine(SwitchWeapon((int)gunIDs.Shotgun));
+                break;
+            case 120: //if we scroll up(don't know why unity sets this to 120)
+                
+                if (currentGunId + 1 <= guns.Length - 1)
+                {
+                    Debug.Log(currentGunId + 1);
+                    StartCoroutine(SwitchWeapon(currentGunId + 1));
+                }
+                break;
+            case -120://if we scroll down
+                if (currentGunId - 1 >= 0)
+                {
+                    Debug.Log(currentGunId - 1);
+                    StartCoroutine(SwitchWeapon(currentGunId - 1));
+                }
                 break;
         }
         
@@ -205,26 +221,25 @@ public class Gun : MonoBehaviour
             input.Gameplay.Fire.performed += context => Shoot();
         }
     }
-    private IEnumerator SwitchWeapon(gunIDs gunId)
+    private IEnumerator SwitchWeapon(int gunId)
     {
         if (!reloading && !switching && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f)) //only switch guns if we arent currently reloading, or switching
         {
-            if (currentGun != guns[((int)gunId)])
+            if (currentGun != guns[gunId])
             {
                 switching = true;
                 anim.SetTrigger("Stowed");
                 yield return new WaitForSeconds(1);
-                SwitchGunModel(currentGunObj, gunObjs[((int)gunId)]);
-                currentGunObj = gunObjs[((int)gunId)];
-                currentGun = guns[((int)gunId)];
+                SwitchGunModel(currentGunObj, gunObjs[gunId]);
+                currentGunObj = gunObjs[gunId];
+                currentGun = guns[gunId];
+                currentGunId = (gunId);
                 yield return new WaitForSeconds(1);
                 switching = false;
             }
             else yield return null;
-
         }
         else yield return null;
-
     }
     private void SwitchGunModel(GameObject prevModel,GameObject newModel)
     {
