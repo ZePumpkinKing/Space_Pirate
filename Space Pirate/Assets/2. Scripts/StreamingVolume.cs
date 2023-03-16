@@ -6,9 +6,11 @@ public class StreamingVolume : MonoBehaviour
 {
     [SerializeField] private List<GameObject> objsInVolume;
 
-    private void Start()
+    IEnumerator Start()
     {
-        StartCoroutine(BufferLoad());
+        yield return new WaitForSeconds(.001f);
+
+        DisableObjects();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -70,10 +72,8 @@ public class StreamingVolume : MonoBehaviour
         }
     }
 
-    private IEnumerator BufferLoad()
+/*    private IEnumerator BufferLoad()
     {
-        yield return new WaitForSeconds(.001f);
-        
-        DisableObjects();
-    }
+
+    }*/
 }
