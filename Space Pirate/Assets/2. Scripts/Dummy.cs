@@ -11,6 +11,7 @@ public class Dummy : MonoBehaviour
 
     [SerializeField] float safeDistance;
     [SerializeField] float chaseDistance;
+    [SerializeField] float wanderRange;
 
     private void Awake()
     {
@@ -24,18 +25,25 @@ public class Dummy : MonoBehaviour
 
     void Update() {
         Debug.DrawRay(transform.position, player.position, Color.blue);
-        if (Physics.CheckSphere(transform.position, chaseDistance, LayerMask.GetMask("Player")) && !Physics.Raycast(transform.position, player.position, LayerMask.GetMask("Ground"))) {
+
+        RaycastHit hit;
+        Physics.Raycast(transform.position, player.position - transform.position, out hit);
+
+        if (Physics.CheckSphere(transform.position, chaseDistance, LayerMask.GetMask("Player")) && hit.transform.CompareTag("Player")) {
             if (!Physics.CheckSphere(transform.position, safeDistance, LayerMask.GetMask("Player"))) {
                 Move(player.position);
             } else {
                 Move(transform.position);
             }
+        } else {
+            Wander();
         }
     }
 
-    Vector3 offsetOfPlayer()
-    {
-        return player.position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)).normalized * safeDistance;
+    void Wander() {
+        if (Time.frameCount % (60*5) == 0 && agent.isStopped) {
+            agent.destination = transform.position + (new Vector3(Random.Range(-1,1), Random.Range(-1, 1), Random.Range(-1, 1)).normalized * wanderRange);
+        }
     }
 
     public void Move(Vector3 point) {
