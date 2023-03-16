@@ -5524,25 +5524,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1475135137, guid: 7501ed492c539da4987f6dcdbc147d75, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 610763124980160726, guid: 7501ed492c539da4987f6dcdbc147d75,
-        type: 3}
-      propertyPath: autoAimRadius
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 610763124980160726, guid: 7501ed492c539da4987f6dcdbc147d75,
-        type: 3}
-      propertyPath: whatIsObstacle.m_Bits
-      value: 8192
-      objectReference: {fileID: 0}
-    - target: {fileID: 610763125167634107, guid: 7501ed492c539da4987f6dcdbc147d75,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 9215
-      objectReference: {fileID: 0}
     - target: {fileID: 610763125971457760, guid: 7501ed492c539da4987f6dcdbc147d75,
         type: 3}
       propertyPath: m_RootOrder
@@ -5602,11 +5583,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 833762646046221776, guid: 7501ed492c539da4987f6dcdbc147d75,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7501ed492c539da4987f6dcdbc147d75, type: 3}
