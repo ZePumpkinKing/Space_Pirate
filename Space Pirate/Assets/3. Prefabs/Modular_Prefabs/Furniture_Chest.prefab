@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8744795053600020065}
   - component: {fileID: 5689202267025250756}
   - component: {fileID: 7570810563034606862}
+  - component: {fileID: 4088202532778686468}
   m_Layer: 0
   m_Name: Furniture_Chest
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4088202532778686468
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8219087360589843675}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5741174448488666723, guid: 719b1524b26b333488813db6eab27a30, type: 3}
