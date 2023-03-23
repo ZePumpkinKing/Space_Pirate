@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2179171310247656268}
   - component: {fileID: 4168380020422102918}
   - component: {fileID: -5972279556203773352}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: EnemyShip_WallUpper
   m_TagString: Untagged
   m_Icon: {fileID: 0}

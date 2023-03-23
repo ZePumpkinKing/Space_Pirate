@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 817931075794268858}
   - component: {fileID: 3223777658561660528}
   - component: {fileID: -6398667960992773793}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hangar_Doorway
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -185,6 +185,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hanger Doorway 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 883bbc54ffdacf044b68481f39f78590,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 883bbc54ffdacf044b68481f39f78590, type: 3}

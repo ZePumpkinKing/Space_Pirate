@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4767384794144020992}
   - component: {fileID: 7335748615167373002}
   - component: {fileID: 1451297545557518188}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hangar_Corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
