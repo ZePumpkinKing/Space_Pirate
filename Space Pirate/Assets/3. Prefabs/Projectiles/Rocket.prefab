@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 3028457459112175999}
   - component: {fileID: 3028457459112175996}
   - component: {fileID: 8641831504791989903}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rocket
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,9 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 10
-  speed: 0.1
+  speed: 10
   turnSpeed: 0
-  aliveTime: 0
+  aliveTime: 10
 --- !u!54 &8641831504791989903
 Rigidbody:
   m_ObjectHideFlags: 0

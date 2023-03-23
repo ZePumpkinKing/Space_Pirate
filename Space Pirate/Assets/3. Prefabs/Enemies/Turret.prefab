@@ -505,9 +505,9 @@ MonoBehaviour:
   projectile: {fileID: 5171619300252181318, guid: e64a5cc46a503ff4da278472f8d2b609,
     type: 3}
   laserSight: 0
-  fireDelay: 1
+  fireDelay: 0.5
   maxSpeed: 2
-  offset: {x: 0, y: 0, z: 0.9}
+  offset: {x: 0, y: 0, z: 1}
 --- !u!114 &2641635048914794942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab89c3ff5d93c64db3bae368fd154c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 30
 --- !u!135 &9125180702258984230
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -532,5 +532,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 1.1
   m_Center: {x: 0, y: 0.5, z: 0}

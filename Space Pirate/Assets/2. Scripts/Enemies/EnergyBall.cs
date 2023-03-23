@@ -56,4 +56,12 @@ public class EnergyBall : MonoBehaviour {
 
         Gizmos.DrawRay(transform.position, transform.forward);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Ground") || collision.transform.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
