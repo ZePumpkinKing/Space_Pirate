@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8588666187533933693}
   - component: {fileID: 5824813676528314551}
   - component: {fileID: 6293471633913932201}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pipe Straight 4M
   m_TagString: Untagged
   m_Icon: {fileID: 0}

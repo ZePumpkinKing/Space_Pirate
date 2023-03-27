@@ -32,7 +32,7 @@ public class GrapplingRope : MonoBehaviour
 
     void DrawRope()
     {
-        if (!grapplingGun.isGrappling)
+        if (!grapplingGun.isPlayerGrappling && !grapplingGun.isObjGrappling)
         {
             currentGrapplePosition = grapplingGun.gunTip.position;
             spring.Reset();
@@ -58,13 +58,6 @@ public class GrapplingRope : MonoBehaviour
 
         currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 12f);
 
-        /*        for (int i = 0; i < quality + 1; i++)
-                {
-                    var delta = i / (float) quality;
-                    var offset = up * waveHeight * Mathf.Sin(delta * waveCount * Mathf.PI) * spring.Value * affectCurve.Evaluate(delta);
-
-                    lr.SetPosition(i, Vector3.Lerp(gunTipPosition, currentGrapplePosition, delta) + offset);
-                }*/
         for (var i = 0; i < quality + 1; i++)
         {
             var delta = i / (float)quality;

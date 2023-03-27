@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2606957090075079900}
   - component: {fileID: 272805192914468886}
   - component: {fileID: 1621705507068653191}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'Pipe Straight 8M '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
