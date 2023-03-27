@@ -3807,6 +3807,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreamingVolume
       objectReference: {fileID: 0}
+    - target: {fileID: 9120652671476357964, guid: 69d4aa0b32aec1141856b14a7fd49499,
+        type: 3}
+      propertyPath: m_TagString
+      value: Streaming
+      objectReference: {fileID: 0}
     - target: {fileID: 9120652671476357967, guid: 69d4aa0b32aec1141856b14a7fd49499,
         type: 3}
       propertyPath: m_RootOrder
@@ -5782,6 +5787,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreamingVolume
       objectReference: {fileID: 0}
+    - target: {fileID: 9120652671476357964, guid: 69d4aa0b32aec1141856b14a7fd49499,
+        type: 3}
+      propertyPath: m_TagString
+      value: Streaming
+      objectReference: {fileID: 0}
     - target: {fileID: 9120652671476357967, guid: 69d4aa0b32aec1141856b14a7fd49499,
         type: 3}
       propertyPath: m_RootOrder
@@ -7179,6 +7189,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StreamingVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 9120652671476357964, guid: 69d4aa0b32aec1141856b14a7fd49499,
+        type: 3}
+      propertyPath: m_TagString
+      value: Streaming
       objectReference: {fileID: 0}
     - target: {fileID: 9120652671476357967, guid: 69d4aa0b32aec1141856b14a7fd49499,
         type: 3}
@@ -10130,6 +10145,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StreamingVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 9120652671476357964, guid: 69d4aa0b32aec1141856b14a7fd49499,
+        type: 3}
+      propertyPath: m_TagString
+      value: Streaming
       objectReference: {fileID: 0}
     - target: {fileID: 9120652671476357967, guid: 69d4aa0b32aec1141856b14a7fd49499,
         type: 3}

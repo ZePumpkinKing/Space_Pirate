@@ -13,6 +13,7 @@ TagManager:
   - Interactable
   - Gun
   - Emissive_to_baked
+  - Streaming
   layers:
   - Default
   - TransparentFX
