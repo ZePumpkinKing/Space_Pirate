@@ -73,6 +73,12 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         normalSpeed *= 100;
+
+        normalSpeed *= transform.localScale.x;
+        maxSpeed *= transform.localScale.x;
+        maxMomentum *= transform.localScale.x;
+        playerJumpForce *= transform.localScale.x;
+        rb.mass *= transform.localScale.x;
     }
 
     private void Update()
@@ -206,12 +212,14 @@ public class Player : MonoBehaviour
     private void CounterMovement(float x, float y, Vector2 mag)
     {
         //Counter movement
-        if (Mathf.Abs(mag.x) > threshold && Mathf.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
+        if (Mathf.Abs(mag.x) > threshold && Mathf.Abs(x) < 0.05f && rb.velocity.x != 0)
         {
+            Debug.Log("x");
             rb.AddForce(normalSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement);
         }
-        if (Mathf.Abs(mag.y) > threshold && Mathf.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0))
+        if (Mathf.Abs(mag.y) > threshold && Mathf.Abs(y) < 0.05f && rb.velocity.z != 0)
         {
+            Debug.Log("y");
             rb.AddForce(normalSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
         }
 
