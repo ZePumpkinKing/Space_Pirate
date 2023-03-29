@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 3451754507754135237}
   m_Layer: 0
   m_Name: Engineering_Turbine
-  m_TagString: Untagged
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
