@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8730546185772896810}
   m_Layer: 0
   m_Name: Gangway_Intersection Fixed UVs
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8496120609299738489}
-  m_Mesh: {fileID: -7133110167369606765, guid: ead21fedf175e3249b3803380de9c244, type: 3}
+  m_Mesh: {fileID: -7133110167369606765, guid: d06531f16eecb0943a2d088c8ec3337d, type: 3}
 --- !u!23 &7991836405158383276
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 52ed0dd426141bf4fb38e398ab28775f, type: 2}
+  - {fileID: 2100000, guid: 855d4d33c5c52004b9055395f48ff2fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
