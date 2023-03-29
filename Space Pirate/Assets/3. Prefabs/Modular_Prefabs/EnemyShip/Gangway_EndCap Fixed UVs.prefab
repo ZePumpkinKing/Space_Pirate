@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8939815943298692856}
   m_Layer: 0
   m_Name: Gangway_EndCap Fixed UVs
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8129545905821715371}
-  m_Mesh: {fileID: 4070927598601075419, guid: df2e70be38b3d6d449cd0dd2e3209501, type: 3}
+  m_Mesh: {fileID: 4070927598601075419, guid: 8ee9f0b00eb3ea741ba1cbca1073a99d, type: 3}
 --- !u!23 &7769006903607405182
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8d22d253991f2a47af1b82ca00b2e9f, type: 2}
+  - {fileID: 2100000, guid: bf2f681d17c2d924bb9df06df9fe3d51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,4 +97,4 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4070927598601075419, guid: df2e70be38b3d6d449cd0dd2e3209501, type: 3}
+  m_Mesh: {fileID: 4070927598601075419, guid: 8ee9f0b00eb3ea741ba1cbca1073a99d, type: 3}
