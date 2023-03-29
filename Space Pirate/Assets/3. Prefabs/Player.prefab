@@ -849,7 +849,7 @@ MonoBehaviour:
   orientation: {fileID: 8010402210723835853}
   groundCheck: {fileID: 2937879413896010012}
   normalSpeed: 11.25
-  maxSpeed: 11.25
+  maxSpeed: 7
   maxMomentum: 31.25
   playerJumpForce: 6.25
   counterMovement: 0.5
@@ -1412,7 +1412,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9bccba7bd8862484680444ceca124fb2, type: 2}
+  - {fileID: 2100000, guid: 501170b88ef6cf247b9c3dd92ae4e0f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
