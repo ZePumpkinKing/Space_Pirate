@@ -214,12 +214,10 @@ public class Player : MonoBehaviour
         //Counter movement
         if (Mathf.Abs(mag.x) > threshold && Mathf.Abs(x) < 0.05f && rb.velocity.x != 0)
         {
-            Debug.Log("x");
             rb.AddForce(normalSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement);
         }
         if (Mathf.Abs(mag.y) > threshold && Mathf.Abs(y) < 0.05f && rb.velocity.z != 0)
         {
-            Debug.Log("y");
             rb.AddForce(normalSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
         }
 
