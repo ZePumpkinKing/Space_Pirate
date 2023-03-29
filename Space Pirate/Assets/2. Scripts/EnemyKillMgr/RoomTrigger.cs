@@ -10,7 +10,7 @@ public class RoomTrigger : MonoBehaviour
     {
         gm = FindObjectOfType<GameManager>();
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {

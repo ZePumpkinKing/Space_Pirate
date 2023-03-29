@@ -27,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561592217064225424}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -44.57869, y: 60.89985, z: -194.23322}
-  m_LocalScale: {x: 2.2599, y: 3.4644, z: 0.558}
+  m_LocalScale: {x: 5.7582855, y: 5.061835, z: 0.558}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332c3443635f59247b6d95de091a2b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfEnemiesToOpenDoor: 6
+  numOfEnemiesToOpenDoor: 5
