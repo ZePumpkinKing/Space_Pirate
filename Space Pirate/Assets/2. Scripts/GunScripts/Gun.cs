@@ -231,6 +231,7 @@ public class Gun : MonoBehaviour
                 currentGunObj = gunObjs[gunId];
                 currentGun = guns[gunId];
                 currentGunId = (gunId);
+                anim = currentGunObj.GetComponent<Animator>();
                 yield return new WaitForSeconds(1);
                 switching = false;
             }
