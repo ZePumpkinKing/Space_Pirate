@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1978774736852072163}
   m_Layer: 3
   m_Name: Gangway_PlatformEnd
-  m_TagString: Ground
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
