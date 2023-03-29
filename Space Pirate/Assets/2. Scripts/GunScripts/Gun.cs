@@ -105,7 +105,6 @@ public class Gun : MonoBehaviour
                     Vector3 direction = GetDirection(); //get the direction of our shot, adhering to our spread amount
                     if (Physics.Raycast(castPoint.position, direction, out hit, currentGun.maxDistance)) //if we hit an object with our bullet
                     {
-                        Debug.Log(hit.point);
                         trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity); //start a bullet trail effect
                         StartCoroutine(SpawnBullet(trail, hit.point, hit)); //spawn our bullet
                     }
@@ -149,7 +148,7 @@ public class Gun : MonoBehaviour
         }
         trail.transform.position = hitPos;
         IDamageable damageable = hit.transform.GetComponent<IDamageable>();
-        damageable?.TakeDamage(currentGun.damage);
+        if (damageable != null) damageable?.TakeDamage(currentGun.damage);
         Destroy(trail.gameObject, trail.time);
     }
     private void StartReload()
@@ -203,14 +202,12 @@ public class Gun : MonoBehaviour
                 
                 if (currentGunId + 1 <= guns.Length - 1)
                 {
-                    Debug.Log(currentGunId + 1);
                     StartCoroutine(SwitchWeapon(currentGunId + 1));
                 }
                 break;
             case -120://if we scroll down
                 if (currentGunId - 1 >= 0)
                 {
-                    Debug.Log(currentGunId - 1);
                     StartCoroutine(SwitchWeapon(currentGunId - 1));
                 }
                 break;
@@ -234,6 +231,7 @@ public class Gun : MonoBehaviour
                 currentGunObj = gunObjs[gunId];
                 currentGun = guns[gunId];
                 currentGunId = (gunId);
+                anim = currentGunObj.GetComponent<Animator>();
                 yield return new WaitForSeconds(1);
                 switching = false;
             }
