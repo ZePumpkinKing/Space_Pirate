@@ -31,7 +31,9 @@ public class Rocket : MonoBehaviour
         transform.LookAt(player);
 
         if (launch) {
-            rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation((transform.position - player.position).normalized, transform.up), 1);
+
+            transform.Translate(transform.forward * speed);
         }
     }
 
