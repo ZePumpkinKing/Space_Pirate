@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 342239446762651647}
   - component: {fileID: 2547656124496677685}
   - component: {fileID: 5951765970061265060}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: EnemyShip_WallMid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
+  m_StaticShadowCaster: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

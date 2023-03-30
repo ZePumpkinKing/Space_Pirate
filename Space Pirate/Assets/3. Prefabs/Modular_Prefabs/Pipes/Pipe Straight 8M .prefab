@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2606957090075079900}
   - component: {fileID: 272805192914468886}
   - component: {fileID: 1621705507068653191}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'Pipe Straight 8M '
-  m_TagString: Untagged
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
