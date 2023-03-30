@@ -1407,6 +1407,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7448d5108c9fd8c4890a596dc66cdec8,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7448d5108c9fd8c4890a596dc66cdec8,
+        type: 3}
       propertyPath: m_TagString
       value: Grapple
       objectReference: {fileID: 0}
@@ -1609,6 +1614,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 773df610be6a2e548b2ac666c5d0d1a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 773df610be6a2e548b2ac666c5d0d1a2, type: 3}
