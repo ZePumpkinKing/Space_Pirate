@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 5950422346054299482}
   - component: {fileID: 1332997585673959955}
   - component: {fileID: 6007311121330541725}
-  m_Layer: 0
+  - component: {fileID: 1736999037341766583}
+  - component: {fileID: 4905932538838562880}
+  m_Layer: 13
   m_Name: Mug 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +85,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1736999037341766583
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153230441021264982}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3215274201267548535, guid: b518d4b08b6f92c43b5fc740ba4ac2b8, type: 3}
+--- !u!54 &4905932538838562880
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153230441021264982}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
