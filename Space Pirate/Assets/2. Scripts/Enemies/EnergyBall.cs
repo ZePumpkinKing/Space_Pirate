@@ -10,6 +10,8 @@ public class EnergyBall : MonoBehaviour {
     [SerializeField] float spinSpeed;
     [SerializeField] float fireDelay;
 
+    public float damage;
+
     bool launch;
     Transform player;
 

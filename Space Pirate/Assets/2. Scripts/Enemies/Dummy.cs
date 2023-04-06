@@ -13,9 +13,12 @@ public class Dummy : MonoBehaviour
     [SerializeField] float chaseDistance;
     [SerializeField] float wanderRange;
 
+    string state;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        state = "Wander";
     }
 
     void Start()
@@ -30,13 +33,25 @@ public class Dummy : MonoBehaviour
         Physics.Raycast(transform.position, player.position - transform.position, out hit);
 
         if (Physics.CheckSphere(transform.position, chaseDistance, LayerMask.GetMask("Player")) && hit.transform.CompareTag("Player")) {
-            if (!Physics.CheckSphere(transform.position, safeDistance, LayerMask.GetMask("Player"))) {
-                Move(player.position);
-            } else {
-                Move(transform.position);
-            }
+            state = "Chase";
         } else {
-            Wander();
+            state = "Wander";
+        }
+
+        switch (state) {
+            case "Fire":
+                Fire();
+                break;
+            case "Melee":
+                Melee();
+                break;
+            case "Chase":
+                Chase();
+                break;
+            case "Wander":
+            default:
+                Wander();
+                break;
         }
     }
 
@@ -44,6 +59,28 @@ public class Dummy : MonoBehaviour
         if (Time.frameCount % (60*5) == 0 && agent.isStopped) {
             agent.destination = transform.position + (new Vector3(Random.Range(-1,1), Random.Range(-1, 1), Random.Range(-1, 1)).normalized * wanderRange);
         }
+    }
+
+    void Chase()
+    {
+        if (!Physics.CheckSphere(transform.position, safeDistance, LayerMask.GetMask("Player")))
+        {
+            Move(player.position);
+        }
+        else
+        {
+            Move(transform.position);
+        }
+    }
+
+    void Melee()
+    {
+
+    }
+
+    void Fire()
+    {
+
     }
 
     public void Move(Vector3 point) {

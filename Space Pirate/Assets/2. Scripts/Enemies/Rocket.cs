@@ -9,6 +9,8 @@ public class Rocket : MonoBehaviour
     [SerializeField] float turnSpeed;
     [SerializeField] float aliveTime;
 
+    public float damage;
+
     Transform player;
     Rigidbody rb;
     
