@@ -19,6 +19,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private Transform gunTip;
 
     private Animator anim;
+    Player player;
     
     Input input;
     InputAction activeWeapon;
@@ -41,6 +42,7 @@ public class Gun : MonoBehaviour
 
     private void Awake()
     {
+        player = FindObjectOfType<Player>();
         gunObjs = GameObject.FindGameObjectsWithTag("Gun");
         gunObjRecoil = FindObjectOfType<GunFireRecoil>();
         
@@ -71,7 +73,11 @@ public class Gun : MonoBehaviour
     }
     private void Update()
     {
-        
+        if (player.currentState == Player.states.dead)
+        {
+            Destroy(gameObject.GetComponent<Gun>());
+        }
+        Debug.Log(player.currentState);
         timeSinceLastShot += Time.deltaTime;
         if (currentGun.automatic)
         {
@@ -86,7 +92,8 @@ public class Gun : MonoBehaviour
             anim.SetBool("Reload", true); // sets our animation state
         } else anim.SetBool("Reload", false);
     }
-    private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f) && !switching; // returns true if we are able to shoot(not reloading, switching weapons, or still shooting)
+    private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f) // if we're done firing the last shot
+        && !switching; //if we aren't switching
     public void Shoot()
     {
         if (currentGun.currentAmmo > 0) // if we have ammo
