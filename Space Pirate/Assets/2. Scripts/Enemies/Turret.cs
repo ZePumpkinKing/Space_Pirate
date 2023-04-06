@@ -6,6 +6,8 @@ public class Turret : MonoBehaviour {
     [SerializeField] Transform gunBase;
     [SerializeField] Transform cannon;
     [SerializeField] Transform sensor;
+    
+    LineRenderer sight;
 
     [SerializeField] GameObject projectile;
 
@@ -25,6 +27,11 @@ public class Turret : MonoBehaviour {
         firing = false;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        
+        if (laserSight)
+        {
+            sight = GetComponent<LineRenderer>();
+        }
     }
 
     void Update() {
@@ -45,7 +52,12 @@ public class Turret : MonoBehaviour {
 
 
         if (laserSight) {
-            Debug.DrawLine(sensor.position, player.position, Color.red);
+            Vector3[] positions = new Vector3[2];
+
+            positions[0] = sensor.position;
+            positions[1] = sensor.forward * 100;
+
+            sight.SetPositions(positions);
         }
     }
 
