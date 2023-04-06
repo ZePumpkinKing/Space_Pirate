@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 8997651240834919927}
   - component: {fileID: 9163159548867946870}
   - component: {fileID: 4146970991195677639}
-  m_Layer: 0
+  - component: {fileID: 4620517799051726099}
+  - component: {fileID: 5727972846604836806}
+  m_Layer: 13
   m_Name: Plate 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +85,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4620517799051726099
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503435125149837246}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -125435165217083709, guid: b518d4b08b6f92c43b5fc740ba4ac2b8, type: 3}
+--- !u!54 &5727972846604836806
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503435125149837246}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
