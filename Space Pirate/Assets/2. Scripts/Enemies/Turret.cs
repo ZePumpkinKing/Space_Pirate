@@ -54,8 +54,12 @@ public class Turret : MonoBehaviour {
         if (laserSight) {
             Vector3[] positions = new Vector3[2];
 
+            RaycastHit target;
+
+            Physics.Raycast(new Ray(sensor.position, sensor.forward), out target, 9999f, 3);
+
             positions[0] = sensor.position;
-            positions[1] = sensor.forward * 100;
+            positions[1] = target.point;
 
             sight.SetPositions(positions);
         }
