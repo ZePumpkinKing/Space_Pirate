@@ -9,6 +9,8 @@ public class Rocket : MonoBehaviour
     [SerializeField] float turnSpeed;
     [SerializeField] float aliveTime;
 
+    public float damage;
+
     Transform player;
     Rigidbody rb;
     
@@ -21,7 +23,8 @@ public class Rocket : MonoBehaviour
         player = GameObject.FindObjectOfType<Player>().transform;
         StartCoroutine(Ready());
 
-        Destroy(gameObject, aliveTime);
+        //Destroy(gameObject, aliveTime);
+        StartCoroutine(Kill(aliveTime));
     }
 
     // Update is called once per frame
@@ -30,7 +33,9 @@ public class Rocket : MonoBehaviour
         transform.LookAt(player);
 
         if (launch) {
-            rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation((transform.position - player.position).normalized, transform.up), 1);
+
+            transform.Translate(transform.forward * speed);
         }
     }
 
@@ -38,6 +43,13 @@ public class Rocket : MonoBehaviour
     {
         launch = false;
         yield return new WaitForSeconds(delay);
+        transform.parent = null;
         launch = true;
+    }
+
+    IEnumerator Kill(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
     }
 }

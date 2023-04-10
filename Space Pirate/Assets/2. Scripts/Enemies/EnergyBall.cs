@@ -10,6 +10,8 @@ public class EnergyBall : MonoBehaviour {
     [SerializeField] float spinSpeed;
     [SerializeField] float fireDelay;
 
+    public float damage;
+
     bool launch;
     Transform player;
 
@@ -55,5 +57,13 @@ public class EnergyBall : MonoBehaviour {
         Gizmos.color = Color.red;
 
         Gizmos.DrawRay(transform.position, transform.forward);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Ground") || collision.transform.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
