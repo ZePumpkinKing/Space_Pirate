@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class WeaponSway : MonoBehaviour
 {
     Input input;
+    Player player;
 
     [Header("Position")]
     public float amount;
@@ -32,6 +33,7 @@ public class WeaponSway : MonoBehaviour
     private void Awake()
     {
         input = new Input();
+        player = FindObjectOfType<Player>();
     }
     private void Start()
     {
@@ -41,10 +43,12 @@ public class WeaponSway : MonoBehaviour
     private void Update()
     {
         movement = input.Gameplay.Look.ReadValue<Vector2>();
-        CalculateSway();
-        MoveSway();
-        TiltSway();
-
+        if (player.currentState == Player.states.Alive)
+        {
+            CalculateSway();
+            MoveSway();
+            TiltSway();
+        }
     }
 
     private void CalculateSway()

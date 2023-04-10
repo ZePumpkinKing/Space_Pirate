@@ -6,6 +6,8 @@ public class Turret : MonoBehaviour {
     [SerializeField] Transform gunBase;
     [SerializeField] Transform cannon;
     [SerializeField] Transform sensor;
+    
+    LineRenderer sight;
 
     [SerializeField] GameObject projectile;
 
@@ -17,14 +19,30 @@ public class Turret : MonoBehaviour {
 
     Transform player;
 
+    bool firing;
+    bool keepFiring;
+
     void Start() {
+        keepFiring = false;
+        firing = false;
+
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        
+        if (laserSight)
+        {
+            sight = GetComponent<LineRenderer>();
+        }
     }
 
     void Update() {
-        if (Time.frameCount % fireDelay == 0) {
-            GameObject instance = Instantiate(projectile, cannon);
-            instance.transform.localPosition = offset;
+        RaycastHit hit;
+        Physics.Raycast(transform.position, player.position - transform.position, out hit);
+
+        //Debug.Log(hit.transform.tag);
+
+        if (hit.transform.CompareTag("Player") && !firing) {
+            //Debug.Log("Ready Weapon!");
+            StartCoroutine(Fire());
         }
 
         RotateTo(gunBase, player, gunBase.up, maxSpeed);
@@ -34,7 +52,29 @@ public class Turret : MonoBehaviour {
 
 
         if (laserSight) {
-            Debug.DrawLine(sensor.position, player.position, Color.red);
+            Vector3[] positions = new Vector3[2];
+
+            RaycastHit target;
+
+            Physics.Raycast(new Ray(sensor.position, sensor.forward), out target, 9999f, 3);
+
+            positions[0] = sensor.position;
+            positions[1] = target.point;
+
+            sight.SetPositions(positions);
+        }
+    }
+
+    IEnumerator Fire() {
+        firing = true;
+        //Debug.Log("charging");
+        yield return new WaitForSeconds(fireDelay);
+        //Debug.Log("fire!");
+        GameObject instance = Instantiate(projectile, cannon);
+        instance.transform.localPosition = offset;
+        firing = false;
+        if (keepFiring) {
+            StartCoroutine(Fire());
         }
     }
 
