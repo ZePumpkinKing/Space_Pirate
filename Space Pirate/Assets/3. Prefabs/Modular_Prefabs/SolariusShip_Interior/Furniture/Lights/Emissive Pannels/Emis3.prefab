@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2571565410090126134}
   m_Layer: 0
   m_Name: Emis3
-  m_TagString: Untagged
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

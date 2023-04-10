@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 897383999974987173}
   - component: {fileID: 3139240626846966127}
   - component: {fileID: 968691671144253998}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hangar_Straight
-  m_TagString: Untagged
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -53,7 +53,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
+  m_StaticShadowCaster: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

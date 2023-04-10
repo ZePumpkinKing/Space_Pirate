@@ -12,8 +12,9 @@ TagManager:
   - Grapple
   - Interactable
   - Gun
-  - Streaming
   - Emissive_to_baked
+  - Streaming
+  - Door
   layers:
   - Default
   - TransparentFX

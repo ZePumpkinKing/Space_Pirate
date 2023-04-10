@@ -160,7 +160,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 11.984314, g: 11.984314, b: 11.984314, a: 1}
-    - _Emit_Color: {r: 2.8862746, g: 4.392157, b: 10.603922, a: 0}
+    - _Emit_Color: {r: 18.456873, g: 28.395191, b: 67.79352, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}

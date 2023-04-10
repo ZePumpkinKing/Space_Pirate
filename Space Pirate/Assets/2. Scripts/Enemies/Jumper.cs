@@ -6,15 +6,22 @@ public class Jumper : MonoBehaviour
 {
     [SerializeField] float jumpInterval;
     [SerializeField] float speed;
+    [SerializeField] float turnSpeed;
     //[SerializeField] GameObject projectile;
     //[SerializeField] Transform gun;
+
+    [SerializeField] Transform jumpChecker;
 
     //Vector3[] initialScale;
     //Transform[] currentScale;
 
     //bool moving = true;
 
+    Vector3 destination;
+    Vector3 destinationNormal;
+    bool turning;
     Rigidbody rb;
+    SphereCollider hitbox;
 
     //Transform player;
 
@@ -22,7 +29,9 @@ public class Jumper : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         //player = GameObject.FindObjectOfType<Player>().transform;
 
-        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+        hitbox = GetComponent<SphereCollider>();
+
+        StartCoroutine(Jump());
 
         /*
         currentScale = gameObject.GetComponentsInChildren<Transform>();
@@ -36,43 +45,86 @@ public class Jumper : MonoBehaviour
     }
 
     void Update() {
-        /*
-        gun.LookAt(player);
-
-        if (moving) {
-            gun.rotation = transform.rotation;
+        if ((destination - transform.position).magnitude <= 5 && !turning)
+        {
+            VelocityTurn(true);
         }
-        */
     }
 
     IEnumerator Jump() {
         yield return new WaitForSeconds(jumpInterval);
 
-        transform.parent = null;
-        transform.localScale = Vector3.one;
+        //transform.parent = null;
+        //transform.localScale = Vector3.one;
 
         float xRot = Random.Range(-45,45);
         float yRot = Random.Range(-45,45);
 
-        //transform.position += transform.forward * 0.01f;
+        jumpChecker.transform.Rotate(Vector3.up, xRot);
+        jumpChecker.transform.Rotate(Vector3.right, yRot);
 
-        transform.Rotate(Vector3.up, xRot);
-        transform.Rotate(Vector3.right, yRot);
+        FindDestination();
 
-        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+        Debug.Log((transform.localPosition - destination).magnitude);
+        Debug.DrawLine(transform.localPosition, destination, Color.yellow, 10);
+
+        rb.AddForce(jumpChecker.forward * speed, ForceMode.VelocityChange);
+
+        jumpChecker.localRotation = Quaternion.identity;
+
+        StartCoroutine(TurnWait());
+
+        //hitbox.enabled = true;
 
         //moving = true;
     }
 
+    void FindDestination()
+    {
+        RaycastHit hit;
+        Physics.SphereCast(new Ray(jumpChecker.position, jumpChecker.forward), 0.5f, out hit, LayerMask.GetMask("3"), 1);
+        destination = hit.point;
+        destinationNormal = hit.normal;
+
+        if ((destination - transform.position).magnitude <= 5) {
+            FindDestination();
+        }
+    }
+
+    void VelocityTurn(bool reverse)
+    {
+        if (reverse)
+        {
+            turning = true;
+            
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(destinationNormal, transform.up), turnSpeed);
+        } else
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rb.velocity.normalized, transform.up), turnSpeed);
+        }
+    }
+
+    IEnumerator TurnWait()
+    {
+        yield return new WaitForSeconds(0.1f);
+        VelocityTurn(false);
+    }
+
     void Land(Vector3 position, Vector3 normal) {
+
         rb.velocity = Vector3.zero;
 
         //transform.LookAt(transform.position + normal);
         transform.rotation = Quaternion.LookRotation(normal);
+
+        //hitbox.enabled = false;
+
         //transform.position = position;
 
 
         //moving = false;
+
+        turning = false;
 
         StartCoroutine(Jump());
     }

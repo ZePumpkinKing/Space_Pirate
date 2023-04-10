@@ -19,6 +19,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private Transform gunTip;
 
     private Animator anim;
+    Player player;
     
     Input input;
     InputAction activeWeapon;
@@ -41,6 +42,7 @@ public class Gun : MonoBehaviour
 
     private void Awake()
     {
+        player = FindObjectOfType<Player>();
         gunObjs = GameObject.FindGameObjectsWithTag("Gun");
         gunObjRecoil = FindObjectOfType<GunFireRecoil>();
         
@@ -71,7 +73,11 @@ public class Gun : MonoBehaviour
     }
     private void Update()
     {
-        
+        if (player.currentState == Player.states.dead)
+        {
+            Destroy(gameObject.GetComponent<Gun>());
+        }
+        Debug.Log(player.currentState);
         timeSinceLastShot += Time.deltaTime;
         if (currentGun.automatic)
         {
@@ -86,7 +92,8 @@ public class Gun : MonoBehaviour
             anim.SetBool("Reload", true); // sets our animation state
         } else anim.SetBool("Reload", false);
     }
-    private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f) && !switching; // returns true if we are able to shoot(not reloading, switching weapons, or still shooting)
+    private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f) // if we're done firing the last shot
+        && !switching; //if we aren't switching
     public void Shoot()
     {
         if (currentGun.currentAmmo > 0) // if we have ammo
@@ -105,7 +112,6 @@ public class Gun : MonoBehaviour
                     Vector3 direction = GetDirection(); //get the direction of our shot, adhering to our spread amount
                     if (Physics.Raycast(castPoint.position, direction, out hit, currentGun.maxDistance)) //if we hit an object with our bullet
                     {
-                        Debug.Log(hit.point);
                         trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity); //start a bullet trail effect
                         StartCoroutine(SpawnBullet(trail, hit.point, hit)); //spawn our bullet
                     }
@@ -149,7 +155,7 @@ public class Gun : MonoBehaviour
         }
         trail.transform.position = hitPos;
         IDamageable damageable = hit.transform.GetComponent<IDamageable>();
-        damageable?.TakeDamage(currentGun.damage);
+        if (damageable != null) damageable?.TakeDamage(currentGun.damage);
         Destroy(trail.gameObject, trail.time);
     }
     private void StartReload()
@@ -203,14 +209,12 @@ public class Gun : MonoBehaviour
                 
                 if (currentGunId + 1 <= guns.Length - 1)
                 {
-                    Debug.Log(currentGunId + 1);
                     StartCoroutine(SwitchWeapon(currentGunId + 1));
                 }
                 break;
             case -120://if we scroll down
                 if (currentGunId - 1 >= 0)
                 {
-                    Debug.Log(currentGunId - 1);
                     StartCoroutine(SwitchWeapon(currentGunId - 1));
                 }
                 break;
@@ -234,6 +238,7 @@ public class Gun : MonoBehaviour
                 currentGunObj = gunObjs[gunId];
                 currentGun = guns[gunId];
                 currentGunId = (gunId);
+                anim = currentGunObj.GetComponent<Animator>();
                 yield return new WaitForSeconds(1);
                 switching = false;
             }

@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     Recoil recoilScript;
     Camera cam;
     Rigidbody rb;
+    PlayerHealth playerH;
     [Header("Transforms")]
     public Transform orientation;
     public Transform groundCheck;
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
     
     public bool gravityEnabled;
     float buttonGrav;
+    public states currentState { get; private set; }
 
     [Header("Detection")]
     public LayerMask whatIsGround;
@@ -43,10 +45,15 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask interactables;
     Transform target;
 
-    float gravAdjusting;
-
+    public enum states
+    {
+        Alive,
+        dead
+    }
     private void Awake()
     {
+        playerH = FindObjectOfType<PlayerHealth>();
+        currentState = states.Alive;
         input = new Input();
         recoilScript = FindObjectOfType<Recoil>();
         grappleScript = FindObjectOfType<Grappling>();
@@ -83,11 +90,22 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (playerH.health <= 0)
+        {
+            currentState = states.dead;
+        }
+        if (currentState == states.dead)
+        {
+            Destroy(gameObject.GetComponent<Grappling>());
+            Destroy(gameObject.GetComponent<GrapplingRope>());
+            transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z - 90);
+            Destroy(gameObject.GetComponent<Player>());
+        }
         move = input.Gameplay.Move.ReadValue<Vector3>();
         rotate = input.Gameplay.Rotate.ReadValue<float>();
         buttonGrav = input.Gameplay.Debug.ReadValue<float>();
 
-        Look();
+        if (currentState != states.dead) Look();
 
         if (gravityEnabled) rb.useGravity = true;
         else rb.useGravity = false;
@@ -115,6 +133,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+
         if (gravityEnabled && !grappleScript.isPlayerGrappling && isGrounded) RegularGravMovement();
 
         if (!isGrounded) CalculateAirMovement();
@@ -214,12 +233,10 @@ public class Player : MonoBehaviour
         //Counter movement
         if (Mathf.Abs(mag.x) > threshold && Mathf.Abs(x) < 0.05f && rb.velocity.x != 0)
         {
-            Debug.Log("x");
             rb.AddForce(normalSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement);
         }
         if (Mathf.Abs(mag.y) > threshold && Mathf.Abs(y) < 0.05f && rb.velocity.z != 0)
         {
-            Debug.Log("y");
             rb.AddForce(normalSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
         }
 

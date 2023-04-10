@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1978774736852072163}
   m_Layer: 3
   m_Name: Gangway_PlatformEnd
-  m_TagString: Ground
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -53,7 +53,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
+  m_StaticShadowCaster: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
