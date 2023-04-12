@@ -7,8 +7,8 @@ public class GunUI : MonoBehaviour
 {
     [SerializeField] private Text magCapacityText;
     [SerializeField] private Text currentAmmoText;
-    [SerializeField] private RawImage pistolIndicator;
-    [SerializeField] private RawImage shotgunIndicator;
+    [SerializeField] private GameObject pistolIndicator;
+    [SerializeField] private GameObject shotgunIndicator;
     private Gun gun;
 
     private void Awake()
@@ -23,12 +23,13 @@ public class GunUI : MonoBehaviour
         switch (gun.currentGun.name)
         {
             case "Pistol":
-                shotgunIndicator.enabled = false;
-                pistolIndicator.enabled = true;
+
+                shotgunIndicator.SetActive(false);
+                pistolIndicator.SetActive(true);
                 break;
             case "Shotgun":
-                shotgunIndicator.enabled = true;
-                pistolIndicator.enabled = false;
+                shotgunIndicator.SetActive(true);
+                pistolIndicator.SetActive(false);
                 break;
         }
     }
