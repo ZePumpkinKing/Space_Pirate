@@ -172,7 +172,7 @@ public class Gun : MonoBehaviour
         
         reloading = false;
     }
-    enum gunIDs
+    public enum gunIDs
     {
         Pistol,//0
 
