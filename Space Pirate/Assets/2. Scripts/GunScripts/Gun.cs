@@ -191,16 +191,10 @@ public class Gun : MonoBehaviour
 
                 StartCoroutine(SwitchWeapon((int)gunIDs.Pistol)); 
                 break;
-            case -1://if we press 3
-                StartCoroutine(SwitchWeapon((int)gunIDs.Autogun));
-                break;
 
         }
         switch (activeWeapon.ReadValue<Vector2>().y)
         {
-            case 1://if we press 4
-                StartCoroutine(SwitchWeapon((int)gunIDs.Blunderbus));
-                break;
             case -1://if we press 2
                 StartCoroutine(SwitchWeapon((int)gunIDs.Shotgun));
                 break;
