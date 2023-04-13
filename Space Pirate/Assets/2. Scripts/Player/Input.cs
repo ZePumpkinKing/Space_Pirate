@@ -116,6 +116,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a18664f-0b14-4131-88fc-e7aebd8f6939"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -547,6 +556,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""action"": ""Shift"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2d6c1a9-31df-41cb-a8e2-e4f31b077b16"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -565,6 +585,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_Gameplay_Debug = m_Gameplay.FindAction("Debug", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Shift = m_Gameplay.FindAction("Shift", throwIfNotFound: true);
+        m_Gameplay_Reload = m_Gameplay.FindAction("Reload", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -634,6 +655,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Debug;
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Shift;
+    private readonly InputAction m_Gameplay_Reload;
     public struct GameplayActions
     {
         private @Input m_Wrapper;
@@ -648,6 +670,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         public InputAction @Debug => m_Wrapper.m_Gameplay_Debug;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Shift => m_Wrapper.m_Gameplay_Shift;
+        public InputAction @Reload => m_Wrapper.m_Gameplay_Reload;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -687,6 +710,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Shift.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShift;
                 @Shift.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShift;
                 @Shift.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShift;
+                @Reload.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -721,6 +747,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Shift.started += instance.OnShift;
                 @Shift.performed += instance.OnShift;
                 @Shift.canceled += instance.OnShift;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
             }
         }
     }
@@ -737,5 +766,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
         void OnDebug(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnShift(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
 }
