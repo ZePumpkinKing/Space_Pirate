@@ -13,7 +13,6 @@ public class DoorScript : MonoBehaviour
     {
         DoorController.SetBool("exited", exiting);
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
