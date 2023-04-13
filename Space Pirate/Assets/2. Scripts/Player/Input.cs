@@ -125,6 +125,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RestartScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""a1536656-2dfa-49aa-9631-a6f74f80b33e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -567,6 +576,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c2b2e50-330a-4e98-8601-d935d003eaf3"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RestartScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -586,6 +606,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Shift = m_Gameplay.FindAction("Shift", throwIfNotFound: true);
         m_Gameplay_Reload = m_Gameplay.FindAction("Reload", throwIfNotFound: true);
+        m_Gameplay_RestartScene = m_Gameplay.FindAction("RestartScene", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -656,6 +677,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Shift;
     private readonly InputAction m_Gameplay_Reload;
+    private readonly InputAction m_Gameplay_RestartScene;
     public struct GameplayActions
     {
         private @Input m_Wrapper;
@@ -671,6 +693,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Shift => m_Wrapper.m_Gameplay_Shift;
         public InputAction @Reload => m_Wrapper.m_Gameplay_Reload;
+        public InputAction @RestartScene => m_Wrapper.m_Gameplay_RestartScene;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -713,6 +736,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Reload.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
                 @Reload.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
                 @Reload.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
+                @RestartScene.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRestartScene;
+                @RestartScene.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRestartScene;
+                @RestartScene.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRestartScene;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -750,6 +776,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
+                @RestartScene.started += instance.OnRestartScene;
+                @RestartScene.performed += instance.OnRestartScene;
+                @RestartScene.canceled += instance.OnRestartScene;
             }
         }
     }
@@ -767,5 +796,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnShift(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnRestartScene(InputAction.CallbackContext context);
     }
 }
