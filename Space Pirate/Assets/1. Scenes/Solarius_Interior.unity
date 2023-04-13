@@ -45658,6 +45658,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 124602365150441832, guid: 4827937ce35bbfc46967dc24d8a06529,
         type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 124602365150441832, guid: 4827937ce35bbfc46967dc24d8a06529,
+        type: 3}
       propertyPath: m_TagString
       value: Emissive_to_baked
       objectReference: {fileID: 0}
@@ -45784,6 +45789,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Atrium_DownwardsRamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218940337385692399, guid: d1f97dbbfa32144428203d8b29fc1b9d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127779373251912134, guid: d1f97dbbfa32144428203d8b29fc1b9d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1f97dbbfa32144428203d8b29fc1b9d, type: 3}
@@ -46077,6 +46092,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1182512287}
     m_Modifications:
+    - target: {fileID: 1037493001667512144, guid: 6fa869548c578a1468628657bf60e021,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3719479327418960024, guid: 6fa869548c578a1468628657bf60e021,
         type: 3}
       propertyPath: m_RootOrder
@@ -46136,6 +46156,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Atrium_HelmOverhang
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095441194128445986, guid: 6fa869548c578a1468628657bf60e021,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fa869548c578a1468628657bf60e021, type: 3}
@@ -46513,6 +46538,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Atrium_MainCorridor_Overhang
       objectReference: {fileID: 0}
+    - target: {fileID: 7892802378307193854, guid: 686feaf6b3f755e47be4f588fdf5dcb1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248625706747250989, guid: 686feaf6b3f755e47be4f588fdf5dcb1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 686feaf6b3f755e47be4f588fdf5dcb1, type: 3}
 --- !u!1001 &7936333278256932863
@@ -46676,10 +46711,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1182512287}
     m_Modifications:
+    - target: {fileID: 3576067394741929325, guid: 4f03e87636a45ed439bb7007e971296a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8324740312288721094, guid: 4f03e87636a45ed439bb7007e971296a,
         type: 3}
       propertyPath: m_Name
       value: Atrium_UpwardsRamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8324740312288721094, guid: 4f03e87636a45ed439bb7007e971296a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8704538448623018620, guid: 4f03e87636a45ed439bb7007e971296a,
         type: 3}
