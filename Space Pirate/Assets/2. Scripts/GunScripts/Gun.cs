@@ -91,7 +91,7 @@ public class Gun : MonoBehaviour
             anim.SetBool("Reload", true); // sets our animation state
         } else anim.SetBool("Reload", false);
     }
-    private bool CanShoot() => !reloading && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f) // if we're done firing the last shot
+    private bool CanShoot() => !reloading && timeSinceLastShot > currentGun.timeBetweenShots // if we're done firing the last shot
         && !switching; //if we aren't switching
     public void Shoot()
     {
@@ -220,7 +220,7 @@ public class Gun : MonoBehaviour
     }
     private IEnumerator SwitchWeapon(int gunId)
     {
-        if (!reloading && !switching && timeSinceLastShot > 1f / (currentGun.fireRateRPM / 60f)) //only switch guns if we arent currently reloading, or switching
+        if (!reloading && !switching && timeSinceLastShot > currentGun.timeBetweenShots) //only switch guns if we arent currently reloading, or switching
         {
             if (currentGun != guns[gunId])
             {
@@ -232,7 +232,7 @@ public class Gun : MonoBehaviour
                 currentGun = guns[gunId];
                 currentGunId = (gunId);
                 anim = currentGunObj.GetComponent<Animator>();
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(currentGun.readyUpTime);
                 switching = false;
             }
             else yield return null;

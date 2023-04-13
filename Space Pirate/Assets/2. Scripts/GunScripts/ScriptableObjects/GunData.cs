@@ -19,8 +19,7 @@ public class GunData : ScriptableObject
 
     [Header("Reloading")]
     public int magCapacity;
-    [Tooltip ("1 / (Fire Rate RPM / 60f) = Time Between Shots")]
-    public float fireRateRPM;
+    public float timeBetweenShots;
     public float reloadTime;
 
     [Header("Recoil")]
@@ -34,6 +33,11 @@ public class GunData : ScriptableObject
     public float spreadX;
     public float spreadY;
     public float spreadZ;
+
+    [Header("General")]
+    [Tooltip("Seconds")]
+    public float readyUpTime;
+  
 
     [HideInInspector] public float currentAmmo;
 }
