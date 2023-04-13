@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5263656383975324262}
   - component: {fileID: 7991836405158383276}
   - component: {fileID: 8730546185772896810}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gangway_Intersection Fixed UVs
   m_TagString: Ground
   m_Icon: {fileID: 0}

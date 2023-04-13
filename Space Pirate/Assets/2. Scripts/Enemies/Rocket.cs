@@ -30,10 +30,8 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player);
-
         if (launch) {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation((transform.position - player.position).normalized, transform.up), 1);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation((transform.position - player.position).normalized, transform.up), turnSpeed);
 
             transform.Translate(transform.forward * speed);
         }
