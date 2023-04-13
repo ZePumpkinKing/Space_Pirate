@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class StreamingVolume : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class StreamingVolume : MonoBehaviour
         {
             EnableObjects();
         }
+    }
+
+    private void Update()
+    {
+        objsInVolume = objsInVolume.Where(item => item != null).ToList(); // if any items get destroyed at any point, remove them from list
     }
 
     private void OnTriggerExit(Collider other)

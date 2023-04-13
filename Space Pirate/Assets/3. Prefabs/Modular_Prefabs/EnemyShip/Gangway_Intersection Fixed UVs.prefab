@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5263656383975324262}
   - component: {fileID: 7991836405158383276}
   - component: {fileID: 8730546185772896810}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gangway_Intersection Fixed UVs
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -97,4 +97,4 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -7133110167369606765, guid: ead21fedf175e3249b3803380de9c244, type: 3}
+  m_Mesh: {fileID: -7133110167369606765, guid: d06531f16eecb0943a2d088c8ec3337d, type: 3}
