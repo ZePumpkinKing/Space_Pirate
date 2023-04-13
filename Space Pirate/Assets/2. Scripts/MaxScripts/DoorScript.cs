@@ -16,12 +16,19 @@ public class DoorScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!opening) StartCoroutine(OpenDoor());
+        if (other.CompareTag("Player"))
+        {
+            if (!opening) StartCoroutine(OpenDoor());
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!exiting) StartCoroutine(CloseDoor());
+        if (other.CompareTag("Player"))
+        {
+            if (!exiting) StartCoroutine(CloseDoor());
+        }
+            
     }
 
     IEnumerator OpenDoor()

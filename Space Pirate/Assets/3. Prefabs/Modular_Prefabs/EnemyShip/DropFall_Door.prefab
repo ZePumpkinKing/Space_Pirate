@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &701785120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 701785122}
+  - component: {fileID: 701785121}
+  m_Layer: 0
+  m_Name: Coll
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &701785122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701785120}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8343704629562129572}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &701785121
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701785120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.9076014, y: 1, z: 5.988154}
+  m_Center: {x: 0.04307632, y: 0, z: -0.01646666}
 --- !u!1 &475803043716233832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,7 +1493,7 @@ GameObject:
   - component: {fileID: 8343704629562129572}
   - component: {fileID: 8376821039510668126}
   - component: {fileID: -3138958404272477369}
-  - component: {fileID: 6866695544598044389}
+  - component: {fileID: 1425366281}
   m_Layer: 0
   m_Name: DropFall_Door
   m_TagString: Untagged
@@ -1486,6 +1531,7 @@ Transform:
   - {fileID: 2708867262641860795}
   - {fileID: 1999927876385237388}
   - {fileID: 4180259541496452771}
+  - {fileID: 701785122}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1522,7 +1568,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.622421, y: 16.76766, z: 7.151467}
   m_Center: {x: -0.24446939, y: 7.883832, z: -0.13782193}
---- !u!114 &6866695544598044389
+--- !u!114 &1425366281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1531,10 +1577,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8683251843606079006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97d455026b7d4554fa149bd15627dc22, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bd68778071f2d840a2d31aa626c484b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DropFall_Door: {fileID: 8376821039510668126}
+  DoorController: {fileID: 8376821039510668126}
+  coll: {fileID: 701785121}
+  exiting: 0
+  opening: 0
 --- !u!1 &9073209947573746593
 GameObject:
   m_ObjectHideFlags: 0
