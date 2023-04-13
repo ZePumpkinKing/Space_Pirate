@@ -57,7 +57,7 @@ public class Gun : MonoBehaviour
             input.Gameplay.Fire.performed += context => Shoot();
         }
 
-        input.Gameplay.Interact.performed += context => StartReload();
+        input.Gameplay.Reload.performed += context => StartReload();
         input.Gameplay.Weapon.performed += FindWeapon;
     }
     private void Start()

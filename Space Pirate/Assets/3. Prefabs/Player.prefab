@@ -998,6 +998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   immortal: 0
+  died: 0
 --- !u!1 &833762646046221776
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,6 +1855,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 6128140153830238031, guid: 4028e43c76e02af46a664066134515c6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e3311a590915084ba92c0c44f415e9d, type: 2}
     - target: {fileID: 6165096032342815781, guid: 4028e43c76e02af46a664066134515c6,
         type: 3}
       propertyPath: m_Layer
@@ -2239,6 +2245,42 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731710451046481500, guid: f7ed73f625e76074b9e10ebd26f393e2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 351.553
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731710451046481500, guid: f7ed73f625e76074b9e10ebd26f393e2,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 351.553
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731710451046481500, guid: f7ed73f625e76074b9e10ebd26f393e2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731710451046481501, guid: f7ed73f625e76074b9e10ebd26f393e2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9dbba903561e74f4096a3c0f2991e422,
+        type: 3}
+    - target: {fileID: 1731710451046481501, guid: f7ed73f625e76074b9e10ebd26f393e2,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.62352943
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731710451046481501, guid: f7ed73f625e76074b9e10ebd26f393e2,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.86628276
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731710451046481501, guid: f7ed73f625e76074b9e10ebd26f393e2,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.7122642
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7ed73f625e76074b9e10ebd26f393e2, type: 3}

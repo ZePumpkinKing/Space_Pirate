@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class Player : MonoBehaviour
 {
     Grappling grappleScript;
@@ -90,12 +91,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+
         if (playerH.health <= 0)
         {
             currentState = states.dead;
         }
         if (currentState == states.dead)
         {
+            playerH.died = true;
             Destroy(gameObject.GetComponent<Grappling>());
             Destroy(gameObject.GetComponent<GrapplingRope>());
             transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z - 90);
@@ -130,6 +133,8 @@ public class Player : MonoBehaviour
             target = null;
         }
     }
+
+
 
     void FixedUpdate()
     {
