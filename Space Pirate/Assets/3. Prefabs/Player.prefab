@@ -998,6 +998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   immortal: 0
+  died: 0
 --- !u!1 &833762646046221776
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,6 +1855,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 6128140153830238031, guid: 4028e43c76e02af46a664066134515c6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e3311a590915084ba92c0c44f415e9d, type: 2}
     - target: {fileID: 6165096032342815781, guid: 4028e43c76e02af46a664066134515c6,
         type: 3}
       propertyPath: m_Layer
