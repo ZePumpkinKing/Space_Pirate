@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2044600685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2044600686}
+  - component: {fileID: 2044600687}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2044600686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044600685}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1438630302163870415}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2044600687
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044600685}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1963081, y: 2.2081597, z: 0.5002408}
+  m_Center: {x: -0.029174805, y: 0.6040797, z: -0.00048851967}
 --- !u!1 &105074332295226565
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +88,7 @@ GameObject:
   - component: {fileID: 3784436071053973366}
   m_Layer: 0
   m_Name: DoorLockLeft
-  m_TagString: Untagged
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +174,7 @@ GameObject:
   - component: {fileID: 7227120787805398669}
   m_Layer: 0
   m_Name: DoorLockTop
-  m_TagString: Untagged
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,7 +260,7 @@ GameObject:
   - component: {fileID: 4893509042013706694}
   m_Layer: 0
   m_Name: DoorPlateRight
-  m_TagString: Untagged
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -358,6 +403,7 @@ Transform:
   - {fileID: 2051370846929989801}
   - {fileID: 4679311012302011683}
   - {fileID: 8939858635066096308}
+  - {fileID: 2044600686}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -392,8 +438,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.8905983, y: 2.4590702, z: 3.0394611}
-  m_Center: {x: -0.12489891, y: 0.7295351, z: -0.006275654}
+  m_Size: {x: 3.8905983, y: 2.4590702, z: 4.482311}
+  m_Center: {x: -0.12489891, y: 0.7295351, z: -0.225631}
 --- !u!114 &1476534020826975154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,6 +453,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoorController: {fileID: 4978490208827406517}
+  coll: {fileID: 2044600687}
+  exiting: 0
+  opening: 0
 --- !u!1 &2582067340228416906
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +468,7 @@ GameObject:
   - component: {fileID: 2253916449276189192}
   m_Layer: 0
   m_Name: DoorPlateBottom
-  m_TagString: Untagged
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536,7 +585,7 @@ GameObject:
   - component: {fileID: 6356528352661833319}
   m_Layer: 0
   m_Name: DoorPlateLeft
-  m_TagString: Untagged
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -752,7 +801,7 @@ GameObject:
   - component: {fileID: 2862911703335565741}
   m_Layer: 0
   m_Name: DoorLockRight
-  m_TagString: Untagged
+  m_TagString: Emissive_to_baked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
