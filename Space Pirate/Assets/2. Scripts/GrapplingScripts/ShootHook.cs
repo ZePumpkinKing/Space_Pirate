@@ -51,7 +51,7 @@ public class ShootHook : MonoBehaviour
     }
     public void ReturnHook()
     {
-        transform.position = returnPoint.position;
+        transform.localPosition = returnPoint.localPosition;
         transform.rotation = returnPoint.rotation;
         gameObject.layer = 14;
     }

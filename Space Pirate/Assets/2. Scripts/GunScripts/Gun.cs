@@ -77,7 +77,6 @@ public class Gun : MonoBehaviour
         {
             Destroy(gameObject.GetComponent<Gun>());
         }
-        Debug.Log(player.currentState);
         timeSinceLastShot += Time.deltaTime;
         if (currentGun.automatic)
         {

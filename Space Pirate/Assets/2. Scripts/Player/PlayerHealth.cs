@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
+    public bool immortal;
     public float health { get; private set; } = 100;
     public void TakeDamage(float dmg)
     {
@@ -17,7 +18,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         if (other.CompareTag("Projectile"))
         {
-            TakeDamage(10);
+            if (!immortal) TakeDamage(10);
         }
     }
 }
