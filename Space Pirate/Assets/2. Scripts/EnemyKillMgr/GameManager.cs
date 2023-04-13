@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour
     float enemiesToKill;
     public bool enteredRoom;
     public int roomNumber = -1;
-    
-    [ExecuteInEditMode]
     private void Start()
     {
         doors = GameObject.FindGameObjectsWithTag("Door");
