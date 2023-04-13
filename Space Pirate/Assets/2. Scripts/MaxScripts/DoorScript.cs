@@ -4,29 +4,52 @@ using UnityEngine;
 
 public class DoorScript : MonoBehaviour
 {
-    public Animator DoorController;
+    [SerializeField] private Animator DoorController;
+    [SerializeField] private BoxCollider coll;
+    public bool exiting;
+    public bool opening;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-
+        DoorController.SetBool("exited", exiting);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        DoorController.SetTrigger("Open");
+        if (other.CompareTag("Player"))
+        {
+            if (!opening) StartCoroutine(OpenDoor());
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        DoorController.SetTrigger("Close");
+        if (other.CompareTag("Player"))
+        {
+            if (!exiting) StartCoroutine(CloseDoor());
+        }
+            
     }
 
+    IEnumerator OpenDoor()
+    {
+        yield return new WaitUntil(() => !exiting);
+        opening = true;
+        DoorController.SetTrigger("Open");
+        yield return new WaitForSeconds(.5f);
+        coll.isTrigger = true;
+        yield return new WaitForSeconds(.5f);
+        opening = false;
+    }
+    IEnumerator CloseDoor()
+    {
+        yield return new WaitUntil(() => !opening);
+        exiting = true;
+        coll.isTrigger = false;
+        DoorController.SetTrigger("Close");
+        yield return new WaitForSeconds(1);
+        exiting = false;
+    }
+
+    
 
 }

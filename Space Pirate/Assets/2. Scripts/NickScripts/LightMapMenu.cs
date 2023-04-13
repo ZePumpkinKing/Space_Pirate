@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEngine;
 
 using UnityEditor;
@@ -39,3 +41,4 @@ public class LightMapMenu : MonoBehaviour
     }
 
 }
+#endif

@@ -526,6 +526,7 @@ GameObject:
   - component: {fileID: 5424447755427363742}
   - component: {fileID: 1967535211768155659}
   - component: {fileID: 7673664903202870813}
+  - component: {fileID: 3842869303896458022}
   m_Layer: 7
   m_Name: Rocket Turret
   m_TagString: Enemy
@@ -547,7 +548,6 @@ Transform:
   m_Children:
   - {fileID: 7784214607946325086}
   - {fileID: 4735298988415505059}
-  - {fileID: 1252499453803045383}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -569,9 +569,9 @@ MonoBehaviour:
   projectile: {fileID: 3028457459112175997, guid: 569d0c80dc70fca49873168c1e0fa683,
     type: 3}
   laserSight: 1
-  fireDelay: 10
+  fireDelay: 5
   maxSpeed: 2
-  offset: {x: 0, y: 0, z: 0.75}
+  offset: {x: 0, y: 0.25, z: 0.75}
 --- !u!114 &1967535211768155659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,45 +598,13 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.85
   m_Center: {x: 0, y: 0.75, z: 0}
---- !u!1 &8351925365901078085
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1252499453803045383}
-  - component: {fileID: 5922803262662789012}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1252499453803045383
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8351925365901078085}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.517, y: 1.2950003, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2565778455878165950}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!120 &5922803262662789012
+--- !u!120 &3842869303896458022
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8351925365901078085}
+  m_GameObject: {fileID: 8167856595253108229}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -650,7 +618,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 727858364442f8a4f8d44719aad743ee, type: 2}
+  - {fileID: 2100000, guid: 4d1f82cf960774e44917b059590bb492, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -681,8 +649,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.013298035
-        value: 0.0535717
+        time: 0
+        value: 0.0015087128
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -694,7 +662,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 0, b: 0, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
