@@ -18,7 +18,7 @@ MonoBehaviour:
   automatic: 0
   bulletsInOneShot: 1
   magCapacity: 10
-  fireRateRPM: 200
+  timeBetweenShots: 0.4
   reloadTime: 1.542
   recoilX: -10
   recoilY: 2
@@ -28,4 +28,5 @@ MonoBehaviour:
   spreadX: 0.02
   spreadY: 0.02
   spreadZ: 0.02
-  currentAmmo: 6
+  readyUpTime: 1
+  currentAmmo: 10

@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class EnemyDoor : MonoBehaviour
 {
+    [SerializeField] private Animator DoorController;
+    [SerializeField] private BoxCollider coll;
+    public bool exiting;
+    public bool opening;
+
     public float numOfEnemiesToOpenDoor;
-    public void OpenDoor()
+
+    public IEnumerator OpenDoor()
     {
-        Destroy(gameObject);
+        yield return new WaitUntil(() => !exiting);
+        opening = true;
+        DoorController.SetTrigger("Open");
+        yield return new WaitForSeconds(.5f);
+        coll.isTrigger = true;
+        yield return new WaitForSeconds(.5f);
     }
 }
