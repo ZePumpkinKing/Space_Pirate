@@ -27,11 +27,11 @@ Transform:
   m_GameObject: {fileID: 4686941282211342222}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.045, y: 0.045, z: 0.045}
+  m_LocalScale: {x: 0.09112501, y: 0.09112501, z: 0.09112501}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 6289329660622248957}
-  m_RootOrder: 1
+  m_Father: {fileID: 7096629840567926483}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &4096243764294483065
 ParticleSystem:
@@ -47,7 +47,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  emitterVelocityMode: 1
+  emitterVelocityMode: 0
   looping: 0
   prewarm: 0
   playOnAwake: 0
@@ -867,7 +867,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
+      scalar: 10
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4855,15 +4855,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5554025273861436993}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.045, y: 0.045, z: 0.045}
+  m_LocalScale: {x: 0.20250002, y: 0.20250003, z: 0.20250003}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5215024335079140515}
-  - {fileID: 8567220920441281037}
-  m_Father: {fileID: 7096629841753676261}
-  m_RootOrder: 0
+  m_Father: {fileID: 7096629840567926483}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &4867038440710300249
 ParticleSystem:
@@ -4879,7 +4878,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  emitterVelocityMode: 1
+  emitterVelocityMode: 0
   looping: 0
   prewarm: 0
   playOnAwake: 0
@@ -8644,7 +8643,7 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 1
+    enabled: 0
     ratio: 1
     light: {fileID: 7773358287438177024}
     randomDistribution: 1
@@ -9673,6 +9672,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7096629841753676261}
+  - {fileID: 6289329660622248957}
+  - {fileID: 8567220920441281037}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -9703,10 +9704,9 @@ Transform:
   m_GameObject: {fileID: 7096629841753676260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.045, y: 0.045, z: 0.045}
+  m_LocalScale: {x: 0.45000002, y: 0.45000002, z: 0.45000002}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 6289329660622248957}
+  m_Children: []
   m_Father: {fileID: 7096629840567926483}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9724,7 +9724,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  emitterVelocityMode: 1
+  emitterVelocityMode: 0
   looping: 0
   prewarm: 0
   playOnAwake: 0
@@ -13507,7 +13507,7 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 1
+    enabled: 0
     ratio: 0.75
     light: {fileID: 7773358287438177024}
     randomDistribution: 1

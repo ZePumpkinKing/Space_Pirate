@@ -18,6 +18,9 @@ public class Gun : MonoBehaviour
     
     [SerializeField] private Transform gunTip;
 
+    [SerializeField] private GameObject gunshotSparks;
+
+    [SerializeField] private GameObject gunshotSparksEnemy;
 
     private Animator anim;
     Player player;
@@ -105,7 +108,7 @@ public class Gun : MonoBehaviour
                 TrailRenderer trail; // instantiate our gun trail
                 recoilScript.FireRecoil(); // camera recoil
                 gunObjRecoil.FireGunRecoil(); // gun recoil
-                StartCoroutine(PlayParticles());
+                StartCoroutine(PlayParticles(currentGun.muzzleParticle, gunTip.position, gunTip.rotation));
                 
                 anim.SetTrigger("Firing"); //sets our animation
                 
@@ -133,9 +136,9 @@ public class Gun : MonoBehaviour
 
     }
 
-    private IEnumerator PlayParticles()
+    private IEnumerator PlayParticles(GameObject particleParentObj, Vector3 particlePos, Quaternion particleRot)
     {
-        var temp = Instantiate(currentGun.muzzleParticle, gunTip.position, gunTip.rotation);
+        var temp = Instantiate(particleParentObj, particlePos, particleRot);
         ParticleSystem[] particles;
         particles = temp.GetComponentsInChildren<ParticleSystem>();
         foreach (ParticleSystem pp in particles)
@@ -169,8 +172,14 @@ public class Gun : MonoBehaviour
         }
         trail.transform.position = hitPos;
         IDamageable damageable = hit.transform.GetComponent<IDamageable>();
-        if (damageable != null) damageable?.TakeDamage(currentGun.damage);
+        if (damageable != null)
+        {
+            damageable?.TakeDamage(currentGun.damage);
+            StartCoroutine(PlayParticles(gunshotSparksEnemy, hitPos, gunshotSparks.transform.rotation));
+        }
+        else StartCoroutine(PlayParticles(gunshotSparks, hitPos, gunshotSparks.transform.rotation));
         Destroy(trail.gameObject, trail.time);
+        
     }
     private void StartReload()
     {
