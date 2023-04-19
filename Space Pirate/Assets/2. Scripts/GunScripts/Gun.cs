@@ -18,6 +18,7 @@ public class Gun : MonoBehaviour
     
     [SerializeField] private Transform gunTip;
 
+
     private Animator anim;
     Player player;
     
@@ -99,10 +100,12 @@ public class Gun : MonoBehaviour
         {
             if (CanShoot()) // if we are able to shoot, run the code to shoot
             {
+                
                 RaycastHit hit; //instantiate our raycast ref
                 TrailRenderer trail; // instantiate our gun trail
                 recoilScript.FireRecoil(); // camera recoil
                 gunObjRecoil.FireGunRecoil(); // gun recoil
+                StartCoroutine(PlayParticles());
                 
                 anim.SetTrigger("Firing"); //sets our animation
                 
@@ -130,6 +133,18 @@ public class Gun : MonoBehaviour
 
     }
 
+    private IEnumerator PlayParticles()
+    {
+        var temp = Instantiate(currentGun.muzzleParticle, gunTip.position, gunTip.rotation);
+        ParticleSystem[] particles;
+        particles = temp.GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem pp in particles)
+        {
+            pp.Play();
+        }
+        yield return new WaitForSeconds(5);
+        Destroy(temp);
+    }
     private Vector3 GetDirection()
     {
         Vector3 direction = castPoint.forward;

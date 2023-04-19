@@ -29,4 +29,6 @@ MonoBehaviour:
   spreadY: 0.02
   spreadZ: 0.02
   readyUpTime: 1
+  muzzleParticle: {fileID: 7096629840567926482, guid: bba831ef48b2d3148a4cae1b37e38ce0,
+    type: 3}
   currentAmmo: 10
