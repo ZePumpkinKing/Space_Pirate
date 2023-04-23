@@ -18,7 +18,7 @@ MonoBehaviour:
   automatic: 0
   bulletsInOneShot: 1
   magCapacity: 10
-  timeBetweenShots: 0.4
+  timeBetweenShots: 0.1
   reloadTime: 1.542
   recoilX: -10
   recoilY: 2

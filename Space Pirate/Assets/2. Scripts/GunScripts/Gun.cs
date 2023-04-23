@@ -22,6 +22,7 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private GameObject gunshotSparksEnemy;
 
+    bool playSparks;
     private Animator anim;
     Player player;
     
@@ -77,6 +78,7 @@ public class Gun : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(playSparks);
         if (player.currentState == Player.states.dead)
         {
             Destroy(gameObject.GetComponent<Gun>());
@@ -94,6 +96,12 @@ public class Gun : MonoBehaviour
         {
             anim.SetBool("Reload", true); // sets our animation state
         } else anim.SetBool("Reload", false);
+
+        if (timeSinceLastShot > currentGun.timeBetweenShots)
+        {
+            anim.SetBool("Firing", false);
+        }
+
     }
     private bool CanShoot() => !reloading && timeSinceLastShot > currentGun.timeBetweenShots // if we're done firing the last shot
         && !switching; //if we aren't switching
@@ -103,14 +111,14 @@ public class Gun : MonoBehaviour
         {
             if (CanShoot()) // if we are able to shoot, run the code to shoot
             {
-                
                 RaycastHit hit; //instantiate our raycast ref
                 TrailRenderer trail; // instantiate our gun trail
                 recoilScript.FireRecoil(); // camera recoil
                 gunObjRecoil.FireGunRecoil(); // gun recoil
+
                 StartCoroutine(PlayParticles(currentGun.muzzleParticle, gunTip.position, gunTip.rotation));
                 
-                anim.SetTrigger("Firing"); //sets our animation
+                anim.SetBool("Firing", true); //sets our animation
                 
                 for (int i = 0; i < currentGun.bulletsInOneShot; i++) //run the code to shoot for as many bullets as are supposed to shoot out of the gun (if we have a shotgun, we'll shoot 10 bullets thanks to this for loop)
                 {
@@ -118,12 +126,15 @@ public class Gun : MonoBehaviour
                     if (Physics.Raycast(castPoint.position, direction, out hit, currentGun.maxDistance)) //if we hit an object with our bullet
                     {
                         trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity); //start a bullet trail effect
+                        if (hit.point != Vector3.zero) playSparks = true;
                         StartCoroutine(SpawnBullet(trail, hit.point, hit)); //spawn our bullet
                     }
                     else // if we shoot, but we don't hit anything (if we shoot into the air at no objects, we still want to show our bullet trail)
                     {
                         trail = Instantiate(bulletTrail, gunTip.position, Quaternion.identity);
+                        playSparks = false;
                         StartCoroutine(SpawnBullet(trail, castPoint.position + direction * (currentGun.maxDistance / 2), hit)); // sets the point of where our raycast would have ended up if it hit anything (point in the air)
+                                           
                     }
                 }
 
@@ -132,12 +143,13 @@ public class Gun : MonoBehaviour
                 currentGun.currentAmmo--;
                 timeSinceLastShot = 0;
             }
-        }
+        } else StartReload();
 
     }
 
     private IEnumerator PlayParticles(GameObject particleParentObj, Vector3 particlePos, Quaternion particleRot)
     {
+        
         var temp = Instantiate(particleParentObj, particlePos, particleRot);
         ParticleSystem[] particles;
         particles = temp.GetComponentsInChildren<ParticleSystem>();
@@ -177,7 +189,15 @@ public class Gun : MonoBehaviour
             damageable?.TakeDamage(currentGun.damage);
             StartCoroutine(PlayParticles(gunshotSparksEnemy, hitPos, gunshotSparks.transform.rotation));
         }
-        else StartCoroutine(PlayParticles(gunshotSparks, hitPos, gunshotSparks.transform.rotation));
+        else if (currentGun != guns[1])
+        {
+            if (playSparks)
+            {
+                StartCoroutine(PlayParticles(gunshotSparks, hitPos, gunshotSparks.transform.rotation));
+            }
+            
+        }
+
         Destroy(trail.gameObject, trail.time);
         
     }
@@ -249,8 +269,6 @@ public class Gun : MonoBehaviour
             if (currentGun != guns[gunId])
             {
                 switching = true;
-                anim.SetTrigger("Stowed");
-                yield return new WaitForSeconds(1);
                 SwitchGunModel(currentGunObj, gunObjs[gunId]);
                 currentGunObj = gunObjs[gunId];
                 currentGun = guns[gunId];

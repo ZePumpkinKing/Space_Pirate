@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         input = new Input();
-        input.Gameplay.RestartScene.performed += context => RestartScene();
+        //input.Gameplay.RestartScene.performed += context => RestartScene();
     }
     private void Start()
     {
