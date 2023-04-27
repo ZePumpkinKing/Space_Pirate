@@ -873,9 +873,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 8010402210723835853}
   groundCheck: {fileID: 2937879413896010012}
-  normalSpeed: 11.25
-  maxSpeed: 7
-  maxMomentum: 31.25
+  normalSpeed: 10
+  maxSpeed: 10
+  maxMomentum: 14
   playerJumpForce: 6.25
   counterMovement: 0.5
   zeroGspeed: 25

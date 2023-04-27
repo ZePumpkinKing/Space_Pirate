@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     Input input;
     private float enemiesDestroyed;
-    [SerializeField] GameObject[] doors;
+    GameObject[] doors;
     
     float enemiesToKill;
     public bool enteredRoom;
@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         SceneManager.sceneLoaded += this.OnLoadCallback;
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("CheckpointManager");
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
 
         if (objs.Length > 1)
         {
@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     void OnLoadCallback(Scene scene, LoadSceneMode sceneMode)
     {
         enemiesDestroyed = 0;
+        doors = GameObject.FindGameObjectsWithTag("Door");
     }
 
     private void OnEnable()
