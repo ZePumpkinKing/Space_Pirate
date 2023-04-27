@@ -24,11 +24,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
         if (health < 100)
         {
-/*            timer += Time.deltaTime;
+            timer += Time.deltaTime;
             if (timer > secondsUntilRegen)
             {
-                health += Time.deltaTime;
-            }*/
+                health += Time.deltaTime * 3;
+            }
         }
         if (health > 100)
         {
