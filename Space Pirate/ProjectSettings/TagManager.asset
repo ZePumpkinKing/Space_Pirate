@@ -18,6 +18,7 @@ TagManager:
   - Checkpoint
   - CheckpointManager
   - StartingPoint
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -36,7 +37,7 @@ TagManager:
   - Weapons
   - Projectile
   - 
-  - 
+  - Door
   - 
   - 
   - 

@@ -7,11 +7,12 @@ public class GameManager : MonoBehaviour
 {
     Input input;
     private float enemiesDestroyed;
-    GameObject[] doors;
+    [SerializeField] EnemyDoor[] doors;
     
     float enemiesToKill;
     public bool enteredRoom;
     public int roomNumber = -1;
+
     private void Awake()
     {
         SceneManager.sceneLoaded += this.OnLoadCallback;
@@ -26,15 +27,16 @@ public class GameManager : MonoBehaviour
         input = new Input();
         input.Gameplay.RestartScene.performed += context => RestartScene();
     }
-    private void Start()
+    IEnumerator Start()
     {
-        doors = GameObject.FindGameObjectsWithTag("Door");
+        yield return new WaitForSeconds(.5f);
+        doors = FindObjectsOfType<EnemyDoor>();
     }
     void Update()
     {
         if (enteredRoom)
         {
-            enemiesToKill = doors[roomNumber].GetComponent<EnemyDoor>().numOfEnemiesToOpenDoor;
+            enemiesToKill = doors[roomNumber].numOfEnemiesToOpenDoor;
             if (enemiesDestroyed >= enemiesToKill)
             {
                 StartCoroutine(doors[roomNumber].GetComponent<EnemyDoor>().OpenDoor());
@@ -57,7 +59,18 @@ public class GameManager : MonoBehaviour
     void OnLoadCallback(Scene scene, LoadSceneMode sceneMode)
     {
         enemiesDestroyed = 0;
-        doors = GameObject.FindGameObjectsWithTag("Door");
+        StartCoroutine(WaitCheck());
+    }
+
+    IEnumerator WaitCheck() 
+    {
+        yield return new WaitForSeconds(.5f);
+        doors = FindObjectsOfType<EnemyDoor>();
+
+    }
+    void FindAllGameObjectsOnLayer()
+    {
+        
     }
 
     private void OnEnable()
