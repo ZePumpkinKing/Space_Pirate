@@ -78,7 +78,6 @@ public class Gun : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(playSparks);
         if (player.currentState == Player.states.dead)
         {
             Destroy(gameObject.GetComponent<Gun>());
