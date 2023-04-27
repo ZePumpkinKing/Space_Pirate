@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int roomNumber = -1;
     private void Awake()
     {
+        SceneManager.sceneLoaded += this.OnLoadCallback;
         GameObject[] objs = GameObject.FindGameObjectsWithTag("CheckpointManager");
 
         if (objs.Length > 1)
@@ -51,6 +52,11 @@ public class GameManager : MonoBehaviour
     public void UpdateEnemyCount()
     {
         enemiesDestroyed++;
+    }
+
+    void OnLoadCallback(Scene scene, LoadSceneMode sceneMode)
+    {
+        enemiesDestroyed = 0;
     }
 
     private void OnEnable()
