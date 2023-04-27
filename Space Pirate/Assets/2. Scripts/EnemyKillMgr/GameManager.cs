@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        
-        
         doors = GameObject.FindGameObjectsWithTag("Door");
     }
     void Update()
@@ -45,7 +43,6 @@ public class GameManager : MonoBehaviour
     public void UpdateEnemyCount()
     {
         enemiesDestroyed++;
-        Debug.Log(enemiesDestroyed);
     }
 
     private void OnEnable()
