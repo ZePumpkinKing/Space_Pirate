@@ -18,7 +18,7 @@ MonoBehaviour:
   automatic: 0
   bulletsInOneShot: 1
   magCapacity: 15
-  timeBetweenShots: 0.131
+  timeBetweenShots: 0.1832
   reloadTime: 1.542
   recoilX: -10
   recoilY: 2
@@ -31,4 +31,4 @@ MonoBehaviour:
   readyUpTime: 1
   muzzleParticle: {fileID: 7096629840567926482, guid: bba831ef48b2d3148a4cae1b37e38ce0,
     type: 3}
-  currentAmmo: 9
+  currentAmmo: 4

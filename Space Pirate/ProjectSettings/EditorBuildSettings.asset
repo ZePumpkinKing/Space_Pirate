@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1. Scenes/EnemyShip.unity
     guid: f4c8b72c8ab67a8419f9ee48a09d4e34
+  - enabled: 1
+    path: Assets/1. Scenes/Keegan.unity
+    guid: 2edfaae0b58367d40b73406204249818
   m_configObjects: {}

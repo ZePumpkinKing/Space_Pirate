@@ -15,6 +15,9 @@ TagManager:
   - Emissive_to_baked
   - Streaming
   - Door
+  - Checkpoint
+  - CheckpointManager
+  - StartingPoint
   layers:
   - Default
   - TransparentFX

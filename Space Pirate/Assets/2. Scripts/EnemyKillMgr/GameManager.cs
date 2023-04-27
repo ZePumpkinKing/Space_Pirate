@@ -15,12 +15,10 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         input = new Input();
-        //input.Gameplay.RestartScene.performed += context => RestartScene();
+        input.Gameplay.RestartScene.performed += context => RestartScene();
     }
     private void Start()
     {
-        
-        
         doors = GameObject.FindGameObjectsWithTag("Door");
     }
     void Update()
@@ -45,7 +43,6 @@ public class GameManager : MonoBehaviour
     public void UpdateEnemyCount()
     {
         enemiesDestroyed++;
-        Debug.Log(enemiesDestroyed);
     }
 
     private void OnEnable()
