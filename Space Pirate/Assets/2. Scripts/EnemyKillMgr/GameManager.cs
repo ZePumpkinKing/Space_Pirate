@@ -14,6 +14,14 @@ public class GameManager : MonoBehaviour
     public int roomNumber = -1;
     private void Awake()
     {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("CheckpointManager");
+
+        if (objs.Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
         input = new Input();
         input.Gameplay.RestartScene.performed += context => RestartScene();
     }
