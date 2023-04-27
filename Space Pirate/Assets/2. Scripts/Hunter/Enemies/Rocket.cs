@@ -31,7 +31,7 @@ public class Rocket : MonoBehaviour
     void Update()
     {
         if (launch) {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation((transform.position - player.position).normalized, transform.up), turnSpeed);
+            transform.LookAt(player);
 
             transform.Translate(transform.forward * speed);
         }
