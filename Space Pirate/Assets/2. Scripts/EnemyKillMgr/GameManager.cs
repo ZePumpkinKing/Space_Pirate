@@ -7,20 +7,27 @@ public class GameManager : MonoBehaviour
 {
     Input input;
     private float enemiesDestroyed;
-    [SerializeField] GameObject[] doors;
+    GameObject[] doors;
     
     float enemiesToKill;
     public bool enteredRoom;
     public int roomNumber = -1;
     private void Awake()
     {
+        SceneManager.sceneLoaded += this.OnLoadCallback;
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
+
+        if (objs.Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
         input = new Input();
         input.Gameplay.RestartScene.performed += context => RestartScene();
     }
     private void Start()
     {
-        
-        
         doors = GameObject.FindGameObjectsWithTag("Door");
     }
     void Update()
@@ -45,7 +52,12 @@ public class GameManager : MonoBehaviour
     public void UpdateEnemyCount()
     {
         enemiesDestroyed++;
-        Debug.Log(enemiesDestroyed);
+    }
+
+    void OnLoadCallback(Scene scene, LoadSceneMode sceneMode)
+    {
+        enemiesDestroyed = 0;
+        doors = GameObject.FindGameObjectsWithTag("Door");
     }
 
     private void OnEnable()

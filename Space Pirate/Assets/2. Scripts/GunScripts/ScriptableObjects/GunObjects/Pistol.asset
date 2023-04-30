@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   name: Pistol
-  damage: 10
+  damage: 25
   maxDistance: 100
   automatic: 0
   bulletsInOneShot: 1
-  magCapacity: 10
-  timeBetweenShots: 0.4
+  magCapacity: 15
+  timeBetweenShots: 0.1832
   reloadTime: 1.542
   recoilX: -10
   recoilY: 2
@@ -29,4 +29,6 @@ MonoBehaviour:
   spreadY: 0.02
   spreadZ: 0.02
   readyUpTime: 1
-  currentAmmo: 10
+  muzzleParticle: {fileID: 7096629840567926482, guid: bba831ef48b2d3148a4cae1b37e38ce0,
+    type: 3}
+  currentAmmo: 4

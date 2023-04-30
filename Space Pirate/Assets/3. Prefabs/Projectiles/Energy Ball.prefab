@@ -116,3 +116,4 @@ MonoBehaviour:
   chargeSpeed: 0.25
   spinSpeed: 10
   fireDelay: 0.1
+  damage: 10

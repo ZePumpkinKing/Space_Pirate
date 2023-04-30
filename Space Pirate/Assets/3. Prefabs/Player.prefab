@@ -78,8 +78,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506527659}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0134, y: -0.2342, z: 2.399}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.013397634, y: -0.23420052, z: 2.3989923}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -143,6 +143,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483647
   gunTip: {fileID: 506527660}
+  gunshotSparks: {fileID: 4351488803196731159, guid: 69097a3cdf156964cab46d33c933091a,
+    type: 3}
+  gunshotSparksEnemy: {fileID: 6473973671971856527, guid: 6e6d3ce3b0b675f4cbf371b807f6b256,
+    type: 3}
   switching: 0
 --- !u!1 &1237310497
 GameObject:
@@ -616,7 +620,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 9215
+    m_Bits: 41951
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -869,9 +873,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 8010402210723835853}
   groundCheck: {fileID: 2937879413896010012}
-  normalSpeed: 11.25
-  maxSpeed: 7
-  maxMomentum: 31.25
+  normalSpeed: 10
+  maxSpeed: 10
+  maxMomentum: 14
   playerJumpForce: 6.25
   counterMovement: 0.5
   zeroGspeed: 25

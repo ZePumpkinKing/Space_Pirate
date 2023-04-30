@@ -37,6 +37,9 @@ public class GunData : ScriptableObject
     [Header("General")]
     [Tooltip("Seconds")]
     public float readyUpTime;
+
+    [Header("ParticleFx")]
+    public GameObject muzzleParticle;
   
 
     [HideInInspector] public float currentAmmo;
