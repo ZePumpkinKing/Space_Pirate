@@ -34,10 +34,17 @@ public class SceneTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        inTrigger = true;
+        if (other.CompareTag("Player"))
+        {
+            inTrigger = true;
+        }
+
     }
     private void OnTriggerExit(Collider other)
     {
-        inTrigger = false;
+        if (other.CompareTag("Player"))
+        {
+            inTrigger = false;
+        }
     }
 }
