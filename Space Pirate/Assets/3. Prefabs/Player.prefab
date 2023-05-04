@@ -150,7 +150,7 @@ MonoBehaviour:
     type: 3}
   gunSfx: {fileID: 4893017775407737534}
   gunSounds:
-  - {fileID: 8300000, guid: 7ae8600c0e212d244860c43724166fb7, type: 3}
+  - {fileID: 8300000, guid: 8e4aa0606a10f11488c3e8bafaf3430e, type: 3}
   - {fileID: 8300000, guid: 94490ef9391751b4ea98305dd3db3598, type: 3}
   switching: 0
 --- !u!82 &4893017775407737534
