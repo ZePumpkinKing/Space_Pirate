@@ -242,7 +242,7 @@ public class Gun : MonoBehaviour
     }
     private void FindWeapon(InputAction.CallbackContext context)
     {
-        
+        if (gm.paused) return;
         switch (activeWeapon.ReadValue<Vector2>().x)
         {
             case 1:// if we press 1

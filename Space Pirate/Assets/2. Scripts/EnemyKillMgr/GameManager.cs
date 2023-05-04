@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     {
         if (paused)
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             Time.timeScale = 1;
             paused = false;
             return;
@@ -25,6 +27,8 @@ public class GameManager : MonoBehaviour
         
         if (!paused)
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             Time.timeScale = 0;
             paused = true;
         }
