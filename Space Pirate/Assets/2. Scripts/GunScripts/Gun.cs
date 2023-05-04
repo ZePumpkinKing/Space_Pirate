@@ -22,6 +22,10 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private GameObject gunshotSparksEnemy;
 
+    [SerializeField] private AudioSource gunSfx;
+
+    [SerializeField] private AudioClip[] gunSounds;
+
     bool playSparks;
     private Animator anim;
     Player player;
@@ -118,6 +122,7 @@ public class Gun : MonoBehaviour
                 StartCoroutine(PlayParticles(currentGun.muzzleParticle, gunTip.position, gunTip.rotation));
                 
                 anim.SetBool("Firing", true); //sets our animation
+                gunSfx.PlayOneShot(gunSounds[currentGunId]);
                 
                 for (int i = 0; i < currentGun.bulletsInOneShot; i++) //run the code to shoot for as many bullets as are supposed to shoot out of the gun (if we have a shotgun, we'll shoot 10 bullets thanks to this for loop)
                 {
