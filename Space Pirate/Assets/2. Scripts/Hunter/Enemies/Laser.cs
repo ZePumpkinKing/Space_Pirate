@@ -38,7 +38,7 @@ public class Laser : MonoBehaviour
 
             laser.SetPositions(positions);
 
-            //Debug.Log(positions[1]);
+            Debug.Log(positions[1]);
         }
         else
         {

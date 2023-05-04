@@ -22,7 +22,8 @@ public class Turret : MonoBehaviour {
     bool firing;
     bool keepFiring;
 
-    void Start() {
+    IEnumerator Start() {
+        yield return new WaitForSeconds(.5f);
         keepFiring = false;
         firing = false;
 

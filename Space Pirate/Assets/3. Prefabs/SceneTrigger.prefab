@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.469444, y: 2.450417, z: 10.125702}
-  m_Center: {x: -0.16099167, y: -0.7252085, z: 1.438797}
+  m_Size: {x: 8.25431, y: 5.180065, z: 10.459196}
+  m_Center: {x: -0.16430712, y: -1.039081, z: 1.1775808}
 --- !u!114 &1926309421883489008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,4 +58,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548ac541059fc2940b243d68bf428a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneId: 1
+  sceneId: 3
+  camSpeed: 5
+  camRotSpeed: 10
+  dropPodCam: {fileID: 7656527811124909072, guid: c754ffcfa35cff749a54e7deb6bbcac1,
+    type: 3}
+  camFinalPos: {fileID: 0}

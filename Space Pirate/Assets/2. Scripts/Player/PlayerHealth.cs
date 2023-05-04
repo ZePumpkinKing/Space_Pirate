@@ -38,7 +38,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     IEnumerator StartDeathTimer()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     private void OnTriggerEnter(Collider other)
     {

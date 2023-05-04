@@ -33,6 +33,7 @@ public class DoorScript : MonoBehaviour
     IEnumerator OpenDoor()
     {
         yield return new WaitUntil(() => !exiting);
+        yield return new WaitUntil(() => !opening);
         opening = true;
         DoorController.SetTrigger("Open");
         yield return new WaitForSeconds(.5f);
@@ -43,6 +44,7 @@ public class DoorScript : MonoBehaviour
     IEnumerator CloseDoor()
     {
         yield return new WaitUntil(() => !opening);
+        yield return new WaitUntil(() => !exiting);
         exiting = true;
         coll.isTrigger = false;
         DoorController.SetTrigger("Close");

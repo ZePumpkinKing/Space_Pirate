@@ -40,11 +40,9 @@ public class CheckpointManager : MonoBehaviour
         GetReferences();
         OrganizeCheckpoints();
         Debug.Log("Scene Loaded");
-        if (SceneManager.GetActiveScene().name == "EnemyShip")
-        {
-            Instantiate(player, checkpointsOrganized[currentCheckpoint].transform.position, Quaternion.identity);
-        }
-        else Destroy(gameObject);
+
+        Instantiate(player, checkpointsOrganized[currentCheckpoint].transform.position, Quaternion.identity);
+
     }
     private void GetReferences()
     {
