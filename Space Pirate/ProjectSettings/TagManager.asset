@@ -18,6 +18,7 @@ TagManager:
   - Checkpoint
   - CheckpointManager
   - StartingPoint
+  - GameManager
   layers:
   - Default
   - TransparentFX
