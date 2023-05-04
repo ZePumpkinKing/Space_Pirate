@@ -14,7 +14,7 @@ public class RotateWithoutCam : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         orientation = GameObject.FindGameObjectWithTag("Orientation").GetComponent<Transform>();
     }
-    private void LateUpdate()
+    private void Update()
     {
         if (player.gravityEnabled)
         {

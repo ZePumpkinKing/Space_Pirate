@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class Target : MonoBehaviour, IDamageable
 {
-    GameManager gm;
     public float health;
+    EnemyDoor[] doors;
     private void Awake()
     {
-        gm = FindObjectOfType<GameManager>();
+        doors = FindObjectsOfType<EnemyDoor>();
     }
     public void TakeDamage(float dmg)
     {
         health -= dmg;
-        Debug.Log(health + " health remaining");
         if (health <= 0) Destroy(this.gameObject);
     }
 
     private void OnDestroy()
     {
-        if (gm.enteredRoom)
+        foreach (EnemyDoor door in doors)
         {
-            gm.UpdateEnemyCount();
+            door.UpdateEnemyCount();
         }
     }
 }
