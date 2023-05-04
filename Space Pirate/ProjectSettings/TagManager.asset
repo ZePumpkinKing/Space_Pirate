@@ -17,6 +17,7 @@ TagManager:
   - Door
   - Checkpoint
   - CheckpointManager
+  - StartingPoint
   - GameManager
   layers:
   - Default
@@ -36,7 +37,7 @@ TagManager:
   - Weapons
   - Projectile
   - 
-  - Door
+  - 
   - 
   - 
   - 
