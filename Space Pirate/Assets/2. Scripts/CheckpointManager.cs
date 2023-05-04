@@ -5,15 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class CheckpointManager : MonoBehaviour
 {
-    Transform startingPoint;
-    public GameObject[] checkpoints { get; private set; }
+    public CheckpointTrigger[] checkpointsDisorganized;
+    public CheckpointTrigger[] checkpointsOrganized;
     [SerializeField] GameObject player;
-    [HideInInspector] public int currentCheckpoint;
-    int numberOfLoads;
+    [HideInInspector] public int currentCheckpoint = 0;
     private void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("CheckpointManager");
-
+        
         if (objs.Length > 1)
         {
             Destroy(gameObject);
@@ -21,6 +20,7 @@ public class CheckpointManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
     }
+    
     private void Update()
     {
         Debug.Log(currentCheckpoint);
@@ -29,33 +29,41 @@ public class CheckpointManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += this.OnLoadCallback;
         GetReferences();
-
-        Instantiate(player, startingPoint.position, Quaternion.identity);
+        OrganizeCheckpoints();
+        Instantiate(player, checkpointsOrganized[currentCheckpoint].transform.position, Quaternion.identity);
 
         Debug.Log("Started");
         //numberOfLoads++;
     }
     void OnLoadCallback(Scene scene, LoadSceneMode sceneMode)
     {
-        numberOfLoads++;
         GetReferences();
+        OrganizeCheckpoints();
         Debug.Log("Scene Loaded");
         if (SceneManager.GetActiveScene().name == "EnemyShip")
         {
-            if (currentCheckpoint == 0)
-            {
-                Instantiate(player, startingPoint.position, Quaternion.identity);
-            }
-            else if (currentCheckpoint > 0)
-            {
-                Instantiate(player, checkpoints[currentCheckpoint - 1].transform.position, Quaternion.identity);
-            }
+            Instantiate(player, checkpointsOrganized[currentCheckpoint].transform.position, Quaternion.identity);
         }
         else Destroy(gameObject);
     }
     private void GetReferences()
     {
-        startingPoint = GameObject.FindGameObjectWithTag("StartingPoint").GetComponent<Transform>();
-        checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+        checkpointsDisorganized = GameObject.FindGameObjectWithTag("Checkpoint").GetComponentsInChildren<CheckpointTrigger>();
+    }
+
+    private void OrganizeCheckpoints()
+    {
+        checkpointsOrganized = new CheckpointTrigger[checkpointsDisorganized.Length];
+        for (int i = 0; i < checkpointsDisorganized.Length; i++)
+        {
+            foreach (CheckpointTrigger ch in checkpointsDisorganized)
+            {
+                if (ch.thisCheckpointNum == i)
+                {
+                    checkpointsOrganized[i] = ch;
+                }
+            }
+
+        }
     }
 }

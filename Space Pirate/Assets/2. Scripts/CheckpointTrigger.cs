@@ -5,8 +5,7 @@ using UnityEngine;
 public class CheckpointTrigger : MonoBehaviour
 {
     CheckpointManager checkpoint;
-    private bool entered;
-    [SerializeField] private int thisCheckpointNum;
+    public int thisCheckpointNum;
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -17,13 +16,9 @@ public class CheckpointTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !entered && checkpoint.currentCheckpoint <= thisCheckpointNum - 1) // make sure we aren't going into 
+        if (other.CompareTag("Player") && checkpoint.currentCheckpoint == thisCheckpointNum - 1) // make sure we aren't going into 
         {
-            if (checkpoint.currentCheckpoint + 1 == thisCheckpointNum)
-            {
-                checkpoint.currentCheckpoint++;
-                entered = true;
-            }
+            checkpoint.currentCheckpoint = this.thisCheckpointNum;
         }
     }
 }

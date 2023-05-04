@@ -19,7 +19,6 @@ public class EnemyDoor : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(enemiesDestroyed);
         if (enemiesDestroyed >= numOfEnemiesToOpenDoor && !opening)
         {
             StartCoroutine(OpenDoor());
