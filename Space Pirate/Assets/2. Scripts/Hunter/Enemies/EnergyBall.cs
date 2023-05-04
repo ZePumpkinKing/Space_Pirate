@@ -63,6 +63,11 @@ public class EnergyBall : MonoBehaviour {
     {
         if (collision.transform.CompareTag("Ground") || collision.transform.CompareTag("Player"))
         {
+            if (collision.transform.CompareTag("Player"))
+            {
+                collision.transform.GetComponent<Rigidbody>().AddForce(collision.contacts[0].normal * -collision.transform.GetComponent<Rigidbody>().velocity.magnitude * 2, ForceMode.Impulse);
+            }
+
             Destroy(gameObject);
         }
     }

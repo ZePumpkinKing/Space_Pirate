@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3028457459112175999}
   - component: {fileID: 3028457459112175996}
   - component: {fileID: 8641831504791989903}
+  - component: {fileID: 8467889789576536543}
   m_Layer: 7
   m_Name: Rocket
   m_TagString: Projectile
@@ -60,11 +61,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c1f24139cb9e4419e5939573c7b892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 1
+  delay: 1.1
   speed: 0.1
   turnSpeed: 0.5
   aliveTime: 11
-  damage: 15
+  explosion: {fileID: 1317474030452279493, guid: 0f3f6466cec6527428928b80555be30a,
+    type: 3}
+  damage: 0
 --- !u!54 &8641831504791989903
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -81,6 +84,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8467889789576536543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3028457459112175997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab89c3ff5d93c64db3bae368fd154c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
 --- !u!1 &4843339722594953914
 GameObject:
   m_ObjectHideFlags: 0

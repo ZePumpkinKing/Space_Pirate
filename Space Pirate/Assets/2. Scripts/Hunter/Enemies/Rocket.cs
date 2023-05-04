@@ -8,18 +8,17 @@ public class Rocket : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float turnSpeed;
     [SerializeField] float aliveTime;
+    [SerializeField] GameObject explosion;
 
     public float damage;
 
     Transform player;
-    Rigidbody rb;
     
     bool launch;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         player = GameObject.FindObjectOfType<Player>().transform;
         StartCoroutine(Ready());
 
@@ -31,16 +30,28 @@ public class Rocket : MonoBehaviour
     void Update()
     {
         if (launch) {
-            transform.LookAt(player);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.transform.position - transform.position), Time.deltaTime);
 
             transform.Translate(transform.forward * speed);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        GameObject myLittleExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
+        myLittleExplosion.transform.parent = null;
     }
 
     IEnumerator Ready()
     {
         launch = false;
         yield return new WaitForSeconds(delay);
+        transform.LookAt(player.position);
         transform.parent = null;
         launch = true;
     }
