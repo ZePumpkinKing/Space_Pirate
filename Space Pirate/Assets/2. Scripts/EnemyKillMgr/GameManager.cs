@@ -6,18 +6,32 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     Input input;
+    public bool paused { get; private set; }
 
     private void Awake()
     {
         input = new Input();
-        input.Gameplay.RestartScene.performed += context => RestartScene();
+        input.Gameplay.RestartScene.performed += context => PauseGame();
     }
 
-    private void RestartScene()
+    private void PauseGame()
     {
-        Debug.Log("test");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (paused)
+        {
+            Time.timeScale = 1;
+            paused = false;
+            return;
+        }
+        
+        if (!paused)
+        {
+            Time.timeScale = 0;
+            paused = true;
+        }
+        
+        
     }
+
 
 
     private void OnEnable()

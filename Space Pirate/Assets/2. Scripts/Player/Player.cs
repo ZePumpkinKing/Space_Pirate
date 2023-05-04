@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     Grappling grappleScript;
+    GameManager gm;
     Recoil recoilScript;
     Camera cam;
     Rigidbody rb;
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
     }
     private void Awake()
     {
+        gm = FindObjectOfType<GameManager>();
         playerH = FindObjectOfType<PlayerHealth>();
         currentState = states.Alive;
         input = new Input();
@@ -263,6 +265,10 @@ public class Player : MonoBehaviour
     public float xRotation;
     void Look()
     {
+        if (gm.paused)
+        {
+            return;
+        }
         look = input.Gameplay.Look.ReadValue<Vector2>();
         float mouseX = look.x * sensitivity * Time.fixedDeltaTime;
         float mouseY = look.y * sensitivity * Time.fixedDeltaTime;
