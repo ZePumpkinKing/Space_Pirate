@@ -16,7 +16,7 @@ public class DropPodSceneTransition : MonoBehaviour
     IEnumerator SceneTransition()
     {
         yield return new WaitForSeconds(delayTime);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
 }
