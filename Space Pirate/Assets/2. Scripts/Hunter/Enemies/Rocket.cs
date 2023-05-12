@@ -32,7 +32,7 @@ public class Rocket : MonoBehaviour
         if (launch) {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.transform.position - transform.position), Time.deltaTime);
 
-            transform.Translate(transform.forward * speed);
+            transform.position += (player.position - transform.position).normalized * speed * Time.deltaTime;
         }
     }
 
@@ -53,6 +53,7 @@ public class Rocket : MonoBehaviour
         yield return new WaitForSeconds(delay);
         transform.LookAt(player.position);
         transform.parent = null;
+        transform.LookAt(player.position);
         launch = true;
     }
 
