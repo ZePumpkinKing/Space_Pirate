@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 63510810068462919}
   - component: {fileID: 142543690742191453}
   - component: {fileID: 5643287155520113244}
+  - component: {fileID: 1576196127488955953}
   m_Layer: 7
   m_Name: Explosion
   m_TagString: Projectile
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1317474030452279493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 501170b88ef6cf247b9c3dd92ae4e0f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,8 +93,24 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317474030452279493}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1576196127488955953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317474030452279493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4f3c89bea01ae4cabd46a4944d159f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSize: 15
+  scaleSpeed: 15
+  knockback: 1000
+  damage: 30

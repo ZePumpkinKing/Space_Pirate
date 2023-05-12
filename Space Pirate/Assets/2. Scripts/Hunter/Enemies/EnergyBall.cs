@@ -9,6 +9,7 @@ public class EnergyBall : MonoBehaviour {
     [SerializeField] float chargeSpeed;
     [SerializeField] float spinSpeed;
     [SerializeField] float fireDelay;
+    [SerializeField] float knockback;
 
     public float damage;
 
@@ -63,6 +64,12 @@ public class EnergyBall : MonoBehaviour {
     {
         if (collision.transform.CompareTag("Ground") || collision.transform.CompareTag("Player"))
         {
+            if (collision.transform.CompareTag("Player"))
+            {
+                collision.transform.GetComponent<PlayerHealth>().TakeDamage(damage);
+                collision.transform.GetComponent<Rigidbody>().AddForce(transform.forward * knockback, ForceMode.Impulse);
+            }
+
             Destroy(gameObject);
         }
     }
