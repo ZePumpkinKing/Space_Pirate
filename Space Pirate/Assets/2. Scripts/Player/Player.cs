@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     Grappling grappleScript;
+    GameManager gm;
     Recoil recoilScript;
     Camera cam;
     Rigidbody rb;
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     public Transform orientation;
     public Transform groundCheck;
     Input input;
+    [SerializeField] GameObject pauseScreen;
 
     [Header("Gravity Movement Vars")]
     [SerializeField] float normalSpeed;
@@ -53,6 +55,7 @@ public class Player : MonoBehaviour
     }
     private void Awake()
     {
+        gm = FindObjectOfType<GameManager>();
         playerH = FindObjectOfType<PlayerHealth>();
         currentState = states.Alive;
         input = new Input();
@@ -69,11 +72,13 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         input.Enable();
+        ActionEvents.SwitchGravity += SwitchGravity;
     }
 
     private void OnDisable()
     {
         input.Disable();
+        ActionEvents.SwitchGravity -= SwitchGravity;
     }
 
     void Start()
@@ -91,6 +96,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (gm.paused)
+        {
+            pauseScreen.SetActive(true);
+        }
+        else pauseScreen.SetActive(false);
 
         if (playerH.health <= 0)
         {
@@ -263,6 +273,10 @@ public class Player : MonoBehaviour
     public float xRotation;
     void Look()
     {
+        if (gm.paused)
+        {
+            return;
+        }
         look = input.Gameplay.Look.ReadValue<Vector2>();
         float mouseX = look.x * sensitivity * Time.fixedDeltaTime;
         float mouseY = look.y * sensitivity * Time.fixedDeltaTime;
