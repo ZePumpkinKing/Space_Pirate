@@ -16,6 +16,7 @@ public class PauseScreenButtons : MonoBehaviour
 
     public void ExitToMenu()
     {
+        ActionEvents.OnPause();
         SceneManager.LoadScene(0);
     }
 
