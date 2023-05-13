@@ -37,6 +37,11 @@ public class CheckpointManager : MonoBehaviour
     }
     void OnLoadCallback(Scene scene, LoadSceneMode sceneMode)
     {
+        if (scene.name == "Main Menu Scene" || scene.name == "Solarius_Interior")
+        {
+            currentCheckpoint = 0;
+            Destroy(gameObject);
+        }
         GetReferences();
         OrganizeCheckpoints();
         Debug.Log("Scene Loaded");

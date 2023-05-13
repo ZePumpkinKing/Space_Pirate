@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public Transform orientation;
     public Transform groundCheck;
     Input input;
+    [SerializeField] GameObject pauseScreen;
 
     [Header("Gravity Movement Vars")]
     [SerializeField] float normalSpeed;
@@ -93,6 +94,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (gm.paused)
+        {
+            pauseScreen.SetActive(true);
+        }
+        else pauseScreen.SetActive(false);
 
         if (playerH.health <= 0)
         {

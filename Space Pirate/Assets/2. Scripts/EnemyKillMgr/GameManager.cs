@@ -36,15 +36,15 @@ public class GameManager : MonoBehaviour
         
     }
 
-
-
     private void OnEnable()
     {
         input.Enable();
+        ActionEvents.OnPause += PauseGame;
     }
 
     private void OnDisable()
     {
         input.Disable();
+        ActionEvents.OnPause -= PauseGame;
     }
 }

@@ -960,6 +960,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 8010402210723835853}
   groundCheck: {fileID: 2937879413896010012}
+  pauseScreen: {fileID: 7331866968821382493}
   normalSpeed: 10
   maxSpeed: 10
   maxMomentum: 14
@@ -2303,11 +2304,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5138143644482125805, guid: f7ed73f625e76074b9e10ebd26f393e2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7ed73f625e76074b9e10ebd26f393e2, type: 3}
 --- !u!224 &4217085831542582589 stripped
@@ -2319,6 +2315,12 @@ RectTransform:
 --- !u!20 &5718582209684063714 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 7913423207030015826, guid: f7ed73f625e76074b9e10ebd26f393e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2490029084253160112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7331866968821382493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5138143644482125805, guid: f7ed73f625e76074b9e10ebd26f393e2,
     type: 3}
   m_PrefabInstance: {fileID: 2490029084253160112}
   m_PrefabAsset: {fileID: 0}
