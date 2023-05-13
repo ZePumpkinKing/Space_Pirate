@@ -72,11 +72,13 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         input.Enable();
+        ActionEvents.SwitchGravity += SwitchGravity;
     }
 
     private void OnDisable()
     {
         input.Disable();
+        ActionEvents.SwitchGravity -= SwitchGravity;
     }
 
     void Start()
