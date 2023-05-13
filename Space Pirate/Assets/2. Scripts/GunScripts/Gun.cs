@@ -46,11 +46,13 @@ public class Gun : MonoBehaviour
     //bools
     bool reloading;
     public bool switching;
+    GameManager gm;
     
 
 
     private void Awake()
     {
+        gm = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
         gunObjs = GameObject.FindGameObjectsWithTag("Gun");
         gunObjRecoil = FindObjectOfType<GunFireRecoil>();
@@ -82,6 +84,10 @@ public class Gun : MonoBehaviour
     }
     private void Update()
     {
+        if (gm.paused)
+        {
+            return;
+        }
         if (player.currentState == Player.states.dead)
         {
             Destroy(gameObject.GetComponent<Gun>());
@@ -114,6 +120,10 @@ public class Gun : MonoBehaviour
         {
             if (CanShoot()) // if we are able to shoot, run the code to shoot
             {
+                if (gm.paused)
+                {
+                    return;
+                }
                 RaycastHit hit; //instantiate our raycast ref
                 TrailRenderer trail; // instantiate our gun trail
                 recoilScript.FireRecoil(); // camera recoil
@@ -232,7 +242,7 @@ public class Gun : MonoBehaviour
     }
     private void FindWeapon(InputAction.CallbackContext context)
     {
-        
+        if (gm.paused) return;
         switch (activeWeapon.ReadValue<Vector2>().x)
         {
             case 1:// if we press 1

@@ -6,27 +6,45 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     Input input;
+    public bool paused { get; private set; }
 
     private void Awake()
     {
         input = new Input();
-        input.Gameplay.RestartScene.performed += context => RestartScene();
+        input.Gameplay.RestartScene.performed += context => PauseGame();
     }
 
-    private void RestartScene()
+    private void PauseGame()
     {
-        Debug.Log("test");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (paused)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Time.timeScale = 1;
+            paused = false;
+            return;
+        }
+        
+        if (!paused)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0;
+            paused = true;
+        }
+        
+        
     }
-
 
     private void OnEnable()
     {
         input.Enable();
+        ActionEvents.OnPause += PauseGame;
     }
 
     private void OnDisable()
     {
         input.Disable();
+        ActionEvents.OnPause -= PauseGame;
     }
 }

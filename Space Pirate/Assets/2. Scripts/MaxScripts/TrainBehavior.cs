@@ -8,32 +8,37 @@ public class TrainBehavior : MonoBehaviour
     [SerializeField] private Transform end;
     [SerializeField] private Transform Train;
 
-    public float TrainSpeed;
+    [SerializeField] float TrainSpeed;
 
-    private float interpolateAmount;
+    float interpolateAmount;
+
+    [SerializeField] float delayTime;
+
+    bool stopped;
 
     private void Update()
     {
         TrainTravel();
     }
 
-    private void TrainFunction()
-    {
-        StartCoroutine("TrainSpawn");
-        TrainTravel();
-    }
     private void TrainTravel()
     {
-        interpolateAmount = (interpolateAmount + Time.fixedDeltaTime * TrainSpeed) % 1;
-        Train.position = Vector3.Lerp(start.position, end.position, interpolateAmount);
-        if (Train.position == end.position)
+        if (!stopped)
         {
-            StartCoroutine("TrainDelay");
+            interpolateAmount = interpolateAmount + Time.fixedDeltaTime * TrainSpeed;
+            if (interpolateAmount > 1)
+            {
+                StartCoroutine(TrainDelay());
+                stopped = true;
+            }
         }
+        Train.position = Vector3.Lerp(start.position, end.position, interpolateAmount);
     }
 
     private IEnumerator TrainDelay()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(delayTime);
+        interpolateAmount = 0;
+        stopped = false;
     }
 }
