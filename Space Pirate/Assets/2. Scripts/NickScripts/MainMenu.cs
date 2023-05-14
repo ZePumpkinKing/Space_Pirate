@@ -10,8 +10,13 @@ public class MainMenu : MonoBehaviour
 
     public int delayTime;
 
+    public GameObject creditsParent;
+    public GameObject mainParent;
+
     public void Awake()
     {
+        mainParent.gameObject.SetActive(true);
+        creditsParent.gameObject.SetActive(false);
         logicGO.gameObject.SetActive(false);
     }
 
@@ -27,4 +32,21 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(sceneNumber);
     }
 
+    public void ExitGame()
+    {
+        ///Debug.Log("Bye~!");
+        Application.Quit();
+    }
+
+    public void ShowCredits()
+    {
+        creditsParent.gameObject.SetActive(true);
+        mainParent.gameObject.SetActive(false);
+    }
+
+    public void HideCredits()
+    {
+        mainParent.gameObject.SetActive(true);
+        creditsParent.gameObject.SetActive(false);
+    }
 }
