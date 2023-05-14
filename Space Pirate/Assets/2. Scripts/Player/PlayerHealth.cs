@@ -64,5 +64,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
  
             }
         }
+        if (other.CompareTag("InstantKill"))
+        {
+            TakeDamage(100);
+        }
     }
 }
