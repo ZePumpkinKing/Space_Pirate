@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5240048083964760497}
   m_Layer: 0
   m_Name: pCube60
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7946089193959948731}
   m_Layer: 0
   m_Name: pCube69
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 8388266431652912143}
   m_Layer: 0
   m_Name: pCube63
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4087523817183768130}
   m_Layer: 0
   m_Name: pCube71
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 2734497037120345566}
   m_Layer: 0
   m_Name: pCube62
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 4987873079769106190}
   m_Layer: 0
   m_Name: pCube70
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 349423535267594999}
   m_Layer: 0
   m_Name: TrainCar_Cargo
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 7812484718520936315}
   m_Layer: 0
   m_Name: Cargo
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 1764089252378709495}
   m_Layer: 0
   m_Name: pCube66
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -937,7 +937,7 @@ GameObject:
   - component: {fileID: 3134463485690781737}
   m_Layer: 0
   m_Name: pCube65
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1145,7 +1145,7 @@ GameObject:
   - component: {fileID: 7114944191456505657}
   m_Layer: 0
   m_Name: pCube64
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1177,7 +1177,7 @@ GameObject:
   - component: {fileID: 4832615553054689954}
   m_Layer: 0
   m_Name: ForceFields
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1216,7 +1216,7 @@ GameObject:
   - component: {fileID: 8038155271369499934}
   m_Layer: 0
   m_Name: TrainCar_Cargo (1) 1
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1230,7 +1230,7 @@ Transform:
   m_GameObject: {fileID: 7261653133323534244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4066, y: 1.4066, z: 1.4066}
+  m_LocalScale: {x: 6.704354, y: 6.704354, z: 6.704354}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5240048083964760497}
@@ -1263,7 +1263,7 @@ GameObject:
   - component: {fileID: 9016050776102470926}
   m_Layer: 0
   m_Name: pCube72
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1378,7 +1378,7 @@ GameObject:
   - component: {fileID: 1730267593945720522}
   m_Layer: 0
   m_Name: pCube61
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1441,7 +1441,7 @@ GameObject:
   - component: {fileID: 4360363726154456209}
   m_Layer: 0
   m_Name: pCube68
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1649,7 +1649,7 @@ GameObject:
   - component: {fileID: 6545204708493162944}
   m_Layer: 0
   m_Name: pCube67
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
