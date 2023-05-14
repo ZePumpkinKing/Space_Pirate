@@ -19,6 +19,7 @@ public class EnergyBall : MonoBehaviour {
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         launch = false;
+        Destroy(gameObject, 10);
     }
 
     void Update() {
@@ -48,12 +49,6 @@ public class EnergyBall : MonoBehaviour {
         }
     }
 
-    IEnumerator KillMe() {
-        yield return new WaitForSeconds(5);
-
-        Destroy(gameObject);
-    }
-
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
 
@@ -72,5 +67,7 @@ public class EnergyBall : MonoBehaviour {
 
             Destroy(gameObject);
         }
+
+        Destroy(gameObject);
     }
 }
