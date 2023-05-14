@@ -19,6 +19,7 @@ TagManager:
   - CheckpointManager
   - StartingPoint
   - GameManager
+  - InstantKill
   layers:
   - Default
   - TransparentFX
