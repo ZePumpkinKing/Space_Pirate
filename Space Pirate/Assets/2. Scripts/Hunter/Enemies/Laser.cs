@@ -6,6 +6,7 @@ public class Laser : MonoBehaviour
 {
     [SerializeField] bool distanceBased;
     [SerializeField] float length;
+    [SerializeField] float damage;
 
     LineRenderer laser;
 
@@ -30,6 +31,7 @@ public class Laser : MonoBehaviour
             if (target.transform != null)
             {
                 positions[1] = target.point;
+                HitPlayer(target);
             }
             else
             {
@@ -52,7 +54,15 @@ public class Laser : MonoBehaviour
             positions[1] = target.point;
 
             laser.SetPositions(positions);
+
+            HitPlayer(target);
         }
+    }
+
+    private void HitPlayer(RaycastHit target)
+    {
+        target.transform.GetComponent<PlayerHealth>().TakeDamage(damage);
+        target.transform.GetComponent<Rigidbody>().AddForce(-target.normal * target.transform.GetComponent<Rigidbody>().velocity.magnitude * 2, ForceMode.Impulse);
     }
 
     private void OnDrawGizmos()
