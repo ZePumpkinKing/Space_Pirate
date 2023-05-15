@@ -7,25 +7,55 @@ public class EnemyDoor : MonoBehaviour
     //refs
     [SerializeField] private Animator DoorController;
     [SerializeField] private BoxCollider coll;
+    VoiceLinePlayer audioBank;
     
     //publics
-    public float enemiesDestroyed { get; private set; }
+    public float enemiesDestroyed { get; private set; } 
     
-    public bool opening;
-    [SerializeField] private bool enteredRoom;
+    [HideInInspector] public bool opening;
+    private bool enteredRoom;
+    [SerializeField] bool playVoiceLineOnOpen;
+    [SerializeField] int voiceLineNum;
     public float numOfEnemiesToOpenDoor;
 
     [HideInInspector] public int enemiesKilled;
+    //privs
+    private bool finalDoor;
+    private GameObject[] fields;
+
+    private void Start()
+    {
+        audioBank = FindObjectOfType<VoiceLinePlayer>();
+    }
 
     private void Update()
     {
         if (enemiesDestroyed >= numOfEnemiesToOpenDoor && !opening)
         {
-            StartCoroutine(OpenDoor());
+            if (!finalDoor) StartCoroutine(OpenDoor());
+            else
+            {
+                DestroyForcefields();
+                Destroy(this.gameObject);
+            }
         }
+    }
+    private void DestroyForcefields()
+    {
+        ActionEvents.DestroyedForcefields();
+        fields = GameObject.FindGameObjectsWithTag("Forcefield");
+        foreach (GameObject forcefield in fields)
+        {
+            Destroy(forcefield);
+        }
+        
     }
     public IEnumerator OpenDoor()
     {
+        if (playVoiceLineOnOpen)
+        {
+            audioBank.PlayVoiceLine(voiceLineNum);
+        }
         opening = true;
         DoorController.SetTrigger("Open");
         yield return new WaitForSeconds(.5f);
@@ -40,11 +70,16 @@ public class EnemyDoor : MonoBehaviour
             enemiesDestroyed++;
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!enteredRoom && other.CompareTag("Player"))
         {
             enteredRoom = true;
+            if (gameObject.CompareTag("FinalRoom"))
+            {
+                finalDoor = true;
+            }
         }
     }
 }

@@ -46,27 +46,39 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         {
             if (!immortal) 
             {
-                var energyRef = other?.GetComponent<EnergyBall>();
-                var rocketRef = other?.GetComponent<Rocket>();
-                var laserRef = other?.GetComponent<Laser>();
-                if (rocketRef != null)
-                {
-                    Debug.Log("Subtracting rocket dmg");
-                    TakeDamage(rocketRef.damage);
-                } else if (energyRef != null)
-                {
-                    Debug.Log("Subtracting energy ball dmg");
-                    TakeDamage(energyRef.damage);
-                } else if (laserRef != null)
-                {
-                    //TakeDamage(laserRef.damage);
-                }
+                
  
             }
         }
         if (other.CompareTag("InstantKill"))
         {
             TakeDamage(100);
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Projectile"))
+        {
+            if (!immortal)
+            {
+                var energyRef = collision.transform?.GetComponent<EnergyBall>();
+                var rocketRef = collision.transform?.GetComponent<Rocket>();
+                var laserRef = collision.transform?.GetComponent<Laser>();
+                /*if (rocketRef != null)
+                {
+                    Debug.Log("Subtracting rocket dmg");
+                    TakeDamage(rocketRef.damage);
+                }
+                else if (energyRef != null)
+                {
+                    Debug.Log("Subtracting energy ball dmg");
+                    TakeDamage(energyRef.damage);
+                }
+                else if (laserRef != null)
+                {
+                    //TakeDamage(laserRef.damage);
+                }*/
+            }
         }
     }
 }
