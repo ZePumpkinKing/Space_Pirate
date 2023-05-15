@@ -83,6 +83,7 @@ MonoBehaviour:
   start: {fileID: 0}
   end: {fileID: 0}
   Train: {fileID: 0}
+  horn: {fileID: 8300000, guid: fe6ce7aed03cfd5429f9a80603aaafb6, type: 3}
   TrainSpeed: 50
   delayTime: 0
 --- !u!82 &3675887197251057330
