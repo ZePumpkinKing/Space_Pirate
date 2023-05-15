@@ -21,10 +21,6 @@ public class CheckpointManager : MonoBehaviour
 
     }
     
-    private void Update()
-    {
-        Debug.Log(currentCheckpoint);
-    }
     private void Start()
     {
         SceneManager.sceneLoaded += this.OnLoadCallback;

@@ -16,13 +16,32 @@ public class EnemyDoor : MonoBehaviour
     public float numOfEnemiesToOpenDoor;
 
     [HideInInspector] public int enemiesKilled;
+    //privs
+    private bool finalDoor;
+    private GameObject[] fields;
+
 
     private void Update()
     {
         if (enemiesDestroyed >= numOfEnemiesToOpenDoor && !opening)
         {
-            StartCoroutine(OpenDoor());
+            if (!finalDoor) StartCoroutine(OpenDoor());
+            else
+            {
+                DestroyForcefields();
+                Destroy(this.gameObject);
+            }
         }
+    }
+    private void DestroyForcefields()
+    {
+        ActionEvents.DestroyedForcefields();
+        fields = GameObject.FindGameObjectsWithTag("Forcefield");
+        foreach (GameObject forcefield in fields)
+        {
+            Destroy(forcefield);
+        }
+        
     }
     public IEnumerator OpenDoor()
     {
@@ -40,11 +59,16 @@ public class EnemyDoor : MonoBehaviour
             enemiesDestroyed++;
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!enteredRoom && other.CompareTag("Player"))
         {
             enteredRoom = true;
+            if (gameObject.CompareTag("FinalRoom"))
+            {
+                finalDoor = true;
+            }
         }
     }
 }

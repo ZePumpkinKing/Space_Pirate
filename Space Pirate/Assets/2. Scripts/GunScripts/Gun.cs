@@ -200,7 +200,7 @@ public class Gun : MonoBehaviour
         IDamageable damageable = hit.transform.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable?.TakeDamage(currentGun.damage);
+            damageable.TakeDamage(currentGun.damage);
             StartCoroutine(PlayParticles(gunshotSparksEnemy, hitPos, gunshotSparks.transform.rotation));
         }
         else if (currentGun != guns[1])

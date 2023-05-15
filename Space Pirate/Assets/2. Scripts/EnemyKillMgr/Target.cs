@@ -6,6 +6,8 @@ public class Target : MonoBehaviour, IDamageable
 {
     public float health;
     EnemyDoor[] doors;
+
+
     private void Awake()
     {
         doors = FindObjectsOfType<EnemyDoor>();
@@ -18,9 +20,14 @@ public class Target : MonoBehaviour, IDamageable
 
     private void OnDestroy()
     {
-        foreach (EnemyDoor door in doors)
+        if (this.gameObject.tag != "Projectile")
         {
-            door.UpdateEnemyCount();
+            foreach (EnemyDoor door in doors)
+            {
+                door.UpdateEnemyCount();
+            }
         }
+        
     }
+
 }

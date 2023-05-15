@@ -7,5 +7,9 @@ public static class ActionEvents
 {
     public static Action OnPause;
 
-    public static Action SwitchGravity;
+    public static Action DestroyPipeSwitchGravity;
+
+    public static Action DestroyedEmitter;
+
+    public static Action DestroyedForcefields;
 }
