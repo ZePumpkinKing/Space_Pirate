@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5185853965886888638}
   - component: {fileID: 8095221573653501211}
   - component: {fileID: 6322198905230647761}
+  - component: {fileID: 783152703534929335}
   m_Layer: 0
   m_Name: TrainCar_Engine
-  m_TagString: Untagged
+  m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5529305542294323204}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.018174248, y: 0.011152925, z: 0.019133903}
+  m_LocalScale: {x: 0.0866249, y: 0.05315879, z: 0.09119896}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &783152703534929335
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5529305542294323204}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1932.159, y: 278.31686, z: 199.90312}
+  m_Center: {x: -427.22742, y: 89.15843, z: 0}
