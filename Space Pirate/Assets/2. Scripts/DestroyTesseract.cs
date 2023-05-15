@@ -6,10 +6,13 @@ public class DestroyTesseract : MonoBehaviour, IDamageable
 {
     int destroyedEmitters;
     bool destructible;
+    [SerializeField] GameObject explosion;
     public void TakeDamage(float dmg)
     {
         if (destructible)
         {
+            ActionEvents.DestroyedTesseract();
+            Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

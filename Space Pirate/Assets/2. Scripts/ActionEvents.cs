@@ -12,4 +12,6 @@ public static class ActionEvents
     public static Action DestroyedEmitter;
 
     public static Action DestroyedForcefields;
+
+    public static Action DestroyedTesseract;
 }
