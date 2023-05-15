@@ -96,6 +96,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainCar_Cargo (1) 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7275309852272260491, guid: 9a1837dad44e6b54e8db214ddf5d6df7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8038155271369499934, guid: 9a1837dad44e6b54e8db214ddf5d6df7,
         type: 3}
       propertyPath: m_RootOrder

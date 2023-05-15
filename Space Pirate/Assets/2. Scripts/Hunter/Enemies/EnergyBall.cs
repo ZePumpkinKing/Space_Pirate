@@ -9,6 +9,7 @@ public class EnergyBall : MonoBehaviour {
     [SerializeField] float chargeSpeed;
     [SerializeField] float spinSpeed;
     [SerializeField] float fireDelay;
+    [SerializeField] float knockback;
 
     public float damage;
 
@@ -18,6 +19,7 @@ public class EnergyBall : MonoBehaviour {
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         launch = false;
+        Destroy(gameObject, 10);
     }
 
     void Update() {
@@ -47,12 +49,6 @@ public class EnergyBall : MonoBehaviour {
         }
     }
 
-    IEnumerator KillMe() {
-        yield return new WaitForSeconds(5);
-
-        Destroy(gameObject);
-    }
-
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
 
@@ -63,7 +59,15 @@ public class EnergyBall : MonoBehaviour {
     {
         if (collision.transform.CompareTag("Ground") || collision.transform.CompareTag("Player"))
         {
+            if (collision.transform.CompareTag("Player"))
+            {
+                collision.transform.GetComponent<PlayerHealth>().TakeDamage(damage);
+                collision.transform.GetComponent<Rigidbody>().AddForce(transform.forward * knockback, ForceMode.Impulse);
+            }
+
             Destroy(gameObject);
         }
+
+        Destroy(gameObject);
     }
 }

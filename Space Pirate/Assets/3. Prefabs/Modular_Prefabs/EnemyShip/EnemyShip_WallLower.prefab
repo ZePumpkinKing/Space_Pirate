@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8932850143014620217}
   - component: {fileID: 5501147448151638940}
   - component: {fileID: 7763351698410633046}
-  - component: {fileID: -8999531964301645931}
+  - component: {fileID: 5875201053522164913}
   m_Layer: 3
   m_Name: EnemyShip_WallLower
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-8999531964301645931
+--- !u!64 &5875201053522164913
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
