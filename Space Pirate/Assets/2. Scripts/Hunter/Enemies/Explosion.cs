@@ -31,15 +31,21 @@ public class Explosion : MonoBehaviour
         transform.position = position;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag("Player")) {
+        if (other.transform.CompareTag("Player"))
+        {
             other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
             other.gameObject.GetComponent<Rigidbody>().AddExplosionForce(knockback, transform.position, maxSize);
-        } else {
-            try {
+        }
+        else
+        {
+            try
+            {
                 other.gameObject.GetComponent<Target>().TakeDamage(damage);
-            } catch {
+            }
+            catch
+            {
 
             }
         }
