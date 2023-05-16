@@ -6,6 +6,7 @@ public class PlayPipeAudio : MonoBehaviour
 {
     AudioSource audioSrc;
     [SerializeField] GameObject particles;
+    GameObject particleRef;
     private void Start()
     {
         audioSrc = GetComponent<AudioSource>();
@@ -14,15 +15,22 @@ public class PlayPipeAudio : MonoBehaviour
     private void OnEnable()
     {
         ActionEvents.DestroyPipeSwitchGravity += PlaySfx;
+        ActionEvents.EnteredBattleRoom += DestroyParticles;
     }
     private void OnDisable()
     {
         ActionEvents.DestroyPipeSwitchGravity -= PlaySfx;
+        ActionEvents.EnteredBattleRoom -= DestroyParticles;
     }
     private void PlaySfx()
     {
         StartCoroutine(Delay());
-        Instantiate(particles, new Vector3(-122.464996f, 190.158997f, 135.29039f), Quaternion.identity);
+        particleRef = Instantiate(particles, new Vector3(-122.464996f, 190.158997f, 135.29039f), Quaternion.identity);
+    }
+
+    private void DestroyParticles()
+    {
+        Destroy(particleRef);
     }
 
     IEnumerator Delay()

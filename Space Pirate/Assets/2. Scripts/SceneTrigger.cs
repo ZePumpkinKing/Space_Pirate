@@ -24,7 +24,7 @@ public class SceneTrigger : MonoBehaviour
     GameObject currentDropCam;
     [SerializeField] Transform camFinalPos;
 
-    float timerCap = 3;
+    float timerCap = 2.5f;
     float timer;
     Vector3 Playerpos;
     Quaternion playerRot;

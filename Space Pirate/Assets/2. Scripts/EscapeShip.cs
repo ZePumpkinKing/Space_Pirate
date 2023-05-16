@@ -28,6 +28,12 @@ public class EscapeShip : MonoBehaviour
 
     private void EnableFunctionality()
     {
+        StartCoroutine(Delay());
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(8);
         text.SetActive(true);
         finishedGame = true;
     }

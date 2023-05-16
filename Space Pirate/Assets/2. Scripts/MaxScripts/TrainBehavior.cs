@@ -9,6 +9,7 @@ public class TrainBehavior : MonoBehaviour
     [SerializeField] private Transform Train;
     AudioSource audio;
     [SerializeField] AudioClip horn;
+    GameManager gm;
 
     [SerializeField] float TrainSpeed;
 
@@ -20,6 +21,7 @@ public class TrainBehavior : MonoBehaviour
 
     private void Start()
     {
+        gm = FindObjectOfType<GameManager>();
         audio = GetComponent<AudioSource>();
     }
     private void Update()
@@ -31,7 +33,18 @@ public class TrainBehavior : MonoBehaviour
     {
         if (!stopped)
         {
-            interpolateAmount = interpolateAmount + Time.fixedDeltaTime * TrainSpeed;
+            if (gm != null)
+            {
+                if (!gm.paused)
+                {
+                    interpolateAmount = interpolateAmount + Time.fixedDeltaTime * TrainSpeed;
+                }
+            } else
+            {
+                interpolateAmount = interpolateAmount + Time.fixedDeltaTime * TrainSpeed;
+            }
+            
+            
             if (interpolateAmount > 1)
             {
                 StartCoroutine(TrainDelay());
