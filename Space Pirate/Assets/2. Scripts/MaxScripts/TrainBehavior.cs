@@ -7,6 +7,8 @@ public class TrainBehavior : MonoBehaviour
     [SerializeField] private Transform start;
     [SerializeField] private Transform end;
     [SerializeField] private Transform Train;
+    AudioSource audio;
+    [SerializeField] AudioClip horn;
 
     [SerializeField] float TrainSpeed;
 
@@ -16,6 +18,10 @@ public class TrainBehavior : MonoBehaviour
 
     bool stopped;
 
+    private void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
     private void Update()
     {
         TrainTravel();
@@ -40,5 +46,6 @@ public class TrainBehavior : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         interpolateAmount = 0;
         stopped = false;
+        audio.PlayOneShot(horn);
     }
 }

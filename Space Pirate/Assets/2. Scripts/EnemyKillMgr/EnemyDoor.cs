@@ -22,9 +22,11 @@ public class EnemyDoor : MonoBehaviour
     //privs
     private bool finalDoor;
     private GameObject[] fields;
+    AudioSource audioSrc;
 
     private void Start()
     {
+        audioSrc = GetComponent<AudioSource>();
         audioBank = FindObjectOfType<VoiceLinePlayer>();
     }
 
@@ -52,10 +54,12 @@ public class EnemyDoor : MonoBehaviour
     }
     public IEnumerator OpenDoor()
     {
+        ActionEvents.ExitBattleRoom();
         if (playVoiceLineOnOpen)
         {
             audioBank.PlayVoiceLine(voiceLineNum);
         }
+        audioSrc.Play();
         opening = true;
         DoorController.SetTrigger("Open");
         yield return new WaitForSeconds(.5f);
@@ -76,10 +80,14 @@ public class EnemyDoor : MonoBehaviour
         if (!enteredRoom && other.CompareTag("Player"))
         {
             enteredRoom = true;
+            ActionEvents.EnteredBattleRoom();
+            
             if (gameObject.CompareTag("FinalRoom"))
             {
                 finalDoor = true;
             }
         }
     }
+
+   
 }
