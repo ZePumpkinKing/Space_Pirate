@@ -8,6 +8,8 @@ public class ExpandShield : MonoBehaviour
     Vector3 beginningScale;
     int destroyedEmitters;
     bool startExpand;
+    VoiceLinePlayer voiceLinePlayer;
+    [SerializeField] int voiceLineNum;
     [SerializeField] float pulseAmount;
     [SerializeField] float pulseSpeed;
     Collider[] colls;
@@ -16,6 +18,7 @@ public class ExpandShield : MonoBehaviour
 
     private void Start()
     {
+        voiceLinePlayer = FindObjectOfType<VoiceLinePlayer>();
         colls = GetComponentsInChildren<Collider>();
         beginningScale = transform.localScale;
         targetScale = new Vector3(480, 480, 480);
@@ -54,6 +57,7 @@ public class ExpandShield : MonoBehaviour
     private IEnumerator Deletion()
     {
         yield return new WaitForSeconds(2);
+        voiceLinePlayer.PlayVoiceLine(voiceLineNum);
         Destroy(gameObject);
     }
 

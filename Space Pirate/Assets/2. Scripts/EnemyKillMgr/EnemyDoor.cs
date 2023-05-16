@@ -16,6 +16,7 @@ public class EnemyDoor : MonoBehaviour
     private bool enteredRoom;
     [SerializeField] bool playVoiceLineOnOpen;
     [SerializeField] int voiceLineNum;
+    [SerializeField] int voiceLineEnemiesKilled;
     public float numOfEnemiesToOpenDoor;
 
     [HideInInspector] public int enemiesKilled;
@@ -45,6 +46,7 @@ public class EnemyDoor : MonoBehaviour
     private void DestroyForcefields()
     {
         ActionEvents.DestroyedForcefields();
+        audioBank.PlayVoiceLine(voiceLineEnemiesKilled);
         fields = GameObject.FindGameObjectsWithTag("Forcefield");
         foreach (GameObject forcefield in fields)
         {
