@@ -7,6 +7,13 @@ public class DestroyTesseract : MonoBehaviour, IDamageable
     int destroyedEmitters;
     bool destructible;
     [SerializeField] GameObject explosion;
+    VoiceLinePlayer voiceLinePlayer;
+    [SerializeField] int voiceLineNum;
+
+    private void Start()
+    {
+        voiceLinePlayer = FindObjectOfType<VoiceLinePlayer>();
+    }
     public void TakeDamage(float dmg)
     {
         if (destructible)
@@ -14,6 +21,7 @@ public class DestroyTesseract : MonoBehaviour, IDamageable
             ActionEvents.DestroyedTesseract();
             Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
+            voiceLinePlayer.PlayVoiceLine(voiceLineNum);
         }
     }
 
