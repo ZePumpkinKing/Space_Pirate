@@ -15,6 +15,8 @@ public class MainMenu : MonoBehaviour
 
     public void Awake()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         mainParent.gameObject.SetActive(true);
         creditsParent.gameObject.SetActive(false);
         logicGO.gameObject.SetActive(false);
