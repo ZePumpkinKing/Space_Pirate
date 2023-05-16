@@ -1583,8 +1583,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DoorController: {fileID: 8376821039510668126}
   coll: {fileID: 701785121}
-  doorOpen: {fileID: 8300000, guid: 6b04da42954e0d740a3b32dfd05ed381, type: 3}
-  doorClose: {fileID: 8300000, guid: 0185f335c78f181458f1c31d3e59a00a, type: 3}
+  doorOpen: {fileID: 8300000, guid: ebd096a3fa6a76749b6f9e8a18b31f2c, type: 3}
+  doorClose: {fileID: 8300000, guid: ebd096a3fa6a76749b6f9e8a18b31f2c, type: 3}
   exiting: 0
   opening: 0
 --- !u!82 &6174754792082570660
@@ -1599,7 +1599,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.495
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
