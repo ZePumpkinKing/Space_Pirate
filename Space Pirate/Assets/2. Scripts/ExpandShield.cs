@@ -47,6 +47,7 @@ public class ExpandShield : MonoBehaviour
         if (destroyedEmitters == 4)
         {
             startExpand = true;
+            voiceLinePlayer.PlayVoiceLine(voiceLineNum);
             foreach (Collider coll in colls)
             {
                 coll.isTrigger = true;
@@ -57,7 +58,7 @@ public class ExpandShield : MonoBehaviour
     private IEnumerator Deletion()
     {
         yield return new WaitForSeconds(2);
-        voiceLinePlayer.PlayVoiceLine(voiceLineNum);
+        
         Destroy(gameObject);
     }
 
