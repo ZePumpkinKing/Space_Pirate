@@ -16,7 +16,6 @@ public class Rocket : MonoBehaviour
     
     bool launch;
 
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindObjectOfType<Player>().transform;
