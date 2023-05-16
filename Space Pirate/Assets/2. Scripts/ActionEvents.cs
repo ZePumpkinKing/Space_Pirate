@@ -14,4 +14,7 @@ public static class ActionEvents
     public static Action DestroyedForcefields;
 
     public static Action DestroyedTesseract;
+
+    public static Action EnteredBattleRoom;
+    public static Action ExitBattleRoom;
 }
