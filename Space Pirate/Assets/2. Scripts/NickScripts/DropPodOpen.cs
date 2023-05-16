@@ -23,8 +23,12 @@ public class DropPodOpen : MonoBehaviour
 
     private void OnTriggerEnter(Collider playerCollider)
     {
-        dropPodText.SetActive(true);
-        dropPodAnimator.SetBool("IsInRange", true);
+        if (playerCollider.CompareTag("Player"))
+        {
+            dropPodText.SetActive(true);
+            dropPodAnimator.SetBool("IsInRange", true);
+        }
+        
        // Debug.Log("is in trigger :D");
     }
     private void OnTriggerExit(Collider playerCollider)
