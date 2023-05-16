@@ -13,6 +13,7 @@ public class VoiceLinePlayer : MonoBehaviour
     }
     public void PlayVoiceLine(int voiceLineNumber)
     {
+        audioPlayer.Stop();
         audioPlayer.PlayOneShot(voiceLines[voiceLineNumber]);
     }
 }
