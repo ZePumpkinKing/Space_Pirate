@@ -65,7 +65,6 @@ public class Player : MonoBehaviour
         cam = gameObject.GetComponentInChildren<Camera>();
         rb = gameObject.GetComponent<Rigidbody>();
 
-        input.Gameplay.Debug.performed += context => SwitchGravity();
         input.Gameplay.Jump.performed += context => Jump();
     }
 

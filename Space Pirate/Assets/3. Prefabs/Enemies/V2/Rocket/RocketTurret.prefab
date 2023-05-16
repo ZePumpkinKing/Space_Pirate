@@ -137,7 +137,7 @@ MonoBehaviour:
   projectile: {fileID: 3028457459112175997, guid: 569d0c80dc70fca49873168c1e0fa683,
     type: 3}
   laserSight: 0
-  fireDelay: 0.5
+  fireDelay: 4
   maxSpeed: 2
   offset: {x: 0, y: 0, z: 2}
 --- !u!114 &2473541307655178032

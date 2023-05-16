@@ -1890,6 +1890,7 @@ MonoBehaviour:
   start: {fileID: 1271175944}
   end: {fileID: 372107444}
   Train: {fileID: 11785493}
+  horn: {fileID: 0}
   TrainSpeed: 0.2
   delayTime: 10
 --- !u!4 &698949896
