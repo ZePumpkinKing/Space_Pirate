@@ -16308,7 +16308,8 @@ MonoBehaviour:
   start: {fileID: 511073229}
   end: {fileID: 635544266}
   Train: {fileID: 543450653412215235}
-  TrainSpeed: 0.0255
+  horn: {fileID: 0}
+  TrainSpeed: 0.05
   delayTime: 18
 --- !u!1 &5886180157592825011
 GameObject:

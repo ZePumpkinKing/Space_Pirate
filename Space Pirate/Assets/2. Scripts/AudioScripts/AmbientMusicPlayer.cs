@@ -28,7 +28,7 @@ public class AmbientMusicPlayer : MonoBehaviour
         {
 
             audioSrc.volume += Time.deltaTime;
-            if (audioSrc.volume > .5f)
+            if (audioSrc.volume >= .7f)
             {
                 increaseVol = false;
             }

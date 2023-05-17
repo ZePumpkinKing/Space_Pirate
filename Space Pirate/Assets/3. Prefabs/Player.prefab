@@ -1076,7 +1076,7 @@ MonoBehaviour:
   forwardThrustForce: 100
   isPlayerGrappling: 0
   isObjGrappling: 0
-  autoAimRadius: 1
+  autoAimRadius: 0.5
 --- !u!114 &610763125971457792
 MonoBehaviour:
   m_ObjectHideFlags: 0
