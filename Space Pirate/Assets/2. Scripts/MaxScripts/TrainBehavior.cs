@@ -37,11 +37,11 @@ public class TrainBehavior : MonoBehaviour
             {
                 if (!gm.paused)
                 {
-                    interpolateAmount = interpolateAmount + Time.fixedDeltaTime * TrainSpeed;
+                    interpolateAmount = interpolateAmount + Time.deltaTime * TrainSpeed;
                 }
             } else
             {
-                interpolateAmount = interpolateAmount + Time.fixedDeltaTime * TrainSpeed;
+                interpolateAmount = interpolateAmount + Time.deltaTime * TrainSpeed;
             }
             
             

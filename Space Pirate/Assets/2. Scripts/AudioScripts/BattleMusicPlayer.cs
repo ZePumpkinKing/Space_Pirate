@@ -29,7 +29,7 @@ public class BattleMusicPlayer : MonoBehaviour
         {
 
             audioSrc.volume += Time.deltaTime;
-            if (audioSrc.volume > .5)
+            if (audioSrc.volume >= .7)
             {
                 increaseVol = false;
             }

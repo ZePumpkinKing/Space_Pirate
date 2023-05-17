@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2368397199909358908}
   - component: {fileID: 2368397199909358909}
   - component: {fileID: 2368397199909358910}
+  - component: {fileID: 1778200922}
   m_Layer: 0
   m_Name: VoiceLinePlayer
   m_TagString: Untagged
@@ -142,8 +143,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   voiceLines:
-  - {fileID: 8300000, guid: a3dbb2da6967c154693b4fb51b9f1db7, type: 3}
-  - {fileID: 8300000, guid: a8e8f27a9e0c4c14badd9d4b5dd28a22, type: 3}
-  - {fileID: 8300000, guid: 8b28126aaad8d8e4181af286dfc83f29, type: 3}
-  - {fileID: 8300000, guid: eccae55f6e8c84c41b60bd37638c6898, type: 3}
-  - {fileID: 8300000, guid: 881b3b6c3f79c9c4abf49e3e047abd91, type: 3}
+  - {fileID: 8300000, guid: 66e8e2056b7a81e44917093a1f0a68d2, type: 3}
+  - {fileID: 8300000, guid: 2e5b7978b627ee442bff6bd15ed45057, type: 3}
+  - {fileID: 8300000, guid: 1671438a9621d9642ad2e335f5b4f39c, type: 3}
+  - {fileID: 8300000, guid: d8ba6bc0cc41d914f9f93037c5251c85, type: 3}
+  - {fileID: 8300000, guid: 3cdc65ffd8daa254eba6500009abfca1, type: 3}
+  - {fileID: 8300000, guid: 52b0ffd14250b694488fe4f84f34fda6, type: 3}
+  - {fileID: 8300000, guid: 96e642f7c16d8134e8a05673a64eeb45, type: 3}
+  - {fileID: 8300000, guid: ae2cc30aa6c6fc24895ed68616e1c712, type: 3}
+  - {fileID: 8300000, guid: 56acd1076adefef43a3ca783af7d43b1, type: 3}
+  - {fileID: 8300000, guid: 098f349b6bc6de348a13a5dc794a0555, type: 3}
+  - {fileID: 8300000, guid: 2c745cc1f091864418de163e3b2bc4dc, type: 3}
+  - {fileID: 8300000, guid: a79bd07500d90694b8d1d89fe1a04cc9, type: 3}
+  - {fileID: 8300000, guid: 532aabe85b73c1543b0a4dc70919cace, type: 3}
+--- !u!170 &1778200922
+AudioDistortionFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368397199909358911}
+  m_Enabled: 1
+  m_DistortionLevel: 0.5
