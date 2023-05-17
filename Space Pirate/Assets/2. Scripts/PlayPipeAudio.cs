@@ -25,6 +25,7 @@ public class PlayPipeAudio : MonoBehaviour
     private void PlaySfx()
     {
         StartCoroutine(Delay());
+        Debug.Log("INSTNANTIATEJTKEJTKJEKTJKEJTKJKEJT");
         particleRef = Instantiate(particles, new Vector3(-122.464996f, 190.158997f, 135.29039f), Quaternion.identity);
     }
 

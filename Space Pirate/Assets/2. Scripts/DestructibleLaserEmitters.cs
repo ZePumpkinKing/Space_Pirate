@@ -35,9 +35,4 @@ public class DestructibleLaserEmitters : MonoBehaviour, IDamageable
         forcefieldsDestroyed = true;
     }
 
-    private void OnDestroy()
-    {
-        Debug.Log("Destroyed");
-    }
-
 }
