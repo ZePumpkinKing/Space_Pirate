@@ -137,7 +137,9 @@ MonoBehaviour:
   guns:
   - {fileID: 11400000, guid: 6c8af4230089e554c9540c98a14c6d1d, type: 2}
   - {fileID: 11400000, guid: 1bde0fcb1880553408108dcf7c4e2eca, type: 2}
-  gunObjs: []
+  gunObjs:
+  - {fileID: 546897729833053395}
+  - {fileID: 1218348477240617493}
   bulletTrail: {fileID: 328621789431213768, guid: bbf332f4208080943925bce93cc782e9,
     type: 3}
   canHit:
@@ -1965,6 +1967,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4028e43c76e02af46a664066134515c6, type: 3}
+--- !u!1 &546897729833053395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4028e43c76e02af46a664066134515c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 817281594055692674}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &926941331800651369 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4028e43c76e02af46a664066134515c6,

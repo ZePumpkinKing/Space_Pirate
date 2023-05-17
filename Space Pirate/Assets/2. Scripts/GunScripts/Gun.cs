@@ -54,7 +54,7 @@ public class Gun : MonoBehaviour
     {
         gm = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
-        gunObjs = GameObject.FindGameObjectsWithTag("Gun");
+        //gunObjs = GameObject.FindGameObjectsWithTag("Gun");
         gunObjRecoil = FindObjectOfType<GunFireRecoil>();
         
         currentGun = guns[0];
