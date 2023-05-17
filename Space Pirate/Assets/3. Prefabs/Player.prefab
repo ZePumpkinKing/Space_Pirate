@@ -1070,7 +1070,7 @@ MonoBehaviour:
     m_Bits: 8192
   gunTip: {fileID: 1631050056}
   castPoint: {fileID: 610763125167634104}
-  maxGrappleDistance: 50
+  maxGrappleDistance: 75
   grappleJointStrength: 20
   grappleJointDamper: 7
   grappleJointMassScale: 4.5

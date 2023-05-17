@@ -118,7 +118,7 @@ MonoBehaviour:
   spinSpeed: 10
   fireDelay: 0.1
   knockback: 10
-  damage: 20
+  damage: 15
 --- !u!54 &2805398160094862489
 Rigidbody:
   m_ObjectHideFlags: 0
