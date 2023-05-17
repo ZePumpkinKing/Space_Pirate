@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 4a0c935514d2ad34982ef30e7a63ad64
+guid: 2162e9c1cf8234e48b84a3ad9202f0ce
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: 4781951162920444690
-    second: Armature|ArmatureAction
+      74: 4417599067391190367
+    second: Shotgun_Rig|Shotgun_RigAction
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -26,44 +26,15 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 1
-    animationCompression: 3
+    importConstraints: 0
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Armature|ArmatureAction
-      takeName: Armature|ArmatureAction
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 41
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -121,15 +92,15 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: Root
+    rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
