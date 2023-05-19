@@ -7,7 +7,7 @@ public class CheckpointManager : MonoBehaviour
 {
     public CheckpointTrigger[] checkpointsDisorganized;
     public CheckpointTrigger[] checkpointsOrganized;
-    [SerializeField] GameObject player;
+    GameObject player;
     [HideInInspector] public int currentCheckpoint = 0;
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class CheckpointManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
-
+        player = FindObjectOfType<Player>().gameObject;
     }
     
     private void Start()
@@ -26,13 +26,14 @@ public class CheckpointManager : MonoBehaviour
         SceneManager.sceneLoaded += this.OnLoadCallback;
         GetReferences();
         OrganizeCheckpoints();
-        Instantiate(player, checkpointsOrganized[currentCheckpoint].transform.position, Quaternion.identity);
+        //Instantiate(player, checkpointsOrganized[currentCheckpoint].transform.position, Quaternion.identity);
 
         Debug.Log("Started");
         //numberOfLoads++;
     }
     void OnLoadCallback(Scene scene, LoadSceneMode sceneMode)
     {
+        player = FindObjectOfType<Player>().gameObject;
         if (scene.name == "Main Menu Scene" || scene.name == "Solarius_Interior")
         {
             currentCheckpoint = 0;
@@ -42,7 +43,8 @@ public class CheckpointManager : MonoBehaviour
         OrganizeCheckpoints();
         Debug.Log("Scene Loaded");
 
-        Instantiate(player, checkpointsOrganized[currentCheckpoint].transform.position, Quaternion.identity);
+        player.transform.position = checkpointsOrganized[currentCheckpoint].transform.position;
+        //Instantiate(player, checkpointsOrganized[currentCheckpoint].transform.position, Quaternion.identity);
 
     }
     private void GetReferences()
