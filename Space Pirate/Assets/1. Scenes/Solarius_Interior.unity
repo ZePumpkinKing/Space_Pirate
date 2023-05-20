@@ -33604,6 +33604,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 898a8cf3a045cd143b28c0e0f597b7da, type: 3}
+--- !u!1 &1187983345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1187983346}
+  m_Layer: 0
+  m_Name: CanSpawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1187983346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187983345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.00374, y: -0.00536, z: 0.00472}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1989809685}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1196067354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51303,6 +51334,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2432976421320870143, guid: 520a1452cd76d884796e62491d18f898,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432976421320870143, guid: 520a1452cd76d884796e62491d18f898,
+        type: 3}
       propertyPath: m_TagString
       value: Emissive_to_baked
       objectReference: {fileID: 0}
@@ -57833,6 +57869,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b240835702e1c9c4db2109c9b30c0273, type: 3}
+--- !u!1 &1989809680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2432976421320870143, guid: 520a1452cd76d884796e62491d18f898,
+    type: 3}
+  m_PrefabInstance: {fileID: 1762375987}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1989809681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989809680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea5974e27c083224aab20662d1657096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sodaCans:
+  - {fileID: 180990396852361448, guid: 015123031fd91014793efed20ecd9865, type: 3}
+  - {fileID: 3569469925858637824, guid: 514ea1db23d53bb44899dcc50e610a6d, type: 3}
+  - {fileID: 1901866712527917747, guid: 575de79cd236b4144a100a0daecb17e2, type: 3}
+  canID: 0
+  selectedCan: {fileID: 0}
+  spawnPoint: {fileID: 1187983346}
+--- !u!4 &1989809685 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3064835364851749445, guid: 520a1452cd76d884796e62491d18f898,
+    type: 3}
+  m_PrefabInstance: {fileID: 1762375987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1990537547
 PrefabInstance:
   m_ObjectHideFlags: 0
