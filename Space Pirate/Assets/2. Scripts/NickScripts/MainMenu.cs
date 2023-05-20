@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public GameObject creditsParent;
     public GameObject mainParent;
+    public GameObject bumperClip;
 
     public void Awake()
     {
@@ -20,6 +21,14 @@ public class MainMenu : MonoBehaviour
         mainParent.gameObject.SetActive(true);
         creditsParent.gameObject.SetActive(false);
         logicGO.gameObject.SetActive(false);
+        StartCoroutine(VideoEnd());
+    }
+
+    IEnumerator VideoEnd()
+    {
+        yield return new WaitForSeconds(8);
+        bumperClip.gameObject.SetActive(false);
+
     }
 
     public void SceneTransition()

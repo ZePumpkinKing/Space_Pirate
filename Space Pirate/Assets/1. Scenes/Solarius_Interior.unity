@@ -889,6 +889,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7842505032762910626, guid: 3453368901769d94899c2f8762982074,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7842505032762910626, guid: 3453368901769d94899c2f8762982074,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: fd3729f39e855fb45bbdb50aa9e37000, type: 2}
     - target: {fileID: 8635318818142701175, guid: 3453368901769d94899c2f8762982074,
         type: 3}
       propertyPath: m_Name
@@ -3247,6 +3257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Soda Can 1 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 180990396852361448, guid: b240835702e1c9c4db2109c9b30c0273,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 705043560563737170, guid: b240835702e1c9c4db2109c9b30c0273,
         type: 3}
@@ -8061,6 +8076,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Emissive_to_baked
       objectReference: {fileID: 0}
+    - target: {fileID: 1767365511738813592, guid: 4ad5a24a96c7cf545bad2d389c00945e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 2202597239178061288, guid: 4ad5a24a96c7cf545bad2d389c00945e,
         type: 3}
       propertyPath: m_RootOrder
@@ -9085,6 +9105,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Soda Can 2 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569469925858637824, guid: 17a0bd5cd8c8b7545b7e4c1f10388d01,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4234119570053276346, guid: 17a0bd5cd8c8b7545b7e4c1f10388d01,
         type: 3}
@@ -51396,6 +51421,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -137.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209173907655700231, guid: 520a1452cd76d884796e62491d18f898,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 520a1452cd76d884796e62491d18f898, type: 3}

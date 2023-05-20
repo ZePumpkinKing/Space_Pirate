@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4728878819109054421}
   - component: {fileID: 7369205599127327519}
   - component: {fileID: 5372951433077316383}
+  - component: {fileID: 8752723492336591936}
   m_Layer: 3
   m_Name: Gangway_WallStraight
   m_TagString: Untagged
@@ -98,3 +99,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 706812845680974387, guid: 890e632d61f22ac45bb8adb5ea8cdb98, type: 3}
+--- !u!65 &8752723492336591936
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9026428626121421514}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 400.00018, y: 96.28537, z: 246.5378}
+  m_Center: {x: -200.00009, y: 64.634254, z: 123.64029}
