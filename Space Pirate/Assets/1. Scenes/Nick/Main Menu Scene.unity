@@ -1883,7 +1883,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665118774}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 3a968e145acadfa47aeb0b8ccfd2921e, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 9da04aed084742c4d9405187e7db0e08, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -3169,6 +3169,9 @@ MonoBehaviour:
   creditsParent: {fileID: 470039447}
   mainParent: {fileID: 1243630626}
   bumperClip: {fileID: 1238330288}
+  fadeTime: 0.15
+  videoRenderer: {fileID: 1238330290}
+  isFading: 0
 --- !u!1 &1086874410
 GameObject:
   m_ObjectHideFlags: 0
