@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -12,6 +13,15 @@ public class MainMenu : MonoBehaviour
 
     public GameObject creditsParent;
     public GameObject mainParent;
+    public GameObject bumperClip;
+
+    public float fadeTime;
+
+    Color videoRendererColor = Color.white;
+
+    public Graphic videoRenderer;
+
+    public bool isFading = false;
 
     public void Awake()
     {
@@ -20,6 +30,25 @@ public class MainMenu : MonoBehaviour
         mainParent.gameObject.SetActive(true);
         creditsParent.gameObject.SetActive(false);
         logicGO.gameObject.SetActive(false);
+        StartCoroutine(VideoEnd());
+    }
+
+    IEnumerator VideoEnd()
+    {
+        yield return new WaitForSeconds(7);
+        isFading = true;
+        yield return new WaitForSeconds(1);
+        bumperClip.gameObject.SetActive(false);
+    }
+
+
+    public void Update()
+    {
+        videoRenderer.color = videoRendererColor;
+        if (isFading == true)
+        {
+            videoRendererColor = Color.LerpUnclamped(Color.white, Color.black, (fadeTime += Time.deltaTime));
+        }
     }
 
     public void SceneTransition()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3102627444249571326}
   - component: {fileID: 2063040801101881435}
   - component: {fileID: 4270982430984262801}
-  - component: {fileID: 1402791867711900703}
+  - component: {fileID: 4504950354463977951}
   m_Layer: 3
   m_Name: Gangway_PlatformStraight
   m_TagString: Ground
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1402791867711900703
-MeshCollider:
+--- !u!65 &4504950354463977951
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2102621796294971896, guid: 2437e2c2bd8f17045907de717d6ed256, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 299.60388, y: 92.543365, z: 199.99998}
+  m_Center: {x: -149.80194, y: -46.271683, z: 99.99999}
